@@ -1,22 +1,23 @@
-import "bootstrap/dist/css/bootstrap.min.css"
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-      {/* La navbar va qua */}
-      <Routes>
-       {/*  qua dentro i vari route */}
-      </Routes>
+        {/* La navbar va qua */}
+        <Routes>
+          {/*  qua dentro i vari route */}
+          <Route path="/profile" element={<ProfilePage />} />
+        </Routes>
       </BrowserRouter>
     </>
   );
 }
 
 export default App;
-
 
 /* Bootstrap: SI
 React-Bootstrap: SI
