@@ -1,14 +1,16 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MyNavbar from "./components/MyNavbar";
+import Jobs from "./components/Jobs";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-      {/* La navbar va qua */}
+      <MyNavbar />
       <Routes>
-       {/*  qua dentro i vari route */}
+       <Route path="/" element = {<Jobs />} />
       </Routes>
       </BrowserRouter>
     </>
