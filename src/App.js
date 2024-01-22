@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+      {/* La navbar va qua */}
+      <Routes>
+       {/*  qua dentro i vari route */}
+      </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
 export default App;
+
+
+/* Bootstrap: SI
+React-Bootstrap: SI
+Typescript: NO
+Classi: Come quelle di Bootstrap // es.(allineamento-bello)
+Id: CamelCase // es.(belloStoIdentificatore)
+Redux: Dati fetch dei profili, value della ricerca
+Componenti: TUTTI functional
+Lingua: INGLESE */
