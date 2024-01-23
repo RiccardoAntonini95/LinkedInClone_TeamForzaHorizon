@@ -6,7 +6,7 @@ import { GrTextWrap } from "react-icons/gr";
 
 const TopBar = () => {
   return (
-    <Container className='my-4 border rounded bg-white'>
+    <Container className='my-4 border rounded-3 bg-white'>
         <Row className="justify-content-md-center p-3">
         <Col xs={2}>
         <Image src="" roundedCircle />

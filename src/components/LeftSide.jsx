@@ -8,7 +8,7 @@ import { FiPlus } from "react-icons/fi";
 const LeftSide = () => {
   return (
     <>
-      <Card className="my-4 border border-tertiary">
+      <Card className="my-4 border border-tertiary rounded-3">
         <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
         <Card.Body>
           <Card.Title>"Nome generato"</Card.Title>
@@ -41,7 +41,7 @@ const LeftSide = () => {
           </p>
         </Card.Body>
       </Card>
-      <Card className="bg-white border border-tertiary rounded">
+      <Card className="bg-white border border-tertiary rounded-3">
         <Row>
             <Col xs={12} className="py-2"><a className="text-decoration-none fw-bold px-3" href="#">Gruppi</a></Col>
             <Col xs={10} className="py-2"><a className="text-decoration-none fw-bold px-3" href="#">Eventi</a></Col>
