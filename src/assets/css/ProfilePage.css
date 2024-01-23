@@ -1,3 +1,11 @@
+:root {
+  --blueLinkedin: #0a66c2;
+}
+
+.card {
+  border: 1px solid lightgrey;
+}
+
 .main-info-container {
   flex-basis: 80%;
 }
@@ -11,12 +19,152 @@
   padding: 0;
 }
 
+#header-img-loader-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  top: 1.2rem;
+  right: 1.3rem;
+  border: none;
+  border-radius: 50%;
+}
+
 .card-profile-img {
   position: absolute;
-  width: 20%;
-  left: 1.3rem;
-  top: 5rem;
-  border: 4px solid white;
+  object-fit: cover;
+  height: 190px;
+  width: 190px;
+  /* width: 19%; */
+  left: 1.5rem;
+  top: 6rem;
+  border: 6px solid white;
+  cursor: pointer;
+}
+
+#verification-link {
+  color: var(--blueLinkedin);
+  text-decoration: none;
+  display: inline-flex;
+  padding: 0 10px;
+  align-items: center;
+  gap: 5px;
+  border: 2px solid var(--blueLinkedin);
+  border-radius: 15px;
+}
+
+#verification-link:hover {
+  background-color: #e2f0fe;
+}
+
+#contact-info {
+  color: var(--blueLinkedin);
+  text-decoration: none;
+}
+
+#contact-info:hover {
+  text-decoration: underline;
+}
+
+.card-buttons-container button {
+  color: white;
+  width: auto;
+  background-color: var(--blueLinkedin);
+  border: none;
+  border-radius: 20px;
+  margin-right: 0.4rem;
+  padding: 0.25rem 1rem;
+}
+
+.card-buttons-container button:nth-child(2) {
+  color: var(--blueLinkedin);
+  border: 2px solid var(--blueLinkedin);
+  background-color: transparent;
+}
+
+.card-buttons-container button:nth-child(2):hover {
+  background-color: #e2f0fe;
+}
+
+.card-buttons-container button:nth-child(3) {
+  color: gray;
+  border: 2px solid gray;
+  background-color: transparent;
+}
+
+.card-buttons-container button:nth-child(3):hover {
+  background-color: #ebebeb;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-header .btn-close {
+  background-color: white;
+  border-radius: 50%;
+}
+
+.modal-content {
+  color: white;
+
+  top: 4rem;
+  background-color: #1b1f23;
+}
+
+.modal-img {
+  height: 300px;
+  width: 300px;
+}
+
+.modal-body {
+  padding: 1.5rem 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-footer {
+  border-top: 1px solid rgb(60, 60, 60);
+  display: block;
+}
+
+.modal-footer form {
+  display: flex;
+  margin: 0.8rem auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* .modal-footer input {
+  color: white;
+} */
+
+.modal-footer input[type="file"] {
+  background-color: rgb(82, 82, 82);
+  padding: 0.4rem 2rem;
+  border-radius: 10px;
+}
+
+.modal-footer input[type="file"]::file-selector-button {
+  border: none;
+  background-color: var(--blueLinkedin);
+  color: white;
+  border-radius: 15px;
+  padding: 3px 20px;
+}
+
+.modal-footer button {
+  border: none;
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+  background-color: var(--blueLinkedin);
+  color: white;
+  border-radius: 20px;
+  padding: 3px 20px;
 }
 
 /* right container */
