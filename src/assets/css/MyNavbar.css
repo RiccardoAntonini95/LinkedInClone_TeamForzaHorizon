@@ -1,0 +1,38 @@
+.input-wrapper {
+    background-color: #edf3f8;
+    width: 100%;
+    border-radius: 5px;
+    padding: 3px 10px;
+    box-shadow: 0px 0px 0px #ddd;
+    display: flex;
+    align-items: center;
+    transition: width 0.4s ease;
+    width: 250px;
+}
+
+.input-wrapper:focus-within {
+    border: 2px solid black;
+    width: 350px;
+}
+
+.input-wrapper input {
+    margin-left: 5px;
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    width: 100%;
+
+}
+
+input:focus {
+    outline: none;
+}
+
+#search-icon {
+    color: black;
+}
+
+
+.dropdown a {
+    padding: 0;
+}
