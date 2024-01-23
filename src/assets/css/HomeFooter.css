@@ -1,6 +1,25 @@
 .homeFooter {
     text-decoration: none;
     color: #616160;
-    font-weight: bold;
-    font-size:x-small;
+    font-weight:400;
+    font-size:smaller;
+}
+
+.homeFooter:hover{
+    text-decoration: underline;
+    color:dodgerblue;
+}
+
+.list-unstyled {
+    max-width: 230px;
+    justify-content: center;
+
+}
+.list-unstyled li{
+    margin-right: 10px;
+}
+
+.homeFooterBottom svg {
+    margin-top: 5px;
+    margin-right:0.5rem;
 }
