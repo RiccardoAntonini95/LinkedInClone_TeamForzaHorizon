@@ -1,5 +1,5 @@
-import "bootstrap/dist/css/bootstrap.min.css"
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MyNavbar from "./components/MyNavbar";
 import Jobs from "./components/Jobs";
@@ -18,7 +18,6 @@ function App() {
 }
 
 export default App;
-
 
 /* Bootstrap: SI
 React-Bootstrap: SI
