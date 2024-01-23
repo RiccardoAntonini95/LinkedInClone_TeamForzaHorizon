@@ -4,7 +4,7 @@ import { AiFillPicture } from "react-icons/ai";
 import { MdCalendarMonth } from "react-icons/md";
 import { GrTextWrap } from "react-icons/gr";
 
-const TopBar = () => {
+const PostBar = () => {
   return (
     <Container className='my-4 border rounded-3 bg-white'>
         <Row className="justify-content-md-center p-3">
@@ -22,4 +22,4 @@ const TopBar = () => {
   );
 };
 
-export default TopBar;
+export default PostBar;

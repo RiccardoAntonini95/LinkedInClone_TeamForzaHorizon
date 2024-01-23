@@ -5,13 +5,11 @@ import { Grid3x3GapFill } from "react-bootstrap-icons";
 import { FaSearch } from "react-icons/fa";
 import logo from '../assets/img/logo.png';
 import '../assets/css/MyNavbar.css';
-import Container from "react-bootstrap/Container";
 
 
 
 const MyNavBar = () => {
     return (
-        <Container>
         <Navbar bg="white" variant="white" expand="lg">
             <Navbar.Brand href="#home" className="d-flex align-items-center">
                 <img src={logo} width={40} alt="logo" className="me-2" />
@@ -54,7 +52,6 @@ const MyNavBar = () => {
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
-        </Container>
     )
 }
 
