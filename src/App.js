@@ -5,6 +5,8 @@ import ProfilePage from "./components/ProfilePage"
 import MyNavbar from "./components/MyNavbar";
 import Jobs from "./components/Jobs";
 import Home from "./components/Home";
+import Footer from "./components/Footer";
+import HomeFooter from "./components/HomeFooter";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
        <Route path="/jobs" element = {<Jobs />} />
       </Routes>
       </BrowserRouter>
+      <Footer />
+      <HomeFooter />
     </>
   );
 }
