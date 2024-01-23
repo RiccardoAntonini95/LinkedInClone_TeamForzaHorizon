@@ -1,5 +1,8 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { BsFillQuestionSquareFill } from "react-icons/bs";
+import { IoSettingsSharp } from "react-icons/io5";
+import { FaShieldAlt } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -7,111 +10,79 @@ const Footer = () => {
       <Container>
         <Row>
           <Col md={4}>
-            <h5>LinkedIn</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="#">About</a>
+                <a href="#" className="footer-style">
+                  Informazioni
+                </a>
               </li>
               <li>
-                <a href="#">Accessibility</a>
+                <a href="#">Linee guida della community</a>
               </li>
               <li>
-                <a href="#">User Agreement</a>
+                <a href="#">Privacy e condizioni</a>
               </li>
               <li>
-                <a href="#">Privacy Policy</a>
-              </li>
-              <li>
-                <a href="#">Cookie Policy</a>
-              </li>
-              <li>
-                <a href="#">Copyright Policy</a>
-              </li>
-              <li>
-                <a href="#">Brand Policy</a>
-              </li>
-              <li>
-                <a href="#">Guest Controls</a>
+                <a href="#">Sales Solutions</a>
               </li>
             </ul>
           </Col>
           <Col md={2}>
-            <h5>Business Solutions</h5>
+            <ul className="list-unstyled">
+              <li>
+                <a href="#">Accessibilità</a>
+              </li>
+              <li>
+                <a href="#">Carriera</a>
+              </li>
+              <li>
+                <a href="#">Opzioni per gli annunci pubblicitari</a>
+              </li>
+              <li>
+                <a href="#">Mobile</a>
+              </li>
+            </ul>
+          </Col>
+          <Col md={2}>
             <ul className="list-unstyled">
               <li>
                 <a href="#">Talent Solutions</a>
               </li>
               <li>
-                <a href="#">Advertise</a>
+                <a href="#">Soluzioni di marketing</a>
               </li>
               <li>
-                <a href="#">Sales Solutions</a>
+                <a href="#">Pubblicità</a>
               </li>
               <li>
-                <a href="#">Small Business</a>
-              </li>
-            </ul>
-          </Col>
-          <Col md={2}>
-            <h5>Directories</h5>
-            <ul className="list-unstyled">
-              <li>
-                <a href="#">Members</a>
-              </li>
-              <li>
-                <a href="#">Jobs</a>
-              </li>
-              <li>
-                <a href="#">Companies</a>
-              </li>
-              <li>
-                <a href="#">Salaries</a>
-              </li>
-              <li>
-                <a href="#">Featured</a>
+                <a href="#">Piccole imprese</a>
               </li>
             </ul>
           </Col>
           <Col md={2}>
-            <h5>Mobile</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="#">LinkedIn Lite</a>
+                <BsFillQuestionSquareFill />
+                <a href="#">Domande?</a>
+                <h6>Visita il nostro Centro assistenza</h6>
               </li>
               <li>
-                <a href="#">Mobile Apps</a>
-              </li>
-            </ul>
-          </Col>
-          <Col md={2}>
-            <h5>Tools</h5>
-            <ul className="list-unstyled">
-              <li>
-                <a href="#">Job Search</a>
+                <IoSettingsSharp />
+                <a href="#">Gestisci il tuo account e la tua privacy</a>
+                <h6>Vai alle impostazioni</h6>
               </li>
               <li>
-                <a href="#">Salary Finder</a>
-              </li>
-              <li>
-                <a href="#">Search Resumes</a>
-              </li>
-              <li>
-                <a href="#">Learning</a>
+                <FaShieldAlt />
+                <a href="#">Trasparenza sui contenuti consigliati</a>
+                <h6>Scopri di più sui contenuti consigliati</h6>
               </li>
             </ul>
           </Col>
         </Row>
-        <hr />
+
         <Row>
           <Col md={6}>
             <p>LinkedIn Corporation © 2024</p>
-          </Col>
-          <Col md={6} className="text-right">
-            <a href="#">Accessibility</a>
-            <a href="#">Privacy & Terms</a>
-            <a href="#">Ad Choices</a>
-            <a href="#">Advertising</a>
-            <a href="#">Business Services</a>
           </Col>
         </Row>
       </Container>
