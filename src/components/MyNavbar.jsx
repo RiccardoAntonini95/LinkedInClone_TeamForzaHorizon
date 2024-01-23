@@ -6,14 +6,17 @@ import { HouseDoorFill, PeopleFill, BriefcaseFill, ChatDotsFill, BellFill, Perso
 import { Grid3x3GapFill } from "react-bootstrap-icons";
 import { FaLinkedin } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
-import '../assets/css/MyNavbar.css'
+import logo from '../assets/img/logo.png';
+import '../assets/css/MyNavbar.css';
+
 
 
 const MyNavBar = () => {
     return (
-        <Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar bg="white" variant="white" expand="lg">
             <Navbar.Brand href="#home" className="d-flex align-items-center">
-                <FaLinkedin size={45} className="me-2"/>
+                <img src={logo} width={40} alt="logo" className="me-2" />
+                {/* <FaLinkedin size={45} className="me-2"/> */}
                 <div className='input-wrapper'>
                     <FaSearch id="search-icon" size={15}/>
                     <input

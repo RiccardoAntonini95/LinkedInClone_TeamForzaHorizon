@@ -6,6 +6,13 @@
     box-shadow: 0px 0px 0px #ddd;
     display: flex;
     align-items: center;
+    transition: width 0.4s ease;
+    width: 250px;
+}
+
+.input-wrapper:focus-within {
+    border: 2px solid black;
+    width: 350px;
 }
 
 .input-wrapper input {
@@ -29,4 +36,3 @@ input:focus {
 .dropdown a {
     padding: 0;
 }
-
