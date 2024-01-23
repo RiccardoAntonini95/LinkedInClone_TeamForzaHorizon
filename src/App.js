@@ -1,12 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MyNavBar from "./components/MyNavbar";
 
 function App() {
   return (
     <>
       <BrowserRouter>
       {/* La navbar va qua */}
+      <MyNavBar />
       <Routes>
        {/*  qua dentro i vari route */}
       </Routes>
