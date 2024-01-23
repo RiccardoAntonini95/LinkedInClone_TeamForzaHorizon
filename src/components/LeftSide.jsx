@@ -3,7 +3,7 @@ import { Card, ListGroup, Row, Col, Container } from "react-bootstrap";
 import { TiUserAdd } from "react-icons/ti";
 import { IoHardwareChip } from "react-icons/io5";
 import { FaBookmark } from "react-icons/fa";
-import { FiPlus } from "react-icons/fi";
+import { HiPlus } from "react-icons/hi";
 
 const LeftSide = () => {
   return (
@@ -44,8 +44,8 @@ const LeftSide = () => {
       <Card className="bg-white border border-tertiary rounded-3">
         <Row>
             <Col xs={12} className="py-2"><a className="text-decoration-none fw-bold px-3" href="#">Gruppi</a></Col>
-            <Col xs={10} className="py-2"><a className="text-decoration-none fw-bold px-3" href="#">Eventi</a></Col>
-            <Col xs={2} className="d-flex justify-content-center align-items-center"><FiPlus /></Col>
+            <Col xs={8} className="py-2"><a className="text-decoration-none fw-bold px-3" href="#">Eventi</a></Col>
+            <Col xs={4} className="d-flex justify-content-center align-items-center"><HiPlus /></Col>
             <Col xs={12} className="py-2"><a className="text-decoration-none fw-bold px-3" href="#">Hashtag seguiti</a></Col>
         </Row>
         <hr />
