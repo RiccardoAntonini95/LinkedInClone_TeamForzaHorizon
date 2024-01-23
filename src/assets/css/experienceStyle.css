@@ -60,10 +60,115 @@ body {
   margin-bottom: 20px;
 }
 
-.modale {
-  background-color: red;
-  width: 50vw;
+.add-experience-modal-container {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  right: 0;
+  width: 100vw;
   height: 100vh;
+}
+
+.add-experience-modal {
   position: fixed;
+  background-color: white;
+  width: 800px;
+  height: 800px;
+  left: 30vw;
+  top: 50px;
+  padding: 20px;
+  border-radius: 10px;
   z-index: 1;
+  border: 2px solid black;
+  overflow-y: auto;
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  width: 60px;
+  height: 50px;
+}
+.close-modal-btn div {
+  padding: 10px;
+  border-radius: 100%;
+}
+.close-modal-btn div:hover {
+  background-color: #E8E8E8;
+}
+
+.top-modal {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #E8E8E8;
+  margin-bottom: 10px;
+}
+
+.post-experience-form div input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.post-experience-form div select {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.checkbox-field {
+  align-items: center;
+}
+.checkbox-field p, .checkbox-field input {
+  height: 1rem;
+}
+
+.employment-dates {
+  justify-content: space-between;
+}
+.employment-dates select {
+  flex: 0 0 49.5%;
+}
+
+textarea {
+  width: 100%;
+}
+
+.sub-btn-container {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  padding: 20px 0 0 0;
+  border-top: 1px solid #E8E8E8;
+  margin-top: 10px;
+}
+
+.submit-post-experience {
+  border-radius: 30px;
+  border: none;
+  width: 80px;
+  height: 40px;
+  background-color: #0967C2;
+}
+.submit-post-experience span {
+  font-weight: 700 !important;
+  color: white;
+}
+.submit-post-experience:hover {
+  background-color: #397cbe;
+}
+
+strong {
+  color: #0967C2;
+}
+strong:hover {
+  cursor: pointer;
+}
+
+select {
+  cursor: pointer;
+  height: 32px;
+}
+
+input {
+  height: 32px;
 }/*# sourceMappingURL=experienceStyle.css.map */
