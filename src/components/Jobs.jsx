@@ -70,24 +70,29 @@ const provaOlla = {
     ]
     }
 
+const date = new Date("2021-08-29T17:53:08.000Z")
+
+const day = date.getDate()
+const month = date.getMonth() + 1
+const year = date.getFullYear()
+
 const Jobs = () => {
   return (
     <>
-      <Row className="d-flex justify-content-center border border-danger"> {/* CONTENITORE DEI DUE COMPONENT */}
+      <Row className="d-flex justify-content-center"> {/* CONTENITORE DEI DUE COMPONENT */}
        
-        <Col className="col-4 justify-content-between border border-success"  style={{height: "90vh"}}>{/* PRIMO COMPONENT */}
+        <Col className="col-4 justify-content-between overflow-auto"  style={{height: "90vh"}}>{/* PRIMO COMPONENT */}
         {provaOlla.data.map((job, i) => (
           <JobList key={i} list={job} />          
         ))}
         </Col>
         <Col className="col-5 overflow-auto" style={{height: "90vh"}}>{/* SECONDO COMPONENT */}
           
-          <p>{provaOlla.data[0].title}</p>
+          <p className="fs-4 fw-bold">{provaOlla.data[0].title}</p>
           <p>
             {provaOlla.data[0].company_name} .{" "}
-            {provaOlla.data[0].candidate_required_location} .{" "}
             <span className="text-secondary">
-              {provaOlla.data[0].publication_date}
+            Published: {day}-{month}-{year} .{" "}
             </span>
           </p>
           <div
