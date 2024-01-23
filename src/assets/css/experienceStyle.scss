@@ -9,11 +9,15 @@ $buttonsFill: #5E5E5E;
 $notifyBg: #EDF3F9;
 $btnSubBg: #0967C2;
 $btnSubBgHover: #397cbe;
-
+$formElementsPadding: 20px;
 
 
 body {
     background-color: $colorBody;
+}
+
+.overflow-disabled {
+    overflow: hidden;
 }
 
 .experience {
@@ -116,10 +120,9 @@ body {
     height: 800px;
     left: 30vw;
     top: 50px;
-    padding: 20px;
     border-radius: 10px;
     z-index: 1;
-    border: 2px solid black;
+    border: 1px solid $borderColor;
     overflow-y: auto;    
 }
 
@@ -144,6 +147,13 @@ body {
     padding: 0 0 10px 0;
     border-bottom: 1px solid $hrColor;
     margin-bottom: 10px;
+}
+
+.notify-network {
+    background-color: $notifyBg;
+    padding: $formElementsPadding 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid $hrColor;
 }
 
 .post-experience-form {
@@ -195,6 +205,8 @@ textarea {
     width: 80px;
     height: 40px;
     background-color: $btnSubBg;
+    margin-right: $formElementsPadding;
+    margin-bottom: $formElementsPadding;
     span {
         font-weight: 700 !important;
         color: white;
@@ -218,4 +230,22 @@ select {
 
 input {
     height: 32px;
+}
+
+.date-input-field {
+    .input-field{
+        flex: 0 0 calc((100/2)*0.98%) !important;
+    }
+}
+
+.input-field {
+    padding: 0 $formElementsPadding;
+}
+
+.notes {
+    padding: 0 $formElementsPadding;
+}
+
+.add-experience-header {
+    padding: $formElementsPadding;
 }

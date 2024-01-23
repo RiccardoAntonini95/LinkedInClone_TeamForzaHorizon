@@ -18,6 +18,15 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
 
     const [options, setOptions] = useState({});
 
+    const handleKeyPress = (event) => {
+        if (event.key === 'Escape') {
+          setIsActiveProp();
+        }
+      };
+    
+    useEffect(() =>{
+        document.addEventListener('keydown', handleKeyPress)
+    }, [])
 
     useEffect(() => {
         setOptions({
@@ -58,8 +67,8 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
     return (
         <div className="add-experience-modal-container">
             <div className="add-experience-modal">
-                <div className="d-flex top-modal justify-content-between align-items-center">
-                    <h4>Add experience</h4>
+                <div className="d-flex top-modal justify-content-between align-items-center mb-0">
+                    <h4 className="notes add-experience-header">Add experience</h4>
                     <button className="close-modal-btn" type="button" onClick={setIsActiveProp}>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" classname="bi bi-x-lg" viewBox="0 0 16 16">
@@ -69,10 +78,10 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
                     </button>
                 </div>
                 <div className="notify-network">
-                    <h5>Notify network</h5>
-                    <p>Turn on to notify your network of key profile changes (such as new job) and work anniversaries. Updates can take up to 2 hours. Learn more about <strong>sharing profile changes.</strong></p>
+                    <h5 className="notes">Notify network</h5>
+                    <p className="notes">Turn on to notify your network of key profile changes (such as new job) and work anniversaries. Updates can take up to 2 hours. Learn more about <strong>sharing profile changes.</strong></p>
                 </div>
-                <p>* Indicates required</p>
+                <p className="notes">* Indicates required</p>
                 <form className="post-experience-form" onSubmit={(e) => {
                     e.preventDefault();
                     postExperience();
@@ -122,7 +131,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
                         </select>
                         <p>Pick a location type (ex: remote)</p>
                     </div>}
-                    <div>
+                    <div className="d-flex justify-content-between align-items-center date-input-field">
                         {/* <div className="d-flex checkbox-field">
                             <input type="checkbox" />
                             <p>I am currently working in this role</p>
@@ -158,7 +167,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
                         ><span>Save</span></button>
                     </div>
                 </form>
-            </div >
+            </div>
         </div>
     )
 }

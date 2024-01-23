@@ -2,6 +2,10 @@ body {
   background-color: #E7E2DC;
 }
 
+.overflow-disabled {
+  overflow: hidden;
+}
+
 .experience {
   padding: 20px;
   margin: 20px;
@@ -76,10 +80,9 @@ body {
   height: 800px;
   left: 30vw;
   top: 50px;
-  padding: 20px;
   border-radius: 10px;
   z-index: 1;
-  border: 2px solid black;
+  border: 1px solid #adadad;
   overflow-y: auto;
 }
 
@@ -104,6 +107,13 @@ body {
   padding: 0 0 10px 0;
   border-bottom: 1px solid #E8E8E8;
   margin-bottom: 10px;
+}
+
+.notify-network {
+  background-color: #EDF3F9;
+  padding: 20px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #E8E8E8;
 }
 
 .post-experience-form div input {
@@ -148,6 +158,8 @@ textarea {
   width: 80px;
   height: 40px;
   background-color: #0967C2;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 .submit-post-experience span {
   font-weight: 700 !important;
@@ -171,4 +183,20 @@ select {
 
 input {
   height: 32px;
+}
+
+.date-input-field .input-field {
+  flex: 0 0 49% !important;
+}
+
+.input-field {
+  padding: 0 20px;
+}
+
+.notes {
+  padding: 0 20px;
+}
+
+.add-experience-header {
+  padding: 20px;
 }/*# sourceMappingURL=experienceStyle.css.map */

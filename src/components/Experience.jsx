@@ -28,6 +28,14 @@ export const Experience = () => {
     }
 
     useEffect(() => {
+        if (isActive){
+            document.body.classList.add('overflow-disabled')
+        } else {
+            document.body.classList.remove('overflow-disabled')
+        }
+    }, [isActive])
+
+    useEffect(() => {
         getExperience();
         // console.log(experience)
     }, [])
