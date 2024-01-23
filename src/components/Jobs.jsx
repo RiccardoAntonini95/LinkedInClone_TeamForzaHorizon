@@ -79,7 +79,7 @@ const year = date.getFullYear()
 const Jobs = () => {
   return (
     <>
-      <Row className="d-flex justify-content-center"> {/* CONTENITORE DEI DUE COMPONENT */}
+      <Row className="d-flex justify-content-center bg-white mx-3"> {/* CONTENITORE DEI DUE COMPONENT */}
        
         <Col className="col-4 justify-content-between overflow-auto"  style={{height: "90vh"}}>{/* PRIMO COMPONENT */}
         {provaOlla.data.map((job, i) => (
