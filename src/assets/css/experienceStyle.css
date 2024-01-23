@@ -1,0 +1,69 @@
+body {
+  background-color: #E7E2DC;
+}
+
+.experience {
+  padding: 20px;
+  margin: 20px;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid #adadad;
+}
+
+.experience-header {
+  margin-bottom: 20px;
+}
+
+.icons-flex button {
+  background: transparent;
+  border: none;
+}
+.icons-flex button div {
+  padding: 5px;
+  border-radius: 100%;
+}
+.icons-flex button div:hover {
+  background-color: #EBEBEB;
+}
+.icons-flex button div svg {
+  padding: 5px;
+  width: 36px;
+  height: 36px;
+  fill: #5E5E5E;
+}
+
+.single-experience {
+  gap: 20px;
+  border-bottom: 1px solid #E8E8E8;
+  margin-bottom: 30px;
+}
+.single-experience * {
+  margin-bottom: 0;
+}
+.single-experience img {
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.single-experience .experience-details h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+.single-experience .experience-details p:nth-child(3), .single-experience .experience-details p:nth-child(4) {
+  color: #696969;
+}
+.single-experience .experience-details p:nth-child(4) {
+  margin-bottom: 20px;
+}
+.single-experience .experience-details p:last-child {
+  margin-bottom: 20px;
+}
+
+.modale {
+  background-color: red;
+  width: 50vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+}/*# sourceMappingURL=experienceStyle.css.map */

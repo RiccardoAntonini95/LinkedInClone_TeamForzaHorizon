@@ -3,6 +3,7 @@ import { Container, Card, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { setProfileAction } from "../redux/actions/ProfilePage";
 import { STRIVE_KEY_GAE } from "../assets/js/auth_keys";
+import { Experience } from "./Experience";
 import "../assets/css/ProfilePage.css";
 
 const options = {
@@ -89,6 +90,7 @@ const ProfilePage = () => {
           </Container>
         </Container>
       )}
+      <Experience />
     </>
   );
 };
