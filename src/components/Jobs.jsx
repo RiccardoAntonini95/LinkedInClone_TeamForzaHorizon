@@ -1,7 +1,3 @@
-//https://strive-benchmark.herokuapp.com/api/jobs?company=Olla
-//https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10
-//https://strive-benchmark.herokuapp.com/api/jobs?search=query
-//npm i dompurify per dangerouslySetiInnerHTML
 import { Row, Col, ListGroup, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import JobList from "./JobList";
@@ -34,7 +30,7 @@ const Jobs = () => {
 
 
   return(
-    <Row className="d-flex justify-content-evenly mt-3">
+    <Row className="d-flex justify-content-evenly mt-3 mx-3">
       <Col className="col-3 border rounded text-center fw-bold"> {/* MENU A SINISTRA POSITION FIXED*/}
       <ListGroup>
         <ListGroup.Item><FaBookmark /> My job offers</ListGroup.Item>
