@@ -199,4 +199,10 @@ input {
 
 .add-experience-header {
   padding: 20px;
+}
+
+h4 {
+  margin-bottom: 0;
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
 }/*# sourceMappingURL=experienceStyle.css.map */

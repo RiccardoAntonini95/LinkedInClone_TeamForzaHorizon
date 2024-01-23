@@ -249,3 +249,9 @@ input {
 .add-experience-header {
     padding: $formElementsPadding;
 }
+
+h4 {
+    margin-bottom: 0;
+    padding-top: calc($formElementsPadding *1.5) !important;
+    padding-bottom: calc($formElementsPadding *1.5) !important;
+}

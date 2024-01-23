@@ -67,7 +67,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
     return (
         <div className="add-experience-modal-container">
             <div className="add-experience-modal">
-                <div className="d-flex top-modal justify-content-between align-items-center mb-0">
+                <div className="d-flex top-modal justify-content-between align-items-center mb-0 pb-0">
                     <h4 className="notes add-experience-header">Add experience</h4>
                     <button className="close-modal-btn" type="button" onClick={setIsActiveProp}>
                         <div>
