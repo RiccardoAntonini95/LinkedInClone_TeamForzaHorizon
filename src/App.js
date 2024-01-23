@@ -19,7 +19,6 @@ function App() {
        <Route path="/jobs" element = {<Jobs />} />
       </Routes>
       </BrowserRouter>
-      <Footer />
       <HomeFooter />
     </>
   );

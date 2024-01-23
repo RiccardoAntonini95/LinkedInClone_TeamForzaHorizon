@@ -2,6 +2,7 @@ import PostBar from "./PostBar";
 import LeftSide from "./LeftSide";
 import { Row, Col } from "react-bootstrap";
 import PostList from "./PostList";
+import Footer from "./Footer";
 
 const provaPost = [{
     "text": "Questo è un nuovo post", // L'unica proprietà richiesta!
@@ -37,6 +38,7 @@ const Home = () => {
                 {provaPost.map((post, i) => (
                     <PostList key={i} posts={post} />
                 ))}
+                <Footer />
             </Col>
         </Row>
     )

@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { BsFillQuestionSquareFill } from "react-icons/bs";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaShieldAlt } from "react-icons/fa";
-import "../assets/css/Footer.css";
+import "../assets/css/footer.css";
 
 const Footer = () => {
   return (

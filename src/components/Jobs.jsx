@@ -5,9 +5,11 @@ import { FaBookmark, FaList, FaArrowRight } from "react-icons/fa6";
 import { TbClipboardCheck } from "react-icons/tb";
 import { BsFillPlayBtnFill, BsPencilSquare } from "react-icons/bs";
 import { RiSettings4Fill } from "react-icons/ri";
+import Footer from "./Footer";
+import HomeFooter from "./HomeFooter";
 
 const Jobs = () => {
-  const [defaultJobs, setDefaultJobs] = useState({})
+  const [defaultJobs, setDefaultJobs] = useState(null)
 
   useEffect(() => {
     getJobs();
@@ -42,9 +44,11 @@ const Jobs = () => {
       <Button className="mt-2" variant="outline-primary"><BsPencilSquare /> Post a free job offer</Button>
       </Col>
       <Col className="col-5 border rounded bg-white"> {/* LISTA LAVORI FETCH */}
-      {defaultJobs.data.map((job, i) => (
-          <JobList key={i} list={job} />          
-        ))}
+      {defaultJobs && (
+        defaultJobs.data.map((job, i) => (
+            <JobList key={i} list={job} />          
+          ))
+      )}
       </Col>
       <Col className="col-4 border rounded"> {/* DISPONIBILE A LAVORARE + FOOTER */}
        <ListGroup>
@@ -67,9 +71,7 @@ const Jobs = () => {
           Inizia <FaArrowRight />
         </ListGroup.Item>
        </ListGroup>
-       <div>
-        Footer QUA
-       </div>
+       <HomeFooter />
       </Col>
     </Row>
   )

@@ -8,7 +8,7 @@ const HomeFooter = () => {
   return (
     <footer>
       <div>
-        <Container>
+        <Container className="d-flex flex-column align-items-center container">
           <ul className="list-unstyled d-flex flex-wrap">
             <li>
               <a href="#" className="homeFooter">
@@ -56,7 +56,7 @@ const HomeFooter = () => {
               </a>
             </li>
           </ul>
-          <div className="homeFooterBottom d-flex ">
+          <div className="homeFooterBottom d-flex justify-content-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 56 14"
