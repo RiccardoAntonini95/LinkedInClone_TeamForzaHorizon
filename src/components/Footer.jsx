@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { BsFillQuestionSquareFill } from "react-icons/bs";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaShieldAlt } from "react-icons/fa";
+import "../assets/css/Footer.css";
 
 const Footer = () => {
   return (
@@ -17,45 +18,67 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#">Linee guida della community</a>
+                <a href="#" className="footer-style">
+                  Linee guida della community
+                </a>
               </li>
               <li>
-                <a href="#">Privacy e condizioni</a>
+                <a href="#" className="footer-style">
+                  Privacy e condizioni
+                </a>
               </li>
               <li>
-                <a href="#">Sales Solutions</a>
-              </li>
-            </ul>
-          </Col>
-          <Col md={2}>
-            <ul className="list-unstyled">
-              <li>
-                <a href="#">Accessibilità</a>
-              </li>
-              <li>
-                <a href="#">Carriera</a>
-              </li>
-              <li>
-                <a href="#">Opzioni per gli annunci pubblicitari</a>
-              </li>
-              <li>
-                <a href="#">Mobile</a>
+                <a href="#" className="footer-style">
+                  Sales Solutions
+                </a>
               </li>
             </ul>
           </Col>
           <Col md={2}>
             <ul className="list-unstyled">
               <li>
-                <a href="#">Talent Solutions</a>
+                <a href="#" className="footer-style">
+                  Accessibilità
+                </a>
               </li>
               <li>
-                <a href="#">Soluzioni di marketing</a>
+                <a href="#" className="footer-style">
+                  Carriera
+                </a>
               </li>
               <li>
-                <a href="#">Pubblicità</a>
+                <a href="#" className="footer-style">
+                  Opzioni per gli annunci pubblicitari
+                </a>
               </li>
               <li>
-                <a href="#">Piccole imprese</a>
+                <a href="#" className="footer-style">
+                  Mobile
+                </a>
+              </li>
+            </ul>
+          </Col>
+          <Col md={2}>
+            <ul className="list-unstyled">
+              <li>
+                <a href="#" className="footer-style">
+                  Talent Solutions
+                </a>
+              </li>
+              <li>
+                <a href="#" className="footer-style">
+                  Soluzioni di marketing
+                </a>
+              </li>
+              <li>
+                <a href="#" className="footer-style">
+                  Pubblicità
+                </a>
+              </li>
+              <li>
+                <a href="#" className="footer-style">
+                  Piccole imprese
+                </a>
               </li>
             </ul>
           </Col>
@@ -63,18 +86,28 @@ const Footer = () => {
             <ul className="list-unstyled">
               <li>
                 <BsFillQuestionSquareFill />
-                <a href="#">Domande?</a>
-                <h6>Visita il nostro Centro assistenza</h6>
+                <a href="#" className="footer-style2">
+                  Domande?
+                </a>
+                <h6 className="sottoTesto">
+                  Visita il nostro Centro assistenza
+                </h6>
               </li>
               <li>
                 <IoSettingsSharp />
-                <a href="#">Gestisci il tuo account e la tua privacy</a>
-                <h6>Vai alle impostazioni</h6>
+                <a href="#" className="footer-style2">
+                  Gestisci il tuo account e la tua privacy
+                </a>
+                <h6 className="sottoTesto">Vai alle impostazioni</h6>
               </li>
               <li>
                 <FaShieldAlt />
-                <a href="#">Trasparenza sui contenuti consigliati</a>
-                <h6>Scopri di più sui contenuti consigliati</h6>
+                <a href="#" className="footer-style2">
+                  Trasparenza sui contenuti consigliati
+                </a>
+                <h6 className="sottoTesto">
+                  Scopri di più sui contenuti consigliati
+                </h6>
               </li>
             </ul>
           </Col>
