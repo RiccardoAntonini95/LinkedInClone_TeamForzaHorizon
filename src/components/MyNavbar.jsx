@@ -13,6 +13,7 @@ import { Grid3x3GapFill } from "react-bootstrap-icons";
 import { FaSearch } from "react-icons/fa";
 import logo from "../assets/img/logo.png";
 import "../assets/css/MyNavbar.css";
+import { Link } from "react-router-dom";
 
 const MyNavBar = () => {
   return (
@@ -72,9 +73,7 @@ const MyNavBar = () => {
                 Action
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/1.2">
-                <Button variant="outline-primary" className="btn-nav">
-                  Primary
-                </Button>
+                <Link to="/profile">Go to profile</Link>
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <h5>Account</h5>

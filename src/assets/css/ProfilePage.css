@@ -175,3 +175,33 @@
 .ad-image {
   width: 100%;
 }
+
+.ProfilePageContainer {
+  background-color: white;
+  border-radius: 20px;
+  margin-bottom: 0.7rem;
+}
+.ad-image {
+  border-radius: 20px;
+}
+.ProfilePageContainer2 {
+  color: gray;
+  font-weight: 400;
+  font-style: inherit;
+}
+
+.Title3 {
+  font-size:larger;
+  font-weight: bold;
+}
+
+.RightBarProfile{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Pencil {
+  text-decoration: none;
+  color: #616160;
+}
