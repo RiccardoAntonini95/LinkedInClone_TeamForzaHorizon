@@ -10,6 +10,8 @@ $notifyBg: #EDF3F9;
 $btnSubBg: #0967C2;
 $btnSubBgHover: #397cbe;
 $formElementsPadding: 20px;
+$deleteText: #5E5E5E;
+$deleteBg: #EBEBEB;
 
 
 body {
@@ -102,6 +104,28 @@ body {
 
 }
 
+.edit-experience-btn {
+    background: transparent;
+    border: none;
+
+    div {
+        padding: 5px;
+        border-radius: 100%;
+
+        &:hover {
+            background-color: $buttonsBackground;
+        }
+
+        svg {
+            padding: 5px;
+            width: $buttonsSize;
+            height: $buttonsSize;
+            fill: $buttonsFill;
+
+        }
+    }
+}
+
 // MODAL
 
 .add-experience-modal-container {
@@ -123,7 +147,7 @@ body {
     border-radius: 10px;
     z-index: 1;
     border: 1px solid $borderColor;
-    overflow-y: auto;    
+    overflow-y: auto;
 }
 
 .close-modal-btn {
@@ -131,9 +155,11 @@ body {
     border: none;
     width: 60px;
     height: 50px;
+
     div {
         padding: 10px;
         border-radius: 100%;
+
         &:hover {
             background-color: $hrColor;
         }
@@ -162,7 +188,7 @@ body {
             width: 100%;
             margin-bottom: 20px;
         }
-        
+
         select {
             width: 100%;
             margin-bottom: 8px;
@@ -172,13 +198,16 @@ body {
 
 .checkbox-field {
     align-items: center;
-    p, input {
+
+    p,
+    input {
         height: 1rem;
     }
 }
 
 .employment-dates {
     justify-content: space-between;
+
     select {
         flex: 0 0 calc((100/2 * 0.99%));
     }
@@ -207,17 +236,39 @@ textarea {
     background-color: $btnSubBg;
     margin-right: $formElementsPadding;
     margin-bottom: $formElementsPadding;
+
     span {
         font-weight: 700 !important;
         color: white;
     }
-    &:hover{
+
+    &:hover {
         background-color: $btnSubBgHover;
     }
 }
 
-strong{
+.delete-experience-btn {
+    border-radius: 5px;
+    background: none;
+    border: none;
+    padding: 0 10px;
+    margin-left: $formElementsPadding;
+    margin-bottom: $formElementsPadding;
+    &:hover {
+        background-color: $deleteBg;
+    }
+    span {
+        color: $deleteText;
+        font-weight: 600;
+    }
+    transition: background-color 100ms ease-in-out;
+}
+
+
+
+strong {
     color: $btnSubBg;
+
     &:hover {
         cursor: pointer;
     }
@@ -233,8 +284,8 @@ input {
 }
 
 .date-input-field {
-    .input-field{
-        flex: 0 0 calc((100/2)*0.98%) !important;
+    .input-field {
+        flex: 0 0 calc((100/2)*0.99%) !important;
     }
 }
 

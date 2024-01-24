@@ -64,6 +64,24 @@ body {
   margin-bottom: 20px;
 }
 
+.edit-experience-btn {
+  background: transparent;
+  border: none;
+}
+.edit-experience-btn div {
+  padding: 5px;
+  border-radius: 100%;
+}
+.edit-experience-btn div:hover {
+  background-color: #EBEBEB;
+}
+.edit-experience-btn div svg {
+  padding: 5px;
+  width: 36px;
+  height: 36px;
+  fill: #5E5E5E;
+}
+
 .add-experience-modal-container {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.6);
@@ -128,7 +146,8 @@ body {
 .checkbox-field {
   align-items: center;
 }
-.checkbox-field p, .checkbox-field input {
+.checkbox-field p,
+.checkbox-field input {
   height: 1rem;
 }
 
@@ -169,6 +188,23 @@ textarea {
   background-color: #397cbe;
 }
 
+.delete-experience-btn {
+  border-radius: 5px;
+  background: none;
+  border: none;
+  padding: 0 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  transition: background-color 100ms ease-in-out;
+}
+.delete-experience-btn:hover {
+  background-color: #EBEBEB;
+}
+.delete-experience-btn span {
+  color: #5E5E5E;
+  font-weight: 600;
+}
+
 strong {
   color: #0967C2;
 }
@@ -186,7 +222,7 @@ input {
 }
 
 .date-input-field .input-field {
-  flex: 0 0 49% !important;
+  flex: 0 0 49.5% !important;
 }
 
 .input-field {
