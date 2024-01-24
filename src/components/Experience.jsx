@@ -3,10 +3,11 @@ import { useState, useEffect } from "react"
 import '../assets/css/experienceStyle.css'
 import { Spinner } from "react-bootstrap"
 import { SingleExperience } from "./SingleExperience"
+import { AddExperienceModal } from "./AddExperienceModal"
 
 const url = 'https://striveschool-api.herokuapp.com/api/profile'
-const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlMzY5NjYwMGJlMTAwMTgzYTg2OGYiLCJpYXQiOjE3MDU5MTYwNTQsImV4cCI6MTcwNzEyNTY1NH0.t7w4r6wSbn44_H8K-jhgYsvMCbilLtwOwH51ZKuRc30'
-const userId = '65ae3696600be100183a868f'
+const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIwMmNjYzAwNGI4ODAwMThmZWY1ZDEiLCJpYXQiOjE3MDYwNDQ2MjAsImV4cCI6MTcwNzI1NDIyMH0.fELwYy5MqmVQVj1qMbgrGIjY9XXGO8JFxXrMAYV3fwg'
+const userId = '65b02ccc004b880018fef5d1'
 
 const options = {
     method: 'GET',
@@ -20,16 +21,32 @@ export const Experience = () => {
 
     const [experience, setExperience] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [isActive, setIsActive] = useState(false)
+
+    const setIsActiveProp = () => {
+        setIsActive(false);
+    }
+
+    useEffect(() => {
+        if (isActive){
+            document.body.classList.add('overflow-disabled')
+        } else {
+            document.body.classList.remove('overflow-disabled')
+        }
+    }, [isActive])
 
     useEffect(() => {
         getExperience();
-        console.log(experience)
+        // console.log(experience)
     }, [])
 
     useEffect(() => {
-        console.log(experience)
+        // console.log(experience)
         setIsLoading(false);
     }, [experience])
+    useEffect(() => {
+        console.log('Is loading: ', isLoading)
+    }, [isLoading])
 
     const getExperience = async () => {
         try {
@@ -50,7 +67,7 @@ export const Experience = () => {
             <div className="d-flex justify-content-between experience-header">
                 <h2>Experience</h2>
                 <div className="d-flex icons-flex">
-                    <button type="button" onClick={() => console.log('add experience')}>
+                    <button type="button" onClick={() => setIsActive(true)}>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
                                 <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
@@ -73,6 +90,9 @@ export const Experience = () => {
             )}
             {!isLoading && (experience.length > 0) && (
                 <>
+                    {isActive && (
+                        <AddExperienceModal setIsActiveProp={setIsActiveProp} getExperience={getExperience}/>
+                    )}
                     {experience.map((element) => {
                         return (
                             <div key={element._id}>
@@ -82,8 +102,6 @@ export const Experience = () => {
                     })}
                 </>
             )}
-
-
         </div>
     )
 }
