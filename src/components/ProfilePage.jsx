@@ -7,6 +7,7 @@ import "../assets/css/ProfilePage.css";
 import backgroundImg from "../assets/img/background-profilePage-card.jpeg";
 import { GoShieldCheck } from "react-icons/go";
 import { FaCamera } from "react-icons/fa";
+import pencil from "../assets/svg/pencil.svg";
 
 //const userId = '65b02ccc004b880018fef5d1'
 
@@ -134,6 +135,9 @@ const ProfilePage = () => {
                   <button type="button">Add profile section</button>
                   <button type="button">Other</button>
                 </Row>
+                {/*      <svg>
+                  <use xlinkHrerf={`${pencil}#pencil`} />
+                </svg> */}
               </Card.Body>
             </Card>
           )}
