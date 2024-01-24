@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProfilePage from "./components/ProfilePage"
 import MyNavbar from "./components/MyNavbar";
 import Jobs from "./components/Jobs";
+import JobSearch from "./components/JobSearch";
 import Home from "./components/Home";
 import HomeFooter from "./components/HomeFooter";
 
@@ -16,6 +17,7 @@ function App() {
        <Route path="/" element = {<Home />} />
        <Route path="/profile" element = {<ProfilePage />} />
        <Route path="/jobs" element = {<Jobs />} />
+       <Route path="/jobs/:query" element = {<JobSearch />} />
       </Routes>
       </BrowserRouter>
       <HomeFooter />

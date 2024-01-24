@@ -4,6 +4,8 @@
 //npm i dompurify per dangerouslySetiInnerHTML
 import { Row, Col } from "react-bootstrap";
 import JobList from "./JobList";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
 
 const provaOlla = {
     "data": [
@@ -70,38 +72,85 @@ const provaOlla = {
     ]
     }
 
-const date = new Date("2021-08-29T17:53:08.000Z")
-
-const day = date.getDate()
-const month = date.getMonth() + 1
-const year = date.getFullYear()
 
 const JobSearch = () => {
+  const params = useParams();
+  const [queryJobs, setQueryJobs] = useState(null);
+  const [detailJobs, setDetailJobs] = useState(null);
+  const date = new Date("2021-08-29T17:53:08.000Z");
+
+ const day = date.getDate();
+ const month = date.getMonth() + 1;
+ const year = date.getFullYear();
+
+  useEffect(() => {
+    getJobs();
+  }, []);
+
+  const getJobs = async () => {
+    try {
+      const response = await fetch(
+        `https://strive-benchmark.herokuapp.com/api/jobs?search=${params.query}&limit=10`
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setQueryJobs(data);
+        console.log(data);
+      } else {
+        console.log("Errore del fetch");
+      }
+    } catch (err) {
+      console.log("Errore:", err);
+    }
+  };
+
+  const handleDetailJobs = (job) => {
+    console.log("click")
+    setDetailJobs(job)
+  }
+
   return (
     <>
-      <Row className="d-flex justify-content-center bg-white mx-3"> {/* CONTENITORE DEI DUE COMPONENT */}
-       
-        <Col className="col-4 justify-content-between overflow-auto"  style={{height: "90vh"}}>{/* PRIMO COMPONENT */}
-        {provaOlla.data.map((job, i) => (
-          <JobList key={i} list={job} />          
-        ))}
-        </Col>
-        <Col className="col-5 overflow-auto" style={{height: "90vh"}}>{/* SECONDO COMPONENT */}
-          
-          <p className="fs-4 fw-bold">{provaOlla.data[0].title}</p>
-          <p>
-            {provaOlla.data[0].company_name} .{" "}
-            <span className="text-secondary">
-            Published: {day}-{month}-{year} .{" "}
-            </span>
-          </p>
-          <div
-            dangerouslySetInnerHTML={{ __html: provaOlla.data[0].description }}
-          ></div>
-        </Col>
+      <Row className="d-flex justify-content-center bg-white mx-3">
+        {" "}
+        {/* CONTENITORE DEI DUE COMPONENT */}
+        {queryJobs && (
+          <>
+            <Col
+              className="col-4 justify-content-between overflow-auto"
+              style={{ height: "90vh" }}
+            >
+              {/* PRIMO COMPONENT */}
+              {queryJobs.data.map((job, i) => (
+                <JobList key={i} list={job} cambiaStato={handleDetailJobs}/>
+              ))}
+            </Col>
+            <Col className="col-5 overflow-auto" style={{ height: "90vh" }}>
+              {/* SECONDO COMPONENT */}
+              {detailJobs && (
+                <>
+                <p className="fs-4 fw-bold">{detailJobs.title}</p>
+              <p>
+                {detailJobs.company_name} .{" "}
+                <span className="text-secondary">
+                  Published: {day}-{month}-{year} .{" "}
+                </span>
+              </p>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: detailJobs.description,
+                }}
+              ></div>
+                </>
+              )}
+
+              
+            </Col>
+          </>
+        )}
       </Row>
     </>
   );
 };
 
-export default JobSearch
+export default JobSearch;

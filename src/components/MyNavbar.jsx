@@ -6,25 +6,40 @@ import { Grid3x3GapFill } from "react-bootstrap-icons";
 import { FaSearch } from "react-icons/fa";
 import logo from '../assets/img/logo.png';
 import '../assets/css/MyNavbar.css';
-
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 
 const MyNavBar = () => {
+    const [query, setQuery] = useState()
+    const navigate = useNavigate()
+
+    const handleInputChange = (query) => {
+        setQuery(query)
+    }
+
+/*     const handleSubmit = (e) => {
+        e.preventDefault()
+        navigate()
+
+    } */
+
     return (
         <Navbar bg="white" variant="white" expand="lg">
             <Navbar.Brand href="#home" className="d-flex align-items-center">
                 <img src={logo} width={40} alt="logo" className="me-2" />
                 <div className='input-wrapper'>
-                    <FaSearch id="search-icon" size={15}/>
+                    <FaSearch id="search-icon" size={15} onClick={() => navigate(`/jobs/${query}`)}/>
                     <input
-                        placeholder='Cerca'
+                        placeholder='Cerca' onChange={(e) => {handleInputChange(e.target.value)}} 
                     />
                 </div>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto border-end">
-                    <Nav.Link href="#home" className="d-flex flex-column text-center px-4"><HouseDoorFill size={24} className="m-auto" /> Home</Nav.Link>
+                    <Link to={"/"} className="d-flex flex-column text-center px-4 nav-link"><HouseDoorFill size={24} className="m-auto" /> Home</Link>
                     <Nav.Link href="#rete" className="d-flex flex-column text-center px-4"><PeopleFill size={24} className="m-auto" />Rete</Nav.Link>
                     <Nav.Link href="lavoro" className="d-flex flex-column text-center px-4"><BriefcaseFill size={24} className="m-auto" />Lavoro</Nav.Link>
                     <Nav.Link href="#contatti" className="d-flex flex-column text-center px-4"><ChatDotsFill size={24} className="m-auto" />Contatti</Nav.Link>
