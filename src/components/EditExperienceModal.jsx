@@ -1,36 +1,69 @@
+import '../assets/css/experienceStyle.css'
 import { useState, useEffect } from "react";
 
 const url = 'https://striveschool-api.herokuapp.com/api/profile'
 
 const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIwMmNjYzAwNGI4ODAwMThmZWY1ZDEiLCJpYXQiOjE3MDYwNDQ2MjAsImV4cCI6MTcwNzI1NDIyMH0.fELwYy5MqmVQVj1qMbgrGIjY9XXGO8JFxXrMAYV3fwg'
 
-const userId = '65b02ccc004b880018fef5d1'
 
 
-export const EditExperienceModal = ({ setIsActiveProp, getExperience }) => {
+export const EditExperienceModal = ({ setIsEditProp, experience, getExperience }) => {
+    
+    const [area, setArea] = useState(experience.area);
+    const [company, setCompany] = useState(experience.company);
+    const [description, setDescription] = useState(experience.description);
+    const [endDate, setEndDate] = useState(experience.endDate);
+    const [startDate, setStartDate] = useState(experience.startDate);
+    const [role, setRole] = useState(experience.role);
+    const [userId, setUserId] = useState(experience.user);
+    const [experienceId, setExperienceId] = useState(experience._id);
 
-    const [area, setArea] = useState('');
-    const [company, setCompany] = useState('');
-    const [description, setDescription] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [role, setRole] = useState('');
+    
+    const [optionsPut, setOptionsPut] = useState({
+        method: 'PUT',
+        body: JSON.stringify({
+            role: role,
+            company: company,
+            startDate: startDate,
+            endDate: endDate,
+            description: description,
+            area: area
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: token
+        }
+    });
 
-    const [options, setOptions] = useState({});
+    
+    const optionsDelete = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token,
+        },
+    }
 
     const handleKeyPress = (event) => {
         if (event.key === 'Escape') {
-          setIsActiveProp();
+            setIsEditProp();
         }
-      };
-    
-    useEffect(() =>{
+    };
+
+    const handleDelete = () => {
+        deleteExperience(userId, experienceId);
+        getExperience();
+        setIsEditProp()
+    }
+
+    useEffect(() => {
         document.addEventListener('keydown', handleKeyPress)
     }, [])
 
+
     useEffect(() => {
-        setOptions({
-            method: 'POST',
+        setOptionsPut({
+            method: 'PUT',
             body: JSON.stringify({
                 role: role,
                 company: company,
@@ -47,15 +80,27 @@ export const EditExperienceModal = ({ setIsActiveProp, getExperience }) => {
 
     }, [area, company, description, endDate, startDate, role])
 
-
-    const postExperience = async () => {
+    const deleteExperience = async (_userId, _experienceId) => {
         try {
-            const res = await fetch(`${url}/${userId}/experiences`, options);
+            const res = await fetch (`${url}/${_userId}/experiences/${_experienceId}`, optionsDelete)
+            if (!res.ok){
+                throw new Error ('Delete was not successful');
+            }
+            console.log('Delete request successful for: ', experienceId);
+        } catch (err) {
+            console.error('Error: ', err)
+        }
+    }
+
+
+    const putExperience = async (_userId, _experienceId) => {
+        try {
+            const res = await fetch(`${url}/${_userId}/experiences/${_experienceId}`, optionsPut);
             if (!res.ok) {
                 throw new Error('Post was not successful');
             }
             const responseData = await res.json();
-            console.log('Post request successful for: ', responseData)
+            console.log('Put request successful for: ', responseData)
         } catch (err) {
             console.error('Error', err);
         }
@@ -69,7 +114,7 @@ export const EditExperienceModal = ({ setIsActiveProp, getExperience }) => {
             <div className="add-experience-modal">
                 <div className="d-flex top-modal justify-content-between align-items-center mb-0 pb-0">
                     <h4 className="notes add-experience-header">Add experience</h4>
-                    <button className="close-modal-btn" type="button" onClick={setIsActiveProp}>
+                    <button className="close-modal-btn" type="button" onClick={setIsEditProp}>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" classname="bi bi-x-lg" viewBox="0 0 16 16">
                                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
@@ -84,13 +129,13 @@ export const EditExperienceModal = ({ setIsActiveProp, getExperience }) => {
                 <p className="notes">* Indicates required</p>
                 <form className="post-experience-form" onSubmit={(e) => {
                     e.preventDefault();
-                    postExperience();
+                    putExperience(userId, experienceId);
                     getExperience();
-                    setIsActiveProp();
+                    setIsEditProp();
                 }}>
                     <div className="input-field">
                         <h6>Title*</h6>
-                        <input type="text" name="role" required placeholder="Ex. Retail Sales Manager" onChange={(e) => {
+                        <input type="text" name="role" required placeholder="Ex. Retail Sales Manager" value={role} onChange={(e) => {
                             setRole(e.target.value);
                         }} />
                     </div>
@@ -111,13 +156,13 @@ export const EditExperienceModal = ({ setIsActiveProp, getExperience }) => {
                     </div>}
                     <div className="input-field">
                         <h6>Company name*</h6>
-                        <input type="text" name="company" required placeholder="Ex. Microsoft" onChange={(e) => {
+                        <input type="text" name="company" required placeholder="Ex. Microsoft" value={company} onChange={(e) => {
                             setCompany(e.target.value);
                         }} />
                     </div>
                     <div className="input-field">
                         <h6>Location</h6>
-                        <input type="text" name="area" placeholder="Ex. London, United Kingdom" onChange={(e) => {
+                        <input type="text" name="area" placeholder="Ex. London, United Kingdom" value={area} onChange={(e) => {
                             setArea(e.target.value)
                         }} />
                     </div>
@@ -139,7 +184,7 @@ export const EditExperienceModal = ({ setIsActiveProp, getExperience }) => {
                         <div className="input-field">
                             <h6>Start date*</h6>
                             <div className="d-flex employment-dates">
-                                <input type="date" name="startDate" id="startDate" onChange={(e) => {
+                                <input type="date" name="startDate" id="startDate" value={startDate} onChange={(e) => {
                                     setStartDate(e.target.value);
                                 }} />
                             </div>
@@ -147,7 +192,7 @@ export const EditExperienceModal = ({ setIsActiveProp, getExperience }) => {
                         <div className="input-field">
                             <h6>End date*</h6>
                             <div className="d-flex employment-dates">
-                                <input type="date" name="endDate" id="endDate" onChange={(e) => {
+                                <input type="date" name="endDate" id="endDate" value={endDate} onChange={(e) => {
                                     setEndDate(e.target.value);
                                 }} />
                             </div>
@@ -155,11 +200,19 @@ export const EditExperienceModal = ({ setIsActiveProp, getExperience }) => {
                     </div>
                     <div className="input-field">
                         <h6>Description</h6>
-                        <textarea name="description" id="description" cols="100" rows="5" onChange={(e) => {
+                        <textarea name="description" id="description" cols="100" rows="5" value={description}
+                        onChange={(e) => {
                             setDescription(e.target.value);
                         }}></textarea>
                     </div>
-                    <div className="d-flex justify-content-end sub-btn-container">
+                    <div className="d-flex justify-content-between sub-btn-container">
+                        <button
+                            variant="primary"
+                            type="button"
+                            className="delete-experience-btn"
+                            onClick={handleDelete}
+                        ><span>Delete experience</span>
+                        </button>
                         <button
                             variant="primary"
                             type="submit"

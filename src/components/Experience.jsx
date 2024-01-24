@@ -96,7 +96,7 @@ export const Experience = () => {
                     {experience.map((element) => {
                         return (
                             <div key={element._id}>
-                                <SingleExperience experience={element} />
+                                <SingleExperience experience={element} getExperience={getExperience}/>
                             </div>
                         )
                     })}

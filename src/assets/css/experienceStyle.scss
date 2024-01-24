@@ -10,6 +10,8 @@ $notifyBg: #EDF3F9;
 $btnSubBg: #0967C2;
 $btnSubBgHover: #397cbe;
 $formElementsPadding: 20px;
+$deleteText: #5E5E5E;
+$deleteBg: #EBEBEB;
 
 
 body {
@@ -105,6 +107,7 @@ body {
 .edit-experience-btn {
     background: transparent;
     border: none;
+
     div {
         padding: 5px;
         border-radius: 100%;
@@ -243,6 +246,25 @@ textarea {
         background-color: $btnSubBgHover;
     }
 }
+
+.delete-experience-btn {
+    border-radius: 5px;
+    background: none;
+    border: none;
+    padding: 0 10px;
+    margin-left: $formElementsPadding;
+    margin-bottom: $formElementsPadding;
+    &:hover {
+        background-color: $deleteBg;
+    }
+    span {
+        color: $deleteText;
+        font-weight: 600;
+    }
+    transition: background-color 100ms ease-in-out;
+}
+
+
 
 strong {
     color: $btnSubBg;
