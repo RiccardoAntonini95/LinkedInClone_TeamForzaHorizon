@@ -4,14 +4,16 @@ import { useSelector } from "react-redux";
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { Experience } from "./Experience";
 import "../assets/css/ProfilePage.css";
-import ProvaReducer from "./ProvaReducer";
+import backgroundImg from "../assets/img/background-profilePage-card.jpeg";
 import { GoShieldCheck } from "react-icons/go";
 import { FaCamera } from "react-icons/fa";
+
+//const userId = '65b02ccc004b880018fef5d1'
 
 const ProfilePage = () => {
   const profileData = useSelector((state) => state.profile.actualProfile);
   const [show, setShow] = useState(false);
-  //const [fileImg, setFileImg] = useState();
+  const [fileImg, setFileImg] = useState(null);
 
   const setProfileImage = async (e) => {
     e.preventDefault();
@@ -26,7 +28,7 @@ const ProfilePage = () => {
           method: "POST",
           headers: {
             Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
-            "Content-Type": "multipart/form-data",
+            // "Content-Type": "multipart/form-data",
           },
           body: formData,
         }
@@ -35,7 +37,9 @@ const ProfilePage = () => {
 
       if (!res.ok) throw new Error("Cannot Upload Image");
 
-      console.log("formData", formData);
+      const data = await res.json();
+
+      console.log("data ", data);
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +59,7 @@ const ProfilePage = () => {
             <Card>
               <Card.Header>
                 <img
-                  src="https://media.licdn.com/dms/image/D4D16AQEuFnpwxpadJQ/profile-displaybackgroundimage-shrink_350_1400/0/1695901435207?e=1711584000&v=beta&t=5L0zFPxA6sO5dN6BvcRygVKTopWNPVWuxbmF5M0scGU"
+                  src={backgroundImg}
                   alt="background"
                   className="header-card-img"
                 />
@@ -94,7 +98,7 @@ const ProfilePage = () => {
                 <Modal.Footer>
                   <form
                     id="modal-form"
-                    encType="multipart/form-data"
+                    /* encType="multipart/form-data" */
                     onSubmit={setProfileImage}
                   >
                     <input
@@ -133,8 +137,10 @@ const ProfilePage = () => {
               </Card.Body>
             </Card>
           )}
-          <Experience />
+          {/*   //const userId = '65b02ccc004b880018fef5d1' */}
+          {profileData && <Experience userId={profileData._id} />}
         </Container>
+
         <Container className="flex-shrink secondary-info-container">
           <Container>
             <Row>
