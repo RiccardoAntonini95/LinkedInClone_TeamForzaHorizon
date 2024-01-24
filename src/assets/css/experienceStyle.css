@@ -36,6 +36,11 @@ body {
   fill: #5E5E5E;
 }
 
+.big-spinner {
+  width: 100px;
+  height: 100px;
+}
+
 .single-experience {
   gap: 20px;
   border-bottom: 1px solid #E8E8E8;
@@ -49,6 +54,9 @@ body {
   height: 50px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.single-experience .experience-details {
+  flex: 1;
 }
 .single-experience .experience-details h3 {
   font-size: 1.3rem;
@@ -227,6 +235,9 @@ input {
 
 .input-field {
   padding: 0 20px;
+}
+.input-field h6, .input-field p {
+  margin-bottom: 8px;
 }
 
 .notes {

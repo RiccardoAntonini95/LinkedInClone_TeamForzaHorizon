@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 import { useState, useEffect } from "react"
 import '../assets/css/experienceStyle.css'
 import { Spinner } from "react-bootstrap"
@@ -27,8 +27,12 @@ export const Experience = () => {
         setIsActive(false);
     }
 
+    const setLoading = () => {
+        setIsLoading(true);
+    }
+
     useEffect(() => {
-        if (isActive){
+        if (isActive) {
             document.body.classList.add('overflow-disabled')
         } else {
             document.body.classList.remove('overflow-disabled')
@@ -84,19 +88,28 @@ export const Experience = () => {
                 </div>
             </div>
             {isLoading && (
-                <Container>
-                    <Spinner variant="primary" />
+                <Container >
+                    <Row className="justify-content-center">
+                        <Spinner
+                            variant="danger"
+                            className="big-spinner"
+                        />
+                    </Row>
                 </Container>
             )}
             {!isLoading && (experience.length > 0) && (
                 <>
                     {isActive && (
-                        <AddExperienceModal setIsActiveProp={setIsActiveProp} getExperience={getExperience}/>
+                        <AddExperienceModal setIsActiveProp={setIsActiveProp} getExperience={getExperience} />
                     )}
                     {experience.map((element) => {
                         return (
                             <div key={element._id}>
-                                <SingleExperience experience={element} getExperience={getExperience}/>
+                                <SingleExperience
+                                    experience={element}
+                                    getExperience={getExperience}
+                                    setLoading={setLoading}
+                                />
                             </div>
                         )
                     })}

@@ -3,7 +3,7 @@ import JobExeperienceIcon from '../assets/img/JobExperienceIcon.png'
 import { EditExperienceModal } from "./EditExperienceModal"
 import '../assets/css/experienceStyle.css'
 
-export const SingleExperience = ({ experience, getExperience }) => {
+export const SingleExperience = ({ experience, getExperience, setLoading }) => {
 
     const [isEdit, setIsEdit] = useState(false);
 
@@ -47,6 +47,7 @@ export const SingleExperience = ({ experience, getExperience }) => {
                         setIsEditProp={setIsEditProp}
                         experience={experience}
                         getExperience={getExperience}
+                        setLoading={setLoading}
                     />
                 </>
             )}
