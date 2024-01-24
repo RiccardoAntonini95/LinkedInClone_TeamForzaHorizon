@@ -11,14 +11,14 @@ const LeftSide = () => {
       <Card className="my-4 border border-tertiary rounded-3">
         <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
         <Card.Body>
-          <Card.Title>"Nome generato"</Card.Title>
+          <Card.Title>"Generated Name"</Card.Title>
         </Card.Body>
         <ListGroup className="list-group-flush">
           <ListGroup.Item>
             <Row>
               <Col xs={10}>
-                <p className="text-secondary m-0">Collegamenti</p>
-                <p className="fw-bold m-0">Espandi la tua rete</p>
+                <p className="text-secondary m-0">Connections</p>
+                <p className="fw-bold m-0">Expand your network</p>
               </Col>
               <Col xs={2}>
                 <TiUserAdd />
@@ -27,30 +27,48 @@ const LeftSide = () => {
           </ListGroup.Item>
           <ListGroup.Item>
             <p className="text-secondary m-0">
-              Accedi a strumenti e informazioni in esclusiva
+              Access exclusive tools and information
             </p>
             <p className="d-flex align-items-center">
-              <IoHardwareChip className="text-warning me-1" /> Prova Premium per
-              0 EUR
+              <IoHardwareChip className="text-warning me-1" />
+              Try Premium for 0 EUR
             </p>
           </ListGroup.Item>
         </ListGroup>
         <Card.Body>
           <p className="d-flex align-items-center fw-bold">
-            <FaBookmark className="me-2 text-secondary" /> I miei elementi
+            <FaBookmark className="me-2 text-secondary" />
+            My elements
           </p>
         </Card.Body>
       </Card>
       <Card className="bg-white border border-tertiary rounded-3">
         <Row>
-            <Col xs={12} className="py-2"><a className="text-decoration-none fw-bold px-3" href="#">Gruppi</a></Col>
-            <Col xs={8} className="py-2"><a className="text-decoration-none fw-bold px-3" href="#">Eventi</a></Col>
-            <Col xs={4} className="d-flex justify-content-center align-items-center"><HiPlus /></Col>
-            <Col xs={12} className="py-2"><a className="text-decoration-none fw-bold px-3" href="#">Hashtag seguiti</a></Col>
+          <Col xs={12} className="py-2">
+            <a className="text-decoration-none fw-bold px-3" href="#">
+              Groups
+            </a>
+          </Col>
+          <Col xs={8} className="py-2">
+            <a className="text-decoration-none fw-bold px-3" href="#">
+              Events
+            </a>
+          </Col>
+          <Col
+            xs={4}
+            className="d-flex justify-content-center align-items-center"
+          >
+            <HiPlus />
+          </Col>
+          <Col xs={12} className="py-2">
+            <a className="text-decoration-none fw-bold px-3" href="#">
+              Followed hashtags
+            </a>
+          </Col>
         </Row>
         <hr />
         <Row>
-            <p className="text-center">Scopri di più</p>
+          <p className="text-center">Find out more</p>
         </Row>
       </Card>
     </>

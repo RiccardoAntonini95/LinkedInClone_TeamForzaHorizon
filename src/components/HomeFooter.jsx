@@ -12,47 +12,47 @@ const HomeFooter = () => {
           <ul className="list-unstyled d-flex flex-wrap">
             <li>
               <a href="#" className="homeFooter">
-                Informazioni
+                About
               </a>
             </li>
             <li>
               <a href="#" className="homeFooter">
-                Accessibilità
+                Accessibility
               </a>
             </li>
             <li>
               <a href="#" className="homeFooter">
-                Centro Assistenza
+                Help Center
               </a>
             </li>
             <li>
               <a href="#" className="homeFooter">
-                Privacy e condizioni
+                Privacy & Terms
               </a>
             </li>
             <li>
               <a href="#" className="homeFooter">
-                Opzioni per gli annunci pubblicitari
+                Ad Choices
               </a>
             </li>
             <li>
               <a href="#" className="homeFooter">
-                Pubblicità
+                Adversiting
               </a>
             </li>
             <li>
               <a href="#" className="homeFooter">
-                Servizi per le aziende
+                Buisness Services
               </a>
             </li>
             <li>
               <a href="#" className="homeFooter">
-                Scarica l'app LinkedIn
+                Get the LinkedIn App
               </a>
             </li>
             <li>
-              <a href="#" className="homeFooter">
-                Altro
+              <a href="#" classsName="homeFooter">
+                More
               </a>
             </li>
           </ul>
