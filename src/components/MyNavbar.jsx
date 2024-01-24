@@ -14,7 +14,6 @@ const MyNavBar = () => {
         <Navbar bg="white" variant="white" expand="lg">
             <Navbar.Brand href="#home" className="d-flex align-items-center">
                 <img src={logo} width={40} alt="logo" className="me-2" />
-                {/* <FaLinkedin size={45} className="me-2"/> */}
                 <div className='input-wrapper'>
                     <FaSearch id="search-icon" size={15}/>
                     <input
@@ -34,7 +33,7 @@ const MyNavBar = () => {
                         <PersonCircle size={24} className="m-auto" />
                         <NavDropdown id="basic-nav-dropdown" title="Tu">
                             <NavDropdown.Item href="#action/1.1"><PersonCircle size={50} className="me-2"/>Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/1.2"><Button variant="outline-primary">Primary</Button></NavDropdown.Item>
+                            <NavDropdown.Item href="#action/1.2"><Button variant="outline-primary" className="btn-nav">Primary</Button></NavDropdown.Item>
                             <NavDropdown.Divider />
                             <h5>Account</h5>
                             <NavDropdown.Item href="#action/2.2" className="mb-2 text-muted">Impostazioni e privacy</NavDropdown.Item>
