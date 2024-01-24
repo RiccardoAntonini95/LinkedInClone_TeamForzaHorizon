@@ -2,8 +2,19 @@ import { useState, useEffect } from "react"
 import JobExeperienceIcon from '../assets/img/JobExperienceIcon.png'
 import { EditExperienceModal } from "./EditExperienceModal"
 import '../assets/css/experienceStyle.css'
+import { convertTime } from "../assets/js";
 
 export const SingleExperience = ({ experience, getExperience, setLoading }) => {
+
+    const { day, month, year } = convertTime(experience.startDate);
+
+    let endDay, endMonth, endYear;
+    if (experience.endDate) {
+        const { day, month, year } = convertTime(experience.endDate);
+        endDay = day;
+        endMonth = month;
+        endYear = year;
+    }
 
     const [isEdit, setIsEdit] = useState(false);
 
@@ -12,7 +23,7 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
     }
 
     useEffect(() => {
-        if (isEdit){
+        if (isEdit) {
             document.body.classList.add('overflow-disabled')
         } else {
             document.body.classList.remove('overflow-disabled')
@@ -38,7 +49,10 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
 
                 <p>{experience.area}</p>
                 <p>{experience.company}</p>
-                <p>{experience.startDate.slice(0, 10)} - {experience.endDate.slice(0, 10)} - How long</p>
+                <p>
+                    {day}/{month}/{year}{" "}
+                    {experience.endDate && `- ${endDay}/${endMonth}/${endYear}`}
+                </p>
                 <p>{experience.description}</p>
             </div>
             {isEdit && (
