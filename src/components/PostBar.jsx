@@ -46,7 +46,7 @@ const PostBar = () => {
             Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
             "Content-Type": "application/json",
           },
-          body: query /* JSON.stringify({ text: `${query}`}) */,
+          body: JSON.stringify({ text: `${query}`}),
         }
       );
       console.log("response", res);
