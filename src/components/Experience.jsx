@@ -30,7 +30,6 @@ const options = {
 export const Experience = ({ /* userId */ }) => {
 
     //const userId = useSelector(state => state.profile.actualProfile._id)
-
     const [experience, setExperience] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [isActive, setIsActive] = useState(false)
