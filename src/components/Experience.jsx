@@ -108,6 +108,11 @@ export const Experience = ({ /* userId */ }) => {
                     </Row>
                 </Container>
             )}
+            {experience.length === 0 && (
+                <>
+                    <p className="no-experience">Click the icon in the corner to add your first experience</p>
+                </>
+            )}
             {!isLoading && (experience.length > 0) && (
                 <>
                     {isActive && (
