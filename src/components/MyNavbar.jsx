@@ -33,7 +33,7 @@ const MyNavBar = () => {
                     <Nav.Link href="lavoro" className="d-flex flex-column text-center px-4"><BriefcaseFill size={24} className="m-auto" />Lavoro</Nav.Link>
                     <Nav.Link href="#contatti" className="d-flex flex-column text-center px-4"><ChatDotsFill size={24} className="m-auto" />Contatti</Nav.Link>
                     <Nav.Link href="#notifiche" className="d-flex flex-column text-center px-4"><BellFill size={24} className="m-auto" />Notifiche</Nav.Link>
-                    <Nav.Link href="#tu" className="d-flex flex-column text-center px-4">
+                    <Nav.Link href="#tu" className="d-flex flex-column text-center px-4 not-bb">
                         <PersonCircle size={24} className="m-auto" />
                         <NavDropdown id="basic-nav-dropdown" title="Tu">
                             <NavDropdown.Item href="#action/1.1"><PersonCircle size={50} className="me-2"/>Action</NavDropdown.Item>
@@ -53,7 +53,7 @@ const MyNavBar = () => {
                     </Nav.Link>
                 </Nav>
                 <Nav>
-                    <Nav.Link href="#perleaziende" className="d-flex flex-column text-center px-4">
+                    <Nav.Link href="#perleaziende" className="d-flex flex-column text-center px-4 not-bb">
                         <Grid3x3GapFill size={24} className="m-auto" />
                         <NavDropdown id="basic-nav-dropdown" title="Per le aziende">
                             <Modal.Header closeButton>

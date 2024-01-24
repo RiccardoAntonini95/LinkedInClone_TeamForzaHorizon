@@ -32,6 +32,15 @@ input:focus {
     color: black;
 }
 
+.navbar {
+    padding-bottom: 0px;
+}
+
+.navbar-nav:not(:last-child) .nav-link:focus,
+.navbar-nav:not(:last-child) .nav-link:focus-within {
+    border-bottom: 3px solid black;
+}
+
 
 .dropdown a {
     padding: 0;
@@ -39,11 +48,12 @@ input:focus {
 
 .dropdown-menu {
     width: 290px;
+    top: 170% !important;
     left: -220px !important;
-    
+
 }
 
-.dropdown-menu .dropdown-item{
+.dropdown-menu .dropdown-item {
     padding: 0px 12px;
     overflow: hidden;
     text-overflow: ellipsis;
