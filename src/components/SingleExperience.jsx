@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react"
-import JobExeperienceIcon from '../assets/img/JobExperienceIcon.png'
+import { useState, useEffect } from "react";
+import JobExeperienceIcon from "../assets/img/JobExperienceIcon.png";
+import { convertTime } from "../assets/js";
 import { EditExperienceModal } from "./EditExperienceModal"
 import '../assets/css/experienceStyle.css'
 
@@ -19,12 +20,21 @@ export const SingleExperience = ({ experience, getExperience }) => {
         }
     }, [isEdit])
 
-    return (
-        <div className="d-flex single-experience">
-            <img src={JobExeperienceIcon} alt="Icona" />
-            <div className="experience-details">
+  const { day, month, year } = convertTime(experience.startDate);
+
+  let endDay, endMonth, endYear;
+  if (experience.endDate) {
+    const { day, month, year } = convertTime(experience.endDate);
+    endDay = day;
+    endMonth = month;
+    endYear = year;
+  }
+  return (
+    <div className="d-flex single-experience">
+      <img src={JobExeperienceIcon} alt="Icona" />
+      <div className="experience-details">
                 <div className="d-flex justify-content-between align-items-center">
-                    <h3>{experience.role}</h3>
+            <h3>{experience.role}</h3>
                     <button className="edit-experience-btn" type="button" onClick={() => {
                         setIsEdit(true);
                     }}>
@@ -36,11 +46,15 @@ export const SingleExperience = ({ experience, getExperience }) => {
                     </button>
                 </div>
 
-                <p>{experience.area}</p>
-                <p>{experience.company}</p>
-                <p>{experience.startDate.slice(0, 10)} - {experience.endDate.slice(0, 10)} - How long</p>
-                <p>{experience.description}</p>
-            </div>
+        <p>{experience.area}</p>
+        <p>{experience.company}</p>
+        <p>
+          {/*    {experience.startDate} - {experience.endDate} - How long */}
+          {day}/{month}/{year}{" "}
+          {experience.endDate && `- ${endDay}/${endMonth}/${endYear}`}
+        </p>
+        <p>{experience.description}</p>
+      </div>
             {isEdit && (
                 <>
                     <EditExperienceModal
@@ -50,6 +64,6 @@ export const SingleExperience = ({ experience, getExperience }) => {
                     />
                 </>
             )}
-        </div>
-    )
-}
+    </div>
+  );
+};
