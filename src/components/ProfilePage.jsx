@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Container, Card, Row, Button, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { setProfileAction } from "../redux/actions/ProfilePage";
-import { STRIVE_KEY_GAE } from "../assets/js/auth_keys";
+import { STRIVE_KEY_GAE, STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { Experience } from "./Experience";
 import "../assets/css/ProfilePage.css";
 import ProvaReducer from "./ProvaReducer";
@@ -10,10 +10,10 @@ import { GoShieldCheck } from "react-icons/go";
 import { FaCamera } from "react-icons/fa";
 
 const options = {
+  mode: "cors",
   method: "GET",
   headers: {
-    Authorization: `Bearer ${STRIVE_KEY_GAE}`,
-    "Content-Type": "application/json",
+    Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
   },
 };
 
@@ -55,6 +55,7 @@ const ProfilePage = () => {
       const res = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/${profileData._id}/picture`,
         {
+          mode: "cors",
           method: "POST",
           headers: {
             Authorization: `Bearer ${STRIVE_KEY_GAE}`,
