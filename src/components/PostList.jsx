@@ -1,15 +1,17 @@
 import user from "../assets/img/user.png"
-import {Row, Col, Button, Container} from "react-bootstrap";
-import { Image } from "react-bootstrap";
 import { IoPeople } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
-import { AiTwotoneLike } from "react-icons/ai";
-import { FaRegCommentDots } from "react-icons/fa6";
+import { AiTwotoneLike, AiFillPicture } from "react-icons/ai";
+import { FaRegCommentDots, FaRegFaceSmile } from "react-icons/fa6";
 import { FaRegSmile } from "react-icons/fa";
 import { FaRegImage } from "react-icons/fa6";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
+import { Row, Col, Container, Button, Image, Modal, FormGroup, Form, ModalBody } from "react-bootstrap";
+import { MdCalendarMonth } from "react-icons/md";
+import { IoMdTime } from "react-icons/io";
+import { TiStarburst } from "react-icons/ti";
 /* DELETE https://striveschool-api.herokuapp.com/api/posts/{postId}  Cancella uno specifico postModello del POST: */
 
 const optionsDelete = {
@@ -22,6 +24,33 @@ const optionsDelete = {
   const PostList = ({posts}) => {
     const [isClicked, setIsClicked] = useState(false)//per il like 
     const profileData = useSelector((state) => state.profile.actualProfile)
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const [show, setShow] = useState(false);
+    const [query, setQuery] = useState();
+
+    const handleModPost = async (e) => {
+        e.preventDefault();
+        try {
+          const res = await fetch(
+            `https://striveschool-api.herokuapp.com/api/posts/${posts._id}`,
+            {
+              method: "PUT",
+              headers: {
+                Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ text: `${query}`}),
+            }
+          );
+          console.log("response", res);
+    
+          if (!res.ok) throw new Error("Error posting");
+    
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
     const handleDeletePost = async () => {
         try{
@@ -60,7 +89,7 @@ const optionsDelete = {
                     <p className="text-secondary">{day}/{month}/{year} . <IoPeople /></p>
                 </Col>
                 <Col className="col-1 p-0">
-                    <BsThreeDots />
+                    <BsThreeDots onClick={() => handleShow()}/>
                     <button onClick={() => handleDeletePost()}>✖️</button>                
                 </Col>
                 <Row>
@@ -93,6 +122,29 @@ const optionsDelete = {
                     </Col>
                 </Row>
             </Row>
+
+            <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header className="border-0" closeButton>
+          <Col xs={1}><Image src={profileData.image} style={{ width: '40px', height: '40px' }} className="rounded-circle" /></Col>
+          <Col xs={6}><p className="m-0 fw-bold px-2">{profileData.name} {profileData.surname}</p><p className="Post text-secondary m-0 px-2">Pubblica: Chiunque</p></Col>
+          <Modal.Title>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="p-0">
+          <FormGroup>
+            <Form.Control className="border-0" as="textarea" placeholder="Di cosa vorresti parlare?" rows={8} onChange={(e) => setQuery(e.target.value)}/>
+          </FormGroup>
+        </Modal.Body>
+        <ModalBody className="py-0"><FaRegFaceSmile className="mx-3" /></ModalBody>
+          <Modal.Body className="d-flex"><div className="m-2 p-2 rounded-circle bg-body-secondary d-flex justify-content-center align-items-center"><AiFillPicture className="text-secondary fs-5" /></div><div className="m-2 p-2 rounded-circle bg-body-secondary d-flex justify-content-center align-items-center"><MdCalendarMonth className="text-secondary fs-5" /></div><div className="m-2 p-2 rounded-circle bg-body-secondary d-flex justify-content-center align-items-center"><TiStarburst className="text-secondary fs-5" /></div><div></div><div className="m-2 p-2 rounded-circle bg-body-secondary d-flex justify-content-center align-items-center"><BsThreeDots className="text-secondary fs-5" /></div></Modal.Body>
+        <Modal.Footer>
+        <IoMdTime className="dark" />
+          <Button id="Pubblic" className="rounded-pill" onClick={(e) => {handleClose(); handleModPost(e)}}>
+            Pubblica
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
         </Container>
     )
   }
