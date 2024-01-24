@@ -6,9 +6,18 @@ $borderColor: #adadad;
 $buttonsSize: 36px;
 $buttonsBackground: #EBEBEB;
 $buttonsFill: #5E5E5E;
+$notifyBg: #EDF3F9;
+$btnSubBg: #0967C2;
+$btnSubBgHover: #397cbe;
+$formElementsPadding: 20px;
+
 
 body {
     background-color: $colorBody;
+}
+
+.overflow-disabled {
+    overflow: hidden;
 }
 
 .experience {
@@ -24,23 +33,27 @@ body {
 }
 
 .icons-flex {
+
     // gap: 10px;
-    button{
+    button {
         background: transparent;
         border: none;
-        div{
+
+        div {
             padding: 5px;
             border-radius: 100%;
+
             &:hover {
                 background-color: $buttonsBackground;
             }
+
             svg {
                 padding: 5px;
                 width: $buttonsSize;
                 height: $buttonsSize;
                 fill: $buttonsFill;
-    
-            }  
+
+            }
         }
 
     }
@@ -50,30 +63,38 @@ body {
 // SINGLE EXPERIENCE
 
 .single-experience {
-    *{
+    * {
         margin-bottom: 0;
     }
+
     gap: 20px;
     border-bottom: 1px solid $hrColor;
     margin-bottom: 30px;
+
     img {
         width: $imageSide;
         height: $imageSide;
         object-fit: cover;
     }
+
     .experience-details {
         h3 {
             font-size: 1.3rem;
             margin-bottom: 5px;
         }
-        p{
-            &:nth-child(3), &:nth-child(4){
+
+        p {
+
+            &:nth-child(3),
+            &:nth-child(4) {
                 color: #696969;
             }
-            &:nth-child(4){
+
+            &:nth-child(4) {
                 margin-bottom: 20px;
             }
-            &:last-child{
+
+            &:last-child {
                 margin-bottom: 20px;
             }
         }
@@ -83,11 +104,154 @@ body {
 
 // MODAL
 
-.modale {
-    background-color: red;
-    width: 50vw;
+.add-experience-modal-container {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    right: 0;
+    width: 100vw;
     height: 100vh;
+}
+
+.add-experience-modal {
     position: fixed;
+    background-color: white;
+    width: 800px;
+    height: 800px;
+    left: 30vw;
+    top: 50px;
+    border-radius: 10px;
     z-index: 1;
-    
+    border: 1px solid $borderColor;
+    overflow-y: auto;    
+}
+
+.close-modal-btn {
+    background: none;
+    border: none;
+    width: 60px;
+    height: 50px;
+    div {
+        padding: 10px;
+        border-radius: 100%;
+        &:hover {
+            background-color: $hrColor;
+        }
+    }
+}
+
+.top-modal {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid $hrColor;
+    margin-bottom: 10px;
+}
+
+.notify-network {
+    background-color: $notifyBg;
+    padding: $formElementsPadding 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid $hrColor;
+}
+
+.post-experience-form {
+    div {
+        input {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        select {
+            width: 100%;
+            margin-bottom: 8px;
+        }
+    }
+}
+
+.checkbox-field {
+    align-items: center;
+    p, input {
+        height: 1rem;
+    }
+}
+
+.employment-dates {
+    justify-content: space-between;
+    select {
+        flex: 0 0 calc((100/2 * 0.99%));
+    }
+}
+
+textarea {
+    width: 100%;
+}
+
+.sub-btn-container {
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+    padding: 20px 0 0 0;
+    border-top: 1px solid $hrColor;
+    margin-top: 10px;
+}
+
+
+
+.submit-post-experience {
+    border-radius: 30px;
+    border: none;
+    width: 80px;
+    height: 40px;
+    background-color: $btnSubBg;
+    margin-right: $formElementsPadding;
+    margin-bottom: $formElementsPadding;
+    span {
+        font-weight: 700 !important;
+        color: white;
+    }
+    &:hover{
+        background-color: $btnSubBgHover;
+    }
+}
+
+strong{
+    color: $btnSubBg;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+select {
+    cursor: pointer;
+    height: 32px;
+}
+
+input {
+    height: 32px;
+}
+
+.date-input-field {
+    .input-field{
+        flex: 0 0 calc((100/2)*0.98%) !important;
+    }
+}
+
+.input-field {
+    padding: 0 $formElementsPadding;
+}
+
+.notes {
+    padding: 0 $formElementsPadding;
+}
+
+.add-experience-header {
+    padding: $formElementsPadding;
+}
+
+h4 {
+    margin-bottom: 0;
+    padding-top: calc($formElementsPadding *1.5) !important;
+    padding-bottom: calc($formElementsPadding *1.5) !important;
 }
