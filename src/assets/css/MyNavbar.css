@@ -36,3 +36,31 @@ input:focus {
 .dropdown a {
     padding: 0;
 }
+
+.dropdown-menu {
+    width: 290px;
+    left: -220px !important;
+    
+}
+
+.dropdown-menu .dropdown-item{
+    padding: 0px 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-menu h5 {
+    padding: 0px 12px;
+    cursor: initial;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    height: 25px;
+    width: 100%;
+    padding: 0px;
+    border-radius: 25px;
+}

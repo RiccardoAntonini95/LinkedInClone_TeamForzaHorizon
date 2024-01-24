@@ -1,6 +1,7 @@
 //commento esistente
 import Container from "react-bootstrap";
 import { Navbar, Nav, NavDropdown, NavbarBrand, } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
 import Modal from "react-bootstrap/Modal";
 import { HouseDoorFill, PeopleFill, BriefcaseFill, ChatDotsFill, BellFill, PersonCircle } from "react-bootstrap-icons";
 import { Grid3x3GapFill } from "react-bootstrap-icons";
@@ -26,7 +27,7 @@ const MyNavBar = () => {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
+                <Nav className="mr-auto border-end">
                     <Nav.Link href="#home" className="d-flex flex-column text-center px-4"><HouseDoorFill size={24} className="m-auto" /> Home</Nav.Link>
                     <Nav.Link href="#rete" className="d-flex flex-column text-center px-4"><PeopleFill size={24} className="m-auto" />Rete</Nav.Link>
                     <Nav.Link href="lavoro" className="d-flex flex-column text-center px-4"><BriefcaseFill size={24} className="m-auto" />Lavoro</Nav.Link>
@@ -35,11 +36,19 @@ const MyNavBar = () => {
                     <Nav.Link href="#tu" className="d-flex flex-column text-center px-4">
                         <PersonCircle size={24} className="m-auto" />
                         <NavDropdown id="basic-nav-dropdown" title="Tu">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/1.1"><PersonCircle size={50} className="me-2"/>Action</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/1.2"><Button variant="outline-primary">Primary</Button></NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                            <h5>Account</h5>
+                            <NavDropdown.Item href="#action/2.2" className="mb-2 text-muted">Impostazioni e privacy</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/2.3" className="mb-2 text-muted">Guida</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/2.3" className=" text-muted">Lingua</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <h5>Gestisci</h5>
+                            <NavDropdown.Item href="#action/3.2" className="mb-2 text-muted">Post e attività</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3" className="mb-2 text-muted">Account per la pubblicazione di offerte di lavoro</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="#action/4.1" className=" text-muted">Esci</NavDropdown.Item>
                         </NavDropdown>
                     </Nav.Link>
                 </Nav>
