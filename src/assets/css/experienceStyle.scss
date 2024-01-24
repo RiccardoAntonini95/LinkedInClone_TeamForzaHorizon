@@ -68,6 +68,11 @@ body {
     height: $spinnerSize;
 }
 
+.no-experience {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
 // SINGLE EXPERIENCE
 
 .single-experience {
@@ -141,7 +146,7 @@ body {
     top: 0;
     right: 0;
     width: 100vw;
-    height: 100vh;
+    height: 20000vh;
 }
 
 .add-experience-modal {

@@ -7,8 +7,8 @@ import { MONTHS } from "../assets/js/matteoVariables";
 
 export const SingleExperience = ({ experience, getExperience, setLoading }) => {
 
+    // Set date format to output
     const { day, month, year } = convertTime(experience.startDate);
-
     let endDay, endMonth, endYear;
     if (experience.endDate) {
         const { day, month, year } = convertTime(experience.endDate);
@@ -17,12 +17,15 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
         endYear = year;
     }
 
+    // State that says wether modal is open. By default it is closed
     const [isEdit, setIsEdit] = useState(false);
 
+    // State to pass as prop
     const setIsEditProp = () => {
         setIsEdit(false);
     }
 
+    // Disables scrolling and clicking in the background when modal is open
     useEffect(() => {
         if (isEdit) {
             document.body.classList.add('overflow-disabled')

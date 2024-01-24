@@ -41,6 +41,11 @@ body {
   height: 100px;
 }
 
+.no-experience {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
 .single-experience {
   gap: 20px;
   border-bottom: 1px solid #E8E8E8;
@@ -96,7 +101,7 @@ body {
   top: 0;
   right: 0;
   width: 100vw;
-  height: 100vh;
+  height: 20000vh;
 }
 
 .add-experience-modal {
