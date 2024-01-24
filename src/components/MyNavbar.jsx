@@ -1,14 +1,20 @@
-import { Navbar, Nav, NavDropdown, NavbarBrand, } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import { HouseDoorFill, PeopleFill, BriefcaseFill, ChatDotsFill, BellFill, PersonCircle } from "react-bootstrap-icons";
+import {
+  HouseDoorFill,
+  PeopleFill,
+  BriefcaseFill,
+  ChatDotsFill,
+  BellFill,
+  PersonCircle,
+} from "react-bootstrap-icons";
 import { Grid3x3GapFill } from "react-bootstrap-icons";
 import { FaSearch } from "react-icons/fa";
 import logo from '../assets/img/logo.png';
 import '../assets/css/MyNavbar.css';
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 
 
 const MyNavBar = () => {
@@ -18,12 +24,6 @@ const MyNavBar = () => {
     const handleInputChange = (query) => {
         setQuery(query)
     }
-
-/*     const handleSubmit = (e) => {
-        e.preventDefault()
-        navigate()
-
-    } */
 
     return (
         <Navbar bg="white" variant="white" expand="lg">
@@ -48,7 +48,7 @@ const MyNavBar = () => {
                         <PersonCircle size={24} className="m-auto" />
                         <NavDropdown id="basic-nav-dropdown" title="Tu">
                             <NavDropdown.Item href="#action/1.1"><PersonCircle size={50} className="me-2"/>Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/1.2"><Button variant="outline-primary" className="btn-nav">Primary</Button></NavDropdown.Item>
+                            <NavDropdown.Item href="#action/1.2"><Link to="/profile">Go to profile</Link></NavDropdown.Item>
                             <NavDropdown.Divider />
                             <h5>Account</h5>
                             <NavDropdown.Item href="#action/2.2" className="mb-2 text-muted">Impostazioni e privacy</NavDropdown.Item>
