@@ -3,6 +3,7 @@ import JobExeperienceIcon from '../assets/img/JobExperienceIcon.png'
 import { EditExperienceModal } from "./EditExperienceModal"
 import '../assets/css/experienceStyle.css'
 import { convertTime } from "../assets/js";
+import { MONTHS } from "../assets/js/matteoVariables";
 
 export const SingleExperience = ({ experience, getExperience, setLoading }) => {
 
@@ -50,8 +51,10 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
                 <p>{experience.area}</p>
                 <p>{experience.company}</p>
                 <p>
-                    {day}/{month}/{year}{" "}
-                    {experience.endDate && `- ${endDay}/${endMonth}/${endYear}`}
+                    {MONTHS[month]} {year}{" "}
+                    {experience.endDate && (
+                        `- ${MONTHS[endMonth]} ${endYear}`
+                    )}
                 </p>
                 <p>{experience.description}</p>
             </div>

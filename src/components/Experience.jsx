@@ -6,15 +6,15 @@ import { SingleExperience } from "./SingleExperience"
 import { AddExperienceModal } from "./AddExperienceModal"
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { useSelector } from "react-redux";
+import { MATTEO_AUTH_TOKEN } from "../assets/js/matteoVariables"
+import { url } from "../assets/js/matteoVariables"
 
-const url = 'https://striveschool-api.herokuapp.com/api/profile'
-const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIwMmNjYzAwNGI4ODAwMThmZWY1ZDEiLCJpYXQiOjE3MDYwNDQ2MjAsImV4cCI6MTcwNzI1NDIyMH0.fELwYy5MqmVQVj1qMbgrGIjY9XXGO8JFxXrMAYV3fwg'
 const userId = '65b02ccc004b880018fef5d1'
 
 const options = {
     method: 'GET',
     headers: {
-        Authorization: token,
+        Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
         'Content-Type': 'application/json'
     }
 }
@@ -116,6 +116,7 @@ export const Experience = ({ /* userId */ }) => {
                             setIsActiveProp={setIsActiveProp}
                             getExperience={getExperience}
                             userId={userId}
+                            setLoading={setLoading}
                         />
                     )}
                     {experience.map((element) => {

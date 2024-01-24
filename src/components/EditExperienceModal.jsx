@@ -1,10 +1,8 @@
 import '../assets/css/experienceStyle.css'
 import { useState, useEffect } from "react";
-
-const url = 'https://striveschool-api.herokuapp.com/api/profile'
-
-const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIwMmNjYzAwNGI4ODAwMThmZWY1ZDEiLCJpYXQiOjE3MDYwNDQ2MjAsImV4cCI6MTcwNzI1NDIyMH0.fELwYy5MqmVQVj1qMbgrGIjY9XXGO8JFxXrMAYV3fwg'
-
+import { LOADING_TIME } from '../assets/js/matteoVariables';
+import { MATTEO_AUTH_TOKEN } from '../assets/js/matteoVariables';
+import { url } from '../assets/js/matteoVariables';
 
 
 export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, setLoading }) => {
@@ -12,8 +10,8 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
     const [area, setArea] = useState(experience.area);
     const [company, setCompany] = useState(experience.company);
     const [description, setDescription] = useState(experience.description);
-    const [endDate, setEndDate] = useState(experience.endDate);
-    const [startDate, setStartDate] = useState(experience.startDate);
+    const [endDate, setEndDate] = useState(experience.endDate.slice(0, 10));
+    const [startDate, setStartDate] = useState(experience.startDate.slice(0, 10));
     const [role, setRole] = useState(experience.role);
     const [userId, setUserId] = useState(experience.user);
     const [experienceId, setExperienceId] = useState(experience._id);
@@ -31,7 +29,7 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
         }),
         headers: {
             'Content-Type': 'application/json',
-            Authorization: token
+            Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
         }
     });
 
@@ -40,7 +38,7 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': token,
+            Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
         },
     }
 
@@ -56,7 +54,7 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
         setLoading();
         setTimeout(() => {
             getExperience();
-        }, 1000);
+        }, LOADING_TIME);
     }
 
     const handlePut = (e) => {
@@ -66,7 +64,7 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
         setLoading();
         setTimeout(() => {
             getExperience();
-        }, 1000);
+        }, LOADING_TIME);
     }
 
     useEffect(() => {
@@ -86,7 +84,7 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
                 area: area
             }),
             headers: {
-                'Authorization': token,
+                Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
                 'Content-Type': 'application/json'
             },
         })

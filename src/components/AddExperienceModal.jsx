@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
+import { LOADING_TIME } from "../assets/js/matteoVariables";
+import { MATTEO_AUTH_TOKEN } from "../assets/js/matteoVariables";
+import { url } from "../assets/js/matteoVariables";
 
-const url = 'https://striveschool-api.herokuapp.com/api/profile'
-
-const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIwMmNjYzAwNGI4ODAwMThmZWY1ZDEiLCJpYXQiOjE3MDYwNDQ2MjAsImV4cCI6MTcwNzI1NDIyMH0.fELwYy5MqmVQVj1qMbgrGIjY9XXGO8JFxXrMAYV3fwg'
-
-const userId = '65b02ccc004b880018fef5d1'
+const userId = '65b02ccc004b880018fef5d1'   //  Temporary userId for testing
 
 
-export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
+export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading/* , userId */ }) => {
 
     const [area, setArea] = useState('');
     const [company, setCompany] = useState('');
@@ -18,16 +17,28 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
 
     const [options, setOptions] = useState({});
 
+    // If esc is pressed with modal open, the modal unmounts
     const handleKeyPress = (event) => {
         if (event.key === 'Escape') {
-          setIsActiveProp();
+            setIsActiveProp();
         }
-      };
-    
-    useEffect(() =>{
+    };
+
+    // On submit, trigger a few events
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        postExperience();
+        setIsActiveProp();
+        setLoading();
+        setTimeout(getExperience, LOADING_TIME);
+    }
+
+    // The browser listens for keys down
+    useEffect(() => {
         document.addEventListener('keydown', handleKeyPress)
     }, [])
 
+    // Options for POST fetch
     useEffect(() => {
         setOptions({
             method: 'POST',
@@ -40,7 +51,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
                 area: area
             }),
             headers: {
-                'Authorization': token,
+                Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
                 'Content-Type': 'application/json'
             },
         })
@@ -48,6 +59,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
     }, [area, company, description, endDate, startDate, role])
 
 
+    // Function for adding job experience through a POST
     const postExperience = async () => {
         try {
             const res = await fetch(`${url}/${userId}/experiences`, options);
@@ -82,12 +94,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
                     <p className="notes">Turn on to notify your network of key profile changes (such as new job) and work anniversaries. Updates can take up to 2 hours. Learn more about <strong>sharing profile changes.</strong></p>
                 </div>
                 <p className="notes">* Indicates required</p>
-                <form className="post-experience-form" onSubmit={(e) => {
-                    e.preventDefault();
-                    postExperience();
-                    getExperience();
-                    setIsActiveProp();
-                }}>
+                <form className="post-experience-form" onSubmit={handleSubmit}>
                     <div className="input-field">
                         <h6>Title*</h6>
                         <input type="text" name="role" required placeholder="Ex. Retail Sales Manager" onChange={(e) => {
