@@ -3,11 +3,12 @@ import LeftSide from "./LeftSide";
 import { Row, Col } from "react-bootstrap";
 import PostList from "./PostList";
 import { setProfileAction } from "../redux/actions/ProfilePage";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 
-const provaPost = [
+
+ const provaPost = [
   {
     text: "Questo è un nuovo post", // L'unica proprietà richiesta!
     username: "mario88", // SERVER GENERATED
@@ -32,7 +33,7 @@ const provaPost = [
     __v: 0, // SERVER GENERATED
     _id: "5d93ac84b86e2200137e76ae1", // SERVER GENERATED
   },
-];
+]; 
 
 // IN CASO DI API MALFUNZIONANTE
 const PROFILE_FETCHED = {
@@ -60,6 +61,8 @@ const options = {
 };
 
 const Home = () => {
+/*   const [currentProfile, setCurrentProfile] = useState(null) */
+ const profileData = useSelector((state) => state.profile.actualProfile)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -76,7 +79,7 @@ const Home = () => {
       if (!res.ok) throw new Error("Cannot fetch data");
 
       const data = await res.json();
-
+/*       setCurrentProfile(data) */
       dispatch(setProfileAction(data));
       console.log("getProfileData data: ", data);
     } catch (err) {
@@ -87,7 +90,9 @@ const Home = () => {
   return (
     <Row>
       <Col xs={3}>
-        <LeftSide />
+        {profileData && (
+          <LeftSide currentProfile={profileData} />
+        )}
       </Col>
       <Col xs={6}>
         <PostBar />

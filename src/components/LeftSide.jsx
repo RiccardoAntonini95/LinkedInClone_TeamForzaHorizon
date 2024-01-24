@@ -1,19 +1,21 @@
 import React, { useEffect } from "react";
-import { Card, ListGroup, Row, Col, Container } from "react-bootstrap";
+import { Card, ListGroup, Row, Col, Container, Image } from "react-bootstrap";
 import { TiUserAdd } from "react-icons/ti";
 import { IoHardwareChip } from "react-icons/io5";
 import { FaBookmark } from "react-icons/fa";
 import { HiPlus } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import { setProfileAction } from "../redux/actions/ProfilePage";
+import bannerProfile from "../assets/img/bannerProfile.jpg"
 
-const LeftSide = () => {
+
+const LeftSide = ({currentProfile}) => {
   return (
     <>
       <Card className="my-4 border border-tertiary rounded-3">
-        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-        <Card.Body>
-          <Card.Title>"Nome generato"</Card.Title>
+        <Card.Body className="d-flex flex-column align-items-center banner-profile" style={{backgroundImage : `url('${bannerProfile}')`}}>
+        <Image src={currentProfile.image} width={90} height={90} className="rounded-circle" />
+          <Card.Title>{currentProfile.name} {currentProfile.surname}</Card.Title>
         </Card.Body>
         <ListGroup className="list-group-flush">
           <ListGroup.Item>
