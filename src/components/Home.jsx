@@ -64,9 +64,11 @@ const Home = () => {
 /*   const [currentProfile, setCurrentProfile] = useState(null) */
  const profileData = useSelector((state) => state.profile.actualProfile)
   const dispatch = useDispatch();
+  const [posts, setPosts] = useState(null)
 
   useEffect(() => {
     getProfileData();
+    getPosts();
   }, []);
 
   const getProfileData = async () => {
@@ -87,6 +89,19 @@ const Home = () => {
     }
   };
 
+  const getPosts = async () => {
+    try{
+      const res = await fetch("https://striveschool-api.herokuapp.com/api/posts/", 
+      options
+      );
+      if (!res.ok) throw new Error("Cannot fetch data")
+      const data = await res.json()
+      setPosts(data)
+    } catch (err) {
+      console.log(err, "error")
+    }
+  }
+
   return (
     <Row>
       <Col xs={3}>
@@ -96,9 +111,11 @@ const Home = () => {
       </Col>
       <Col xs={6}>
         <PostBar />
-        {provaPost.map((post, i) => (
+        {posts && (
+          posts.map((post, i) => (
           <PostList key={i} posts={post} />
-        ))}
+        ))
+        )}
       </Col>
     </Row>
   );

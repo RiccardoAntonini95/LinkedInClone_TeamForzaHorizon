@@ -8,10 +8,33 @@ import { FaRegCommentDots } from "react-icons/fa6";
 import { FaRegSmile } from "react-icons/fa";
 import { FaRegImage } from "react-icons/fa6";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
+/* DELETE https://striveschool-api.herokuapp.com/api/posts/{postId}  Cancella uno specifico postModello del POST: */
 
+const optionsDelete = {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
+    },
+  };
 
   const PostList = ({posts}) => {
     const [isClicked, setIsClicked] = useState(false)//per il like 
+    const profileData = useSelector((state) => state.profile.actualProfile)
+
+    const handleDeletePost = async () => {
+        try{
+            const res = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${posts._id}`, 
+            optionsDelete
+            );
+            if (!res.ok) throw new Error("Cannot fetch data")
+            const data = await res.json()
+        console.log(data, "sono dentro DELETE")
+          } catch (err) {
+            console.log("error", err)
+        }
+    }
 
     const handleLike = () => {
         if(isClicked){
@@ -29,14 +52,17 @@ import { useState } from "react";
     return(
         <Container className="my-2 border rounded-3 bg-white">
             <Row className="d-flex bg-white justify-content-between p-3 my-3">
-                <Col className="col-1">
-                    <Image className="img-fluid" width={45} src={user}/>
+                <Col className="col-1 me-2">
+                    <Image className="rounded-circle" width={45} height={45} src={posts.user.image? posts.user.image : user}/>
                 </Col>
-                <Col className="col-10 me-auto ps-2">
+                <Col className="col-9 me-auto ps-2">
                     <p className="fs-5 fw-bold">{posts.username}</p>
                     <p className="text-secondary">{day}/{month}/{year} . <IoPeople /></p>
                 </Col>
-                <Col className="col-1 text-end"><BsThreeDots /></Col>
+                <Col className="col-1 p-0">
+                    <BsThreeDots />
+                    <button onClick={() => handleDeletePost()}>✖️</button>                
+                </Col>
                 <Row>
                     <p>{posts.text}</p>
                 </Row>
@@ -49,8 +75,8 @@ import { useState } from "react";
                     </Col>
                 </Row>
                 <Row className="mt-3">
-                    <Col className="col-1">
-                      <Image className="img-fluid" width={35} src={user}/>
+                    <Col className="col-1 p-0">
+                      <Image className="rounded-circle" width={40} height={40} src={profileData.image}/>
                     </Col>
                     <Col className="col-11 p-0 position-relative">
                         <input type="text" className="border border-secondary rounded-pill w-100 p-2" placeholder="Write a comment.."></input>
