@@ -28,7 +28,7 @@ const options = {
 };
 
 export const Experience = ({ userId }) => {
-  //const userId = useSelector(state => state.profile.actualProfile.__id)
+  //const userId = useSelector(state => state.profile.actualProfile._id)
 
   const [experience, setExperience] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -125,10 +125,11 @@ export const Experience = ({ userId }) => {
             <AddExperienceModal
               setIsActiveProp={setIsActiveProp}
               getExperience={getExperience}
+              userId={userId}
             />
           )}
           {experience.map((element) => {
-            console.log("element inside map ", element);
+            //console.log("element inside map ", element);
             return (
               <div key={element._id}>
                 <SingleExperience experience={element} />
