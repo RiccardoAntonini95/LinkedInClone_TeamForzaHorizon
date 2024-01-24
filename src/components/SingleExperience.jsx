@@ -71,3 +71,5 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
     </div>
   );
 };
+
+//posts.filter(post => post.user.id == profile.id).map(post => <Componente/>)
