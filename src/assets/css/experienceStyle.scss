@@ -12,6 +12,7 @@ $btnSubBgHover: #397cbe;
 $formElementsPadding: 20px;
 $deleteText: #5E5E5E;
 $deleteBg: #EBEBEB;
+$spinnerSize: 100px;
 
 
 body {
@@ -62,6 +63,11 @@ body {
 
 }
 
+.big-spinner {
+    width: $spinnerSize;
+    height: $spinnerSize;
+}
+
 // SINGLE EXPERIENCE
 
 .single-experience {
@@ -80,6 +86,7 @@ body {
     }
 
     .experience-details {
+        flex: 1;
         h3 {
             font-size: 1.3rem;
             margin-bottom: 5px;
@@ -291,6 +298,9 @@ input {
 
 .input-field {
     padding: 0 $formElementsPadding;
+    h6, p {
+        margin-bottom: 8px;
+    }
 }
 
 .notes {

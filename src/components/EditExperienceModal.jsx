@@ -1,24 +1,22 @@
 import '../assets/css/experienceStyle.css'
 import { useState, useEffect } from "react";
-
-const url = 'https://striveschool-api.herokuapp.com/api/profile'
-
-const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIwMmNjYzAwNGI4ODAwMThmZWY1ZDEiLCJpYXQiOjE3MDYwNDQ2MjAsImV4cCI6MTcwNzI1NDIyMH0.fELwYy5MqmVQVj1qMbgrGIjY9XXGO8JFxXrMAYV3fwg'
-
+import { LOADING_TIME } from '../assets/js/matteoVariables';
+import { MATTEO_AUTH_TOKEN } from '../assets/js/matteoVariables';
+import { url } from '../assets/js/matteoVariables';
 
 
-export const EditExperienceModal = ({ setIsEditProp, experience, getExperience }) => {
-    
+export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, setLoading }) => {
+
     const [area, setArea] = useState(experience.area);
     const [company, setCompany] = useState(experience.company);
     const [description, setDescription] = useState(experience.description);
-    const [endDate, setEndDate] = useState(experience.endDate);
-    const [startDate, setStartDate] = useState(experience.startDate);
+    const [endDate, setEndDate] = useState(experience.endDate.slice(0, 10));
+    const [startDate, setStartDate] = useState(experience.startDate.slice(0, 10));
     const [role, setRole] = useState(experience.role);
     const [userId, setUserId] = useState(experience.user);
     const [experienceId, setExperienceId] = useState(experience._id);
 
-    
+
     const [optionsPut, setOptionsPut] = useState({
         method: 'PUT',
         body: JSON.stringify({
@@ -31,16 +29,16 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience }
         }),
         headers: {
             'Content-Type': 'application/json',
-            Authorization: token
+            Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
         }
     });
 
-    
+
     const optionsDelete = {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': token,
+            Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
         },
     }
 
@@ -52,8 +50,21 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience }
 
     const handleDelete = () => {
         deleteExperience(userId, experienceId);
-        getExperience();
-        setIsEditProp()
+        setIsEditProp();
+        setLoading();
+        setTimeout(() => {
+            getExperience();
+        }, LOADING_TIME);
+    }
+
+    const handlePut = (e) => {
+        e.preventDefault();
+        putExperience(userId, experienceId)
+        setIsEditProp();
+        setLoading();
+        setTimeout(() => {
+            getExperience();
+        }, LOADING_TIME);
     }
 
     useEffect(() => {
@@ -73,7 +84,7 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience }
                 area: area
             }),
             headers: {
-                'Authorization': token,
+                Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
                 'Content-Type': 'application/json'
             },
         })
@@ -82,9 +93,9 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience }
 
     const deleteExperience = async (_userId, _experienceId) => {
         try {
-            const res = await fetch (`${url}/${_userId}/experiences/${_experienceId}`, optionsDelete)
-            if (!res.ok){
-                throw new Error ('Delete was not successful');
+            const res = await fetch(`${url}/${_userId}/experiences/${_experienceId}`, optionsDelete)
+            if (!res.ok) {
+                throw new Error('Delete was not successful');
             }
             console.log('Delete request successful for: ', experienceId);
         } catch (err) {
@@ -113,7 +124,7 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience }
         <div className="add-experience-modal-container">
             <div className="add-experience-modal">
                 <div className="d-flex top-modal justify-content-between align-items-center mb-0 pb-0">
-                    <h4 className="notes add-experience-header">Add experience</h4>
+                    <h4 className="notes add-experience-header">Edit experience</h4>
                     <button className="close-modal-btn" type="button" onClick={setIsEditProp}>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" classname="bi bi-x-lg" viewBox="0 0 16 16">
@@ -127,12 +138,7 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience }
                     <p className="notes">Turn on to notify your network of key profile changes (such as new job) and work anniversaries. Updates can take up to 2 hours. Learn more about <strong>sharing profile changes.</strong></p>
                 </div>
                 <p className="notes">* Indicates required</p>
-                <form className="post-experience-form" onSubmit={(e) => {
-                    e.preventDefault();
-                    putExperience(userId, experienceId);
-                    getExperience();
-                    setIsEditProp();
-                }}>
+                <form className="post-experience-form" onSubmit={handlePut}>
                     <div className="input-field">
                         <h6>Title*</h6>
                         <input type="text" name="role" required placeholder="Ex. Retail Sales Manager" value={role} onChange={(e) => {
@@ -201,9 +207,9 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience }
                     <div className="input-field">
                         <h6>Description</h6>
                         <textarea name="description" id="description" cols="100" rows="5" value={description}
-                        onChange={(e) => {
-                            setDescription(e.target.value);
-                        }}></textarea>
+                            onChange={(e) => {
+                                setDescription(e.target.value);
+                            }}></textarea>
                     </div>
                     <div className="d-flex justify-content-between sub-btn-container">
                         <button

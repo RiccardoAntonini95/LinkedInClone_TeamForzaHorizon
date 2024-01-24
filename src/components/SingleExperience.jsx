@@ -3,8 +3,19 @@ import JobExeperienceIcon from "../assets/img/JobExperienceIcon.png";
 import { convertTime } from "../assets/js";
 import { EditExperienceModal } from "./EditExperienceModal"
 import '../assets/css/experienceStyle.css'
+import { MONTHS } from "../assets/js/matteoVariables";
 
-export const SingleExperience = ({ experience, getExperience }) => {
+export const SingleExperience = ({ experience, getExperience, setLoading }) => {
+
+    const { day, month, year } = convertTime(experience.startDate);
+
+    let endDay, endMonth, endYear;
+    if (experience.endDate) {
+        const { day, month, year } = convertTime(experience.endDate);
+        endDay = day;
+        endMonth = month;
+        endYear = year;
+    }
 
     const [isEdit, setIsEdit] = useState(false);
 
@@ -13,22 +24,13 @@ export const SingleExperience = ({ experience, getExperience }) => {
     }
 
     useEffect(() => {
-        if (isEdit){
+        if (isEdit) {
             document.body.classList.add('overflow-disabled')
         } else {
             document.body.classList.remove('overflow-disabled')
         }
     }, [isEdit])
 
-  const { day, month, year } = convertTime(experience.startDate);
-
-  let endDay, endMonth, endYear;
-  if (experience.endDate) {
-    const { day, month, year } = convertTime(experience.endDate);
-    endDay = day;
-    endMonth = month;
-    endYear = year;
-  }
   return (
     <div className="d-flex single-experience">
       <img src={JobExeperienceIcon} alt="Icona" />
@@ -46,21 +48,23 @@ export const SingleExperience = ({ experience, getExperience }) => {
                     </button>
                 </div>
 
-        <p>{experience.area}</p>
-        <p>{experience.company}</p>
-        <p>
-          {/*    {experience.startDate} - {experience.endDate} - How long */}
-          {day}/{month}/{year}{" "}
-          {experience.endDate && `- ${endDay}/${endMonth}/${endYear}`}
-        </p>
-        <p>{experience.description}</p>
-      </div>
+                <p>{experience.area}</p>
+                <p>{experience.company}</p>
+                <p>
+                    {MONTHS[month]} {year}{" "}
+                    {experience.endDate && (
+                        `- ${MONTHS[endMonth]} ${endYear}`
+                    )}
+                </p>
+                <p>{experience.description}</p>
+            </div>
             {isEdit && (
                 <>
                     <EditExperienceModal
                         setIsEditProp={setIsEditProp}
                         experience={experience}
                         getExperience={getExperience}
+                        setLoading={setLoading}
                     />
                 </>
             )}
