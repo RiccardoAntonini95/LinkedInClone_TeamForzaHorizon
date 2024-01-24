@@ -1,50 +1,17 @@
-import { useEffect, useState } from "react";
-import { Container, Card, Row, Button, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { setProfileAction } from "../redux/actions/ProfilePage";
-import { STRIVE_KEY_GAE, STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
+import { useState } from "react";
+import { Container, Card, Row, Modal } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { Experience } from "./Experience";
 import "../assets/css/ProfilePage.css";
 import ProvaReducer from "./ProvaReducer";
 import { GoShieldCheck } from "react-icons/go";
 import { FaCamera } from "react-icons/fa";
 
-const options = {
-  mode: "cors",
-  method: "GET",
-  headers: {
-    Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
-  },
-};
-
 const ProfilePage = () => {
-  const [profileData, setProfileData] = useState(null);
-  /*  const profileData = useSelector((state) => state.profile.actualProfile); */
+  const profileData = useSelector((state) => state.profile.actualProfile);
   const [show, setShow] = useState(false);
-  const [fileImg, setFileImg] = useState();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    getProfileData();
-  }, []);
-
-  const getProfileData = async () => {
-    try {
-      const res = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/me",
-        options
-      );
-
-      if (!res.ok) throw new Error("Cannot fetch data");
-
-      const data = await res.json();
-      setProfileData(data);
-      dispatch(setProfileAction(data));
-      console.log("getProfileData data: ", data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //const [fileImg, setFileImg] = useState();
 
   const setProfileImage = async (e) => {
     e.preventDefault();
@@ -58,8 +25,8 @@ const ProfilePage = () => {
           mode: "cors",
           method: "POST",
           headers: {
-            Authorization: `Bearer ${STRIVE_KEY_GAE}`,
-            /*   "Content-Type": "multipart/form-data", */
+            Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
+            "Content-Type": "multipart/form-data",
           },
           body: formData,
         }
@@ -69,7 +36,6 @@ const ProfilePage = () => {
       if (!res.ok) throw new Error("Cannot Upload Image");
 
       console.log("formData", formData);
-      //setFileImg(URL.createObjectURL(file));
     } catch (error) {
       console.log(error);
     }
@@ -83,9 +49,9 @@ const ProfilePage = () => {
 
   return (
     <>
-      {profileData && (
-        <Container className="d-flex mt-5 p-5">
-          <Container className="main-info-container ">
+      <Container className="d-flex mt-5 p-5">
+        <Container className="main-info-container ">
+          {profileData && (
             <Card>
               <Card.Header>
                 <img
@@ -104,11 +70,12 @@ const ProfilePage = () => {
                 alt={`${profileData.name} ${profileData.surname}`}
                 className="rounded-circle card-profile-img"
               />
-              {/* MODALE */}
+              {/* MODAL */}
               <Modal
                 aria-labelledby="contained-modal-title-vcenter"
                 show={show}
                 onHide={handleClose}
+                id="modal-profile-picture"
               >
                 <Modal.Header closeButton>
                   <Modal.Title id="contained-modal-title-vcenter">
@@ -141,6 +108,8 @@ const ProfilePage = () => {
                   </form>
                 </Modal.Footer>
               </Modal>
+              {/* END OF MODAL */}
+
               <Card.Body className="mt-5">
                 <Card.Title className="d-inline-block me-3 fs-3">
                   {profileData.name} {profileData.surname}
@@ -163,29 +132,27 @@ const ProfilePage = () => {
                 </Row>
               </Card.Body>
             </Card>
-          </Container>
+          )}
+          <Experience />
+        </Container>
+        <Container className="flex-shrink secondary-info-container">
+          <Container>
+            <Row>
+              <h4>Profile Language</h4>
+              <p>Italian</p>
+            </Row>
 
-          <Container className="flex-shrink secondary-info-container">
-            <Container>
-              <Row>
-                <h4>Profile Language</h4>
-                <p>Italian</p>
-              </Row>
-
-              <Row className="rounded">
-                <img
-                  src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
-                  alt="See who's hiring on Linkedin"
-                  className="ad-image"
-                />
-              </Row>
-              <Row>{fileImg && <p>{fileImg[0]}</p>}</Row>
-            </Container>
+            <Row className="rounded">
+              <img
+                src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+                alt="See who's hiring on Linkedin"
+                className="ad-image"
+              />
+            </Row>
+            <Row>{fileImg && <p>{fileImg[0]}</p>}</Row>
           </Container>
         </Container>
-      )}
-      <Experience />
-      <ProvaReducer />
+      </Container>
     </>
   );
 };
