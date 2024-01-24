@@ -29,3 +29,5 @@ export const SingleExperience = ({ experience }) => {
     </div>
   );
 };
+
+//posts.filter(post => post.user.id == profile.id).map(post => <Componente/>)
