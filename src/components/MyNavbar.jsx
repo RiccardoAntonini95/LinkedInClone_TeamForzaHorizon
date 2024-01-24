@@ -32,7 +32,7 @@ const MyNavBar = () => {
                 <div className='input-wrapper'>
                     <FaSearch id="search-icon" size={15} onClick={() => navigate(`/jobs/${query}`)}/>
                     <input
-                        placeholder='Cerca' onChange={(e) => {handleInputChange(e.target.value)}} 
+                        placeholder='Search..' onChange={(e) => {handleInputChange(e.target.value)}} 
                     />
                 </div>
             </Navbar.Brand>
@@ -40,39 +40,39 @@ const MyNavBar = () => {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto border-end">
                     <Link to={"/"} className="d-flex flex-column text-center px-4 nav-link"><HouseDoorFill size={24} className="m-auto" /> Home</Link>
-                    <Nav.Link href="#rete" className="d-flex flex-column text-center px-4"><PeopleFill size={24} className="m-auto" />Rete</Nav.Link>
-                    <Link to={"/jobs"} className="nav-link d-flex flex-column text-center px-4"><BriefcaseFill size={24} className="m-auto" />Lavoro</Link>
-                    <Nav.Link href="#contatti" className="d-flex flex-column text-center px-4"><ChatDotsFill size={24} className="m-auto" />Contatti</Nav.Link>
-                    <Nav.Link href="#notifiche" className="d-flex flex-column text-center px-4"><BellFill size={24} className="m-auto" />Notifiche</Nav.Link>
+                    <Nav.Link href="#rete" className="d-flex flex-column text-center px-4"><PeopleFill size={24} className="m-auto" />Network</Nav.Link>
+                    <Link to={"/jobs"} className="nav-link d-flex flex-column text-center px-4"><BriefcaseFill size={24} className="m-auto" />Jobs</Link>
+                    <Nav.Link href="#contatti" className="d-flex flex-column text-center px-4"><ChatDotsFill size={24} className="m-auto" />Contacts</Nav.Link>
+                    <Nav.Link href="#notifiche" className="d-flex flex-column text-center px-4"><BellFill size={24} className="m-auto" />Notifications</Nav.Link>
                     <Nav.Link href="#tu" className="d-flex flex-column text-center px-4 not-bb">
                         <PersonCircle size={24} className="m-auto" />
-                        <NavDropdown id="basic-nav-dropdown" title="Tu">
+                        <NavDropdown id="basic-nav-dropdown" title="You">
                             <NavDropdown.Item href="#action/1.1"><PersonCircle size={50} className="me-2"/>Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/1.2"><Link to="/profile">Go to profile</Link></NavDropdown.Item>
                             <NavDropdown.Divider />
                             <h5>Account</h5>
-                            <NavDropdown.Item href="#action/2.2" className="mb-2 text-muted">Impostazioni e privacy</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/2.3" className="mb-2 text-muted">Guida</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/2.3" className=" text-muted">Lingua</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/2.2" className="mb-2 text-muted">Privacy and Settings</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/2.3" className="mb-2 text-muted">Guide</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/2.3" className=" text-muted">Language</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <h5>Gestisci</h5>
-                            <NavDropdown.Item href="#action/3.2" className="mb-2 text-muted">Post e attività</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3" className="mb-2 text-muted">Account per la pubblicazione di offerte di lavoro</NavDropdown.Item>
+                            <h5>Manage</h5>
+                            <NavDropdown.Item href="#action/3.2" className="mb-2 text-muted">Post and Activities</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3" className="mb-2 text-muted">Account for posting job offers</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/4.1" className=" text-muted">Esci</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/4.1" className=" text-muted">Exit</NavDropdown.Item>
                         </NavDropdown>
                     </Nav.Link>
                 </Nav>
                 <Nav id="right-nav">
                     <Nav.Link href="#perleaziende" className="d-flex flex-column text-center px-4 not-bb">
                         <Grid3x3GapFill size={24} className="m-auto" />
-                        <NavDropdown id="basic-nav-dropdown" title="Per le aziende">
+                        <NavDropdown id="basic-nav-dropdown" title="For companies">
                             <Modal.Header closeButton className="mb-4">
-                                <Modal.Title>Per le aziende</Modal.Title>
+                                <Modal.Title>For companies</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                                 <Container className="border rounded px-0">
-                                    <div className="p-3 fw-medium">Scopri altri prodotti LinkedIn</div>
+                                    <div className="p-3 fw-medium">Discover other LinkedIn products</div>
                                     <div className="d-flex flex-wrap border-top py-3">
                                         <div className="li-product d-flex flex-column text-center mb-5 mx-2">
                                             <li-icon aria-hidden="true" type="app-learning" class="" size="large">
@@ -205,9 +205,9 @@ const MyNavBar = () => {
                                     </div>
                                 </Container>
                                 <Container>
-                                    <div>Scopri altro per il business</div>
+                                    <div>Find out more for business</div>
                                     <div></div>
-                                    <div>Crea una pagina aziendale</div>
+                                    <div>Create a company page</div>
                                 </Container>
                             </Modal.Body>
                         </NavDropdown>

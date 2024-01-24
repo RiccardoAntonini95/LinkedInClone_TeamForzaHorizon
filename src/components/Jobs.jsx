@@ -1,4 +1,4 @@
-import { Row, Col, ListGroup, Button } from "react-bootstrap";
+import { Row, Col, ListGroup, Button, Image } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import JobList from "./JobList";
 import { FaBookmark, FaList, FaArrowRight } from "react-icons/fa6";
@@ -6,9 +6,11 @@ import { TbClipboardCheck } from "react-icons/tb";
 import { BsFillPlayBtnFill, BsPencilSquare } from "react-icons/bs";
 import { RiSettings4Fill } from "react-icons/ri";
 import HomeFooter from "./HomeFooter";
+import { useSelector } from "react-redux";
 
 const Jobs = () => {
   const [defaultJobs, setDefaultJobs] = useState(null)
+  const profileData = useSelector((state) => state.profile.actualProfile)
 
   useEffect(() => {
     getJobs();
@@ -52,22 +54,23 @@ const Jobs = () => {
       <Col className="col-4 border rounded"> {/* DISPONIBILE A LAVORARE + FOOTER */}
        <ListGroup>
         <ListGroup.Item>
-          <p className="fw-bold m-0">Disponibile a lavorare</p>
-          <p className="text-secondary m-0">Consigliato in base alle tue attività</p>
+          <p className="fw-bold m-0">Open to work</p>
+          <p className="text-secondary m-0">Recommended based on your activities</p>
         </ListGroup.Item>
         <ListGroup.Item className="d-flex">
           <div>
-            <p className="fw-bold">Mostra ai recruiter che sei disponibile per nuove opportunità di lavoro</p>
+            <p className="fw-bold">Show recruiters that you are available for new job opportunities</p>
           </div>
           <div>
-            immagine profilo 
+            <Image src={profileData.image} width={45} height={45} className="rounded-circle" />
           </div>
         </ListGroup.Item>
         <ListGroup.Item>
-          <p>Ricevi segnalazioni di offerte di lavoro più mirate con la cornice #OpenToWork: controlli tu chi la vede.</p>
+          <p>Receive more targeted job alerts with the frame #OpenToWork: you
+              control who sees it.</p>
         </ListGroup.Item>
         <ListGroup.Item>
-          Inizia <FaArrowRight />
+          Start <FaArrowRight />
         </ListGroup.Item>
        </ListGroup>
        <HomeFooter />

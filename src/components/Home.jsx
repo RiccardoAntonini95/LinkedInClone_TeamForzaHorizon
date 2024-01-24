@@ -8,33 +8,6 @@ import { useEffect, useState } from "react";
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 
 
- const provaPost = [
-  {
-    text: "Questo è un nuovo post", // L'unica proprietà richiesta!
-    username: "mario88", // SERVER GENERATED
-    createdAt: "2023-10-01T19:44:04.496Z", // SERVER GENERATED
-    updatedAt: "2023-10-01T19:44:04.496Z", // SERVER GENERATED
-    __v: 0, // SERVER GENERATED
-    _id: "5d93ac84b86e220017e76ae1", // SERVER GENERATED
-  },
-  {
-    text: "BRO", // L'unica proprietà richiesta!
-    username: "Chicco", // SERVER GENERATED
-    createdAt: "2023-10-03T19:44:04.496Z", // SERVER GENERATED
-    updatedAt: "2023-10-03T19:44:04.496Z", // SERVER GENERATED
-    __v: 0, // SERVER GENERATED
-    _id: "5d93ac84b86e2200317e76ae1", // SERVER GENERATED
-  },
-  {
-    text: "Questo un nuovo post", // L'unica proprietà richiesta!
-    username: "Biondo", // SERVER GENERATED
-    createdAt: "2023-10-06T19:44:04.496Z", // SERVER GENERATED
-    updatedAt: "2023-10-06T19:44:04.496Z", // SERVER GENERATED
-    __v: 0, // SERVER GENERATED
-    _id: "5d93ac84b86e2200137e76ae1", // SERVER GENERATED
-  },
-]; 
-
 // IN CASO DI API MALFUNZIONANTE
 const PROFILE_FETCHED = {
   area: "Terre di Avalon",
@@ -61,7 +34,6 @@ const options = {
 };
 
 const Home = () => {
-/*   const [currentProfile, setCurrentProfile] = useState(null) */
  const profileData = useSelector((state) => state.profile.actualProfile)
   const dispatch = useDispatch();
   const [posts, setPosts] = useState(null)
@@ -81,7 +53,6 @@ const Home = () => {
       if (!res.ok) throw new Error("Cannot fetch data");
 
       const data = await res.json();
-/*       setCurrentProfile(data) */
       dispatch(setProfileAction(data));
       console.log("getProfileData data: ", data);
     } catch (err) {

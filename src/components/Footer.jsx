@@ -14,17 +14,17 @@ const Footer = () => {
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="footer-style">
-                  Informazioni
+                   About
                 </a>
               </li>
               <li>
                 <a href="#" className="footer-style">
-                  Linee guida della community
+                  Community Guidelines
                 </a>
               </li>
               <li>
                 <a href="#" className="footer-style">
-                  Privacy e condizioni
+                  Privacy & Terms
                 </a>
               </li>
               <li>
@@ -38,17 +38,17 @@ const Footer = () => {
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="footer-style">
-                  Accessibilità
+                   Accessibility
                 </a>
               </li>
               <li>
                 <a href="#" className="footer-style">
-                  Carriera
+                  Careers
                 </a>
               </li>
               <li>
                 <a href="#" className="footer-style">
-                  Opzioni per gli annunci pubblicitari
+                  Ad Choices
                 </a>
               </li>
               <li>
@@ -67,17 +67,17 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#" className="footer-style">
-                  Soluzioni di marketing
+                  Marketing Solutions
                 </a>
               </li>
               <li>
                 <a href="#" className="footer-style">
-                  Pubblicità
+                  Adversitings
                 </a>
               </li>
               <li>
                 <a href="#" className="footer-style">
-                  Piccole imprese
+                  Small Business
                 </a>
               </li>
             </ul>
@@ -87,26 +87,26 @@ const Footer = () => {
               <li>
                 <BsFillQuestionSquareFill />
                 <a href="#" className="footer-style2">
-                  Domande?
+                  Questions?
                 </a>
                 <h6 className="sottoTesto">
-                  Visita il nostro Centro assistenza
+                  Visit our Help Center
                 </h6>
               </li>
               <li>
                 <IoSettingsSharp />
                 <a href="#" className="footer-style2">
-                  Gestisci il tuo account e la tua privacy
+                   Manage your account and privacy
                 </a>
-                <h6 className="sottoTesto">Vai alle impostazioni</h6>
+                <h6 className="sottoTesto">Go to your Settings</h6>
               </li>
               <li>
                 <FaShieldAlt />
                 <a href="#" className="footer-style2">
-                  Trasparenza sui contenuti consigliati
+                  Recommendation transparency
                 </a>
                 <h6 className="sottoTesto">
-                  Scopri di più sui contenuti consigliati
+                  Learn more about Recommended Content.
                 </h6>
               </li>
             </ul>
