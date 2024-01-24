@@ -5,7 +5,6 @@ import { FaBookmark, FaList, FaArrowRight } from "react-icons/fa6";
 import { TbClipboardCheck } from "react-icons/tb";
 import { BsFillPlayBtnFill, BsPencilSquare } from "react-icons/bs";
 import { RiSettings4Fill } from "react-icons/ri";
-import Footer from "./Footer";
 import HomeFooter from "./HomeFooter";
 
 const Jobs = () => {
