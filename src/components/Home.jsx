@@ -96,7 +96,8 @@ const Home = () => {
       );
       if (!res.ok) throw new Error("Cannot fetch data")
       const data = await res.json()
-      setPosts(data)
+       const newestData = data.reverse()
+      setPosts(newestData)
     } catch (err) {
       console.log(err, "error")
     }

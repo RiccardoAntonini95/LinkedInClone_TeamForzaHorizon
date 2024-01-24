@@ -84,13 +84,13 @@ const optionsDelete = {
                 <Col className="col-1 me-2">
                     <Image className="rounded-circle" width={45} height={45} src={posts.user.image? posts.user.image : user}/>
                 </Col>
-                <Col className="col-9 me-auto ps-2">
+                <Col className="col-8 me-auto ps-2">
                     <p className="fs-5 fw-bold">{posts.username}</p>
                     <p className="text-secondary">{day}/{month}/{year} . <IoPeople /></p>
                 </Col>
-                <Col className="col-1 p-0">
-                    <BsThreeDots onClick={() => handleShow()}/>
-                    <button onClick={() => handleDeletePost()}>✖️</button>                
+                <Col className="col-2 text-end p-0">
+                    <BsThreeDots className="me-1" style={{cursor: "pointer"}} onClick={() => handleShow()} />
+                    <button className="border-0 bg-white" onClick={() => handleDeletePost()}>✖️</button>                
                 </Col>
                 <Row>
                     <p>{posts.text}</p>
