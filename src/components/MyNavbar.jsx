@@ -41,7 +41,7 @@ const MyNavBar = () => {
                 <Nav className="mr-auto border-end">
                     <Link to={"/"} className="d-flex flex-column text-center px-4 nav-link"><HouseDoorFill size={24} className="m-auto" /> Home</Link>
                     <Nav.Link href="#rete" className="d-flex flex-column text-center px-4"><PeopleFill size={24} className="m-auto" />Rete</Nav.Link>
-                    <Nav.Link href="lavoro" className="d-flex flex-column text-center px-4"><BriefcaseFill size={24} className="m-auto" />Lavoro</Nav.Link>
+                    <Link to={"/jobs"} className="nav-link d-flex flex-column text-center px-4"><BriefcaseFill size={24} className="m-auto" />Lavoro</Link>
                     <Nav.Link href="#contatti" className="d-flex flex-column text-center px-4"><ChatDotsFill size={24} className="m-auto" />Contatti</Nav.Link>
                     <Nav.Link href="#notifiche" className="d-flex flex-column text-center px-4"><BellFill size={24} className="m-auto" />Notifiche</Nav.Link>
                     <Nav.Link href="#tu" className="d-flex flex-column text-center px-4 not-bb">
