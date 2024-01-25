@@ -5,42 +5,6 @@ import { useSelector } from "react-redux";
 import user from "../assets/img/user.png"
 
 const CommentList = ({comments}) => {
-    /* const profileData = useSelector((state) => state.profile.actualProfile) */
-/*     const handleModPost = async (e) => {
-        e.preventDefault();
-        try {
-          const res = await fetch(
-            `https://striveschool-api.herokuapp.com/api/posts/${posts._id}`,
-            {
-              method: "PUT",
-              headers: {
-                Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ text: `${query}`}),
-            }
-          );
-          console.log("response", res);
-    
-          if (!res.ok) throw new Error("Error posting");
-    
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-    const handleDeletePost = async () => {
-        try{
-            const res = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${posts._id}`, 
-            optionsDelete
-            );
-            if (!res.ok) throw new Error("Cannot fetch data")
-            const data = await res.json()
-        console.log(data, "sono dentro DELETE")
-          } catch (err) {
-            console.log("error", err)
-        }
-    } */
 
   return (
     <>
