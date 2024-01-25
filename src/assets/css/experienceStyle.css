@@ -36,6 +36,10 @@ body {
   fill: #5E5E5E;
 }
 
+.experience-date-field div {
+  flex: 0 0 49.5%;
+}
+
 .big-spinner {
   width: 100px;
   height: 100px;
@@ -288,6 +292,14 @@ input {
 }
 .input-field:nth-child(5) p {
   margin-bottom: 20px;
+}
+
+.experience-dates {
+  margin-bottom: 30px;
+}
+.experience-dates:nth-child(1) {
+  margin-bottom: 0px;
+  margin-top: 30px;
 }
 
 .notes {
