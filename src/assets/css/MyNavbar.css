@@ -74,3 +74,11 @@ input:focus {
     padding: 0px;
     border-radius: 25px;
 }
+
+#right-nav .dropdown-menu {
+    width: 400px;
+    height: calc(100vh - 92px);
+    max-height: 100vh;
+    border-radius: 15px;
+    padding: 20px;
+}

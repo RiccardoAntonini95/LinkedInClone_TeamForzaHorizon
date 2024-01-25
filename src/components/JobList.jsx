@@ -3,9 +3,9 @@ import logo from "../assets/img/logo.png"
 import { GiRadarSweep } from "react-icons/gi";
 import "../assets/css/jobList.css"
 
-const JobList = ({list}) => {
+const JobList = ({list, cambiaStato}) => {
     return (
-        <Row className="row d-flex justify-content-between job-hover">
+        <Row className="row d-flex justify-content-between job-hover" onClick={() => {cambiaStato(list)}}>
         <Col className="col-2">
           <Image className="img-fluid" src={logo} alt="logo" />
         </Col>

@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
-import { Container, Card, Row, Button, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { setProfileAction } from "../redux/actions/ProfilePage";
-import { STRIVE_KEY_GAE } from "../assets/js/auth_keys";
+import { useState } from "react";
+import { Container, Card, Row, Modal } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { Experience } from "./Experience";
 import "../assets/css/ProfilePage.css";
-import ProvaReducer from "./ProvaReducer";
+import backgroundImg from "../assets/img/background-profilePage-card.jpeg";
 import { GoShieldCheck } from "react-icons/go";
 import { FaCamera } from "react-icons/fa";
 import { MdOutlineModeEdit } from "react-icons/md";
@@ -19,33 +18,9 @@ const options = {
 };
 
 const ProfilePage = () => {
-  const [profileData, setProfileData] = useState(null);
-  /*  const profileData = useSelector((state) => state.profile.actualProfile); */
+  const profileData = useSelector((state) => state.profile.actualProfile);
   const [show, setShow] = useState(false);
-  const [fileImg, setFileImg] = useState();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    getProfileData();
-  }, []);
-
-  const getProfileData = async () => {
-    try {
-      const res = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/me",
-        options
-      );
-
-      if (!res.ok) throw new Error("Cannot fetch data");
-
-      const data = await res.json();
-      setProfileData(data);
-      dispatch(setProfileAction(data));
-      console.log("getProfileData data: ", data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const [fileImg, setFileImg] = useState(null);
 
   const setProfileImage = async (e) => {
     e.preventDefault();
@@ -56,10 +31,11 @@ const ProfilePage = () => {
       const res = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/${profileData._id}/picture`,
         {
+          mode: "cors",
           method: "POST",
           headers: {
-            Authorization: `Bearer ${STRIVE_KEY_GAE}`,
-            /*   "Content-Type": "multipart/form-data", */
+            Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
+            // "Content-Type": "multipart/form-data",
           },
           body: formData,
         }
@@ -68,8 +44,9 @@ const ProfilePage = () => {
 
       if (!res.ok) throw new Error("Cannot Upload Image");
 
-      console.log("formData", formData);
-      //setFileImg(URL.createObjectURL(file));
+      const data = await res.json();
+
+      console.log("data ", data);
     } catch (error) {
       console.log(error);
     }
@@ -83,13 +60,13 @@ const ProfilePage = () => {
 
   return (
     <>
-      {profileData && (
-        <Container className="d-flex mt-5 p-5">
-          <Container className="main-info-container ">
+      <Container className="d-flex mt-5 p-5">
+        <Container className="main-info-container ">
+          {profileData && (
             <Card>
               <Card.Header>
                 <img
-                  src="https://media.licdn.com/dms/image/D4D16AQEuFnpwxpadJQ/profile-displaybackgroundimage-shrink_350_1400/0/1695901435207?e=1711584000&v=beta&t=5L0zFPxA6sO5dN6BvcRygVKTopWNPVWuxbmF5M0scGU"
+                  src={backgroundImg}
                   alt="background"
                   className="header-card-img"
                 />
@@ -104,11 +81,12 @@ const ProfilePage = () => {
                 alt={`${profileData.name} ${profileData.surname}`}
                 className="rounded-circle card-profile-img"
               />
-              {/* MODALE */}
+              {/* MODAL */}
               <Modal
                 aria-labelledby="contained-modal-title-vcenter"
                 show={show}
                 onHide={handleClose}
+                id="modal-profile-picture"
               >
                 <Modal.Header closeButton>
                   <Modal.Title id="contained-modal-title-vcenter">
@@ -127,7 +105,7 @@ const ProfilePage = () => {
                 <Modal.Footer>
                   <form
                     id="modal-form"
-                    encType="multipart/form-data"
+                    /* encType="multipart/form-data" */
                     onSubmit={setProfileImage}
                   >
                     <input
@@ -141,7 +119,20 @@ const ProfilePage = () => {
                   </form>
                 </Modal.Footer>
               </Modal>
+              {/* END OF MODAL */}
+
               <Card.Body className="mt-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-pencil"
+                  id="pencil"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                </svg>
                 <Card.Title className="d-inline-block me-3 fs-3">
                   {profileData.name} {profileData.surname}
                 </Card.Title>
@@ -161,68 +152,128 @@ const ProfilePage = () => {
                   <button type="button">Add profile section</button>
                   <button type="button">Other</button>
                 </Row>
+                {/*      <svg>
+                  <use xlinkHrerf={`${pencil}#pencil`} />
+                </svg> */}
               </Card.Body>
             </Card>
-          </Container>
+          )}
+          {/*   //const userId = '65b02ccc004b880018fef5d1' */}
+          {profileData && <Experience userId={profileData._id} />}
+        </Container>
+        <Container className="flex-shrink secondary-info-container">
+          <Container>
+            <Container className="ProfilePageContainer">
+              <Row>
+                <div className="RightBarProfile">
+                  <h4 className="Title3">Profile Language</h4>
+                  <a href="#" className="Pencil">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      className="bi bi-pencil"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                    </svg>
+                  </a>
+                </div>
 
-          <Container className="flex-shrink secondary-info-container">
-            <Container>
-              <Container className="ProfilePageContainer">
-                <Row>
-                  <div className="RightBarProfile">
-                    <h4 className="Title3">Profile Language</h4>
-                    <a href="#" className="Pencil">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        fill="currentColor"
-                        className="bi bi-pencil"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
-                      </svg>
-                    </a>
-                  </div>
-
-                  <p className="ProfilePageContainer2">Italian</p>
-                </Row>
-
-                <hr />
-                <Row>
-                  <div className="RightBarProfile">
-                    <h4 className="Title3">Public Profile & URL</h4>
-                    <a href="#" className="Pencil">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        fill="currentColor"
-                        className="bi bi-pencil"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
-                      </svg>
-                    </a>
-                  </div>
-                  <p className="ProfilePageContainer2">www.linkedin.com</p>
-                </Row>
-              </Container>
-
-              <Row className="rounded">
-                <img
-                  src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
-                  alt="See who's hiring on Linkedin"
-                  className="ad-image"
-                />
+                <p className="ProfilePageContainer2">Italian</p>
               </Row>
-              <Row>{fileImg && <p>{fileImg[0]}</p>}</Row>
+
+              <hr />
+              <Row>
+                <div className="RightBarProfile">
+                  <h4 className="Title3">Public Profile & URL</h4>
+                  <a href="#" className="Pencil">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      className="bi bi-pencil"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                    </svg>
+                  </a>
+                </div>
+                <p className="ProfilePageContainer2">www.linkedin.com</p>
+              </Row>
             </Container>
+
+            <Row className="rounded">
+              <img
+                src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+                alt="See who's hiring on Linkedin"
+                className="ad-image"
+              />
+            </Row>
+            <Row>{fileImg && <p>{fileImg[0]}</p>}</Row>
+          </Container>
+        </Container>{" "}
+        */}
+        {/* start right section */}
+        <Container className="flex-shrink secondary-info-container">
+          <Container>
+            <Container className="ProfilePageContainer">
+              <Row>
+                <div className="RightBarProfile">
+                  <h4 className="Title3">Profile Language</h4>
+                  <a href="#" className="Pencil">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      className="bi bi-pencil"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                    </svg>
+                  </a>
+                </div>
+
+                <p className="ProfilePageContainer2">Italian</p>
+              </Row>
+
+              <hr />
+              <Row>
+                <div className="RightBarProfile">
+                  <h4 className="Title3">Public Profile & URL</h4>
+                  <a href="#" className="Pencil">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      className="bi bi-pencil"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                    </svg>
+                  </a>
+                </div>
+                <p className="ProfilePageContainer2">www.linkedin.com</p>
+              </Row>
+            </Container>
+
+            <Row className="rounded">
+              <img
+                src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+                alt="See who's hiring on Linkedin"
+                className="ad-image"
+              />
+            </Row>
+            <Row>{fileImg && <p>{fileImg[0]}</p>}</Row>
           </Container>
         </Container>
-      )}
-      <Experience />
-      <ProvaReducer />
+        {/* end right section */}
+      </Container>
+      <Footer />
     </>
   );
 };

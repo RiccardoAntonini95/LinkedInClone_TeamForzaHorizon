@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
+import { LOADING_TIME } from "../assets/js/matteoVariables";
+import { MATTEO_AUTH_TOKEN } from "../assets/js/matteoVariables";
+import { url } from "../assets/js/matteoVariables";
 
-const url = 'https://striveschool-api.herokuapp.com/api/profile'
-
-const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIwMmNjYzAwNGI4ODAwMThmZWY1ZDEiLCJpYXQiOjE3MDYwNDQ2MjAsImV4cCI6MTcwNzI1NDIyMH0.fELwYy5MqmVQVj1qMbgrGIjY9XXGO8JFxXrMAYV3fwg'
-
-const userId = '65b02ccc004b880018fef5d1'
+const userId = '65b02ccc004b880018fef5d1'   //  Temporary userId for testing
 
 
-export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
+export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading/* , userId */ }) => {
 
     const [area, setArea] = useState('');
     const [company, setCompany] = useState('');
@@ -16,18 +15,30 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
     const [startDate, setStartDate] = useState('');
     const [role, setRole] = useState('');
 
-    const [options, setOptions] = useState({});
+  const [options, setOptions] = useState({});
 
+    // If esc is pressed with modal open, the modal unmounts
     const handleKeyPress = (event) => {
         if (event.key === 'Escape') {
-          setIsActiveProp();
+            setIsActiveProp();
         }
-      };
-    
-    useEffect(() =>{
+    };
+
+    // On submit, trigger a few events
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        postExperience();
+        setIsActiveProp();
+        setLoading();
+        setTimeout(getExperience, LOADING_TIME);
+    }
+
+    // The browser listens for keys down
+    useEffect(() => {
         document.addEventListener('keydown', handleKeyPress)
     }, [])
 
+    // Options for POST fetch
     useEffect(() => {
         setOptions({
             method: 'POST',
@@ -40,7 +51,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
                 area: area
             }),
             headers: {
-                'Authorization': token,
+                Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
                 'Content-Type': 'application/json'
             },
         })
@@ -48,6 +59,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
     }, [area, company, description, endDate, startDate, role])
 
 
+    // Function for adding job experience through a POST
     const postExperience = async () => {
         try {
             const res = await fetch(`${url}/${userId}/experiences`, options);
@@ -59,10 +71,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
         } catch (err) {
             console.error('Error', err);
         }
-    }
-
-
-
+    };
 
     return (
         <div className="add-experience-modal-container">
@@ -82,12 +91,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
                     <p className="notes">Turn on to notify your network of key profile changes (such as new job) and work anniversaries. Updates can take up to 2 hours. Learn more about <strong>sharing profile changes.</strong></p>
                 </div>
                 <p className="notes">* Indicates required</p>
-                <form className="post-experience-form" onSubmit={(e) => {
-                    e.preventDefault();
-                    postExperience();
-                    getExperience();
-                    setIsActiveProp();
-                }}>
+                <form className="post-experience-form" onSubmit={handleSubmit}>
                     <div className="input-field">
                         <h6>Title*</h6>
                         <input type="text" name="role" required placeholder="Ex. Retail Sales Manager" onChange={(e) => {
@@ -136,38 +140,56 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience }) => {
                             <input type="checkbox" />
                             <p>I am currently working in this role</p>
                         </div> */}
-                        <div className="input-field">
-                            <h6>Start date*</h6>
-                            <div className="d-flex employment-dates">
-                                <input type="date" name="startDate" id="startDate" onChange={(e) => {
-                                    setStartDate(e.target.value);
-                                }} />
-                            </div>
-                        </div>
-                        <div className="input-field">
-                            <h6>End date*</h6>
-                            <div className="d-flex employment-dates">
-                                <input type="date" name="endDate" id="endDate" onChange={(e) => {
-                                    setEndDate(e.target.value);
-                                }} />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="input-field">
-                        <h6>Description</h6>
-                        <textarea name="description" id="description" cols="100" rows="5" onChange={(e) => {
-                            setDescription(e.target.value);
-                        }}></textarea>
-                    </div>
-                    <div className="d-flex justify-content-end sub-btn-container">
-                        <button
-                            variant="primary"
-                            type="submit"
-                            className="submit-post-experience"
-                        ><span>Save</span></button>
-                    </div>
-                </form>
+            <div className="input-field">
+              <h6>Start date*</h6>
+              <div className="d-flex employment-dates">
+                <input
+                  type="date"
+                  name="startDate"
+                  id="startDate"
+                  onChange={(e) => {
+                    setStartDate(e.target.value);
+                  }}
+                />
+              </div>
             </div>
-        </div>
-    )
-}
+            <div className="input-field">
+              <h6>End date*</h6>
+              <div className="d-flex employment-dates">
+                <input
+                  type="date"
+                  name="endDate"
+                  id="endDate"
+                  onChange={(e) => {
+                    setEndDate(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="input-field">
+            <h6>Description</h6>
+            <textarea
+              name="description"
+              id="description"
+              cols="100"
+              rows="5"
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+            ></textarea>
+          </div>
+          <div className="d-flex justify-content-end sub-btn-container">
+            <button
+              variant="primary"
+              type="submit"
+              className="submit-post-experience"
+            >
+              <span>Save</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};

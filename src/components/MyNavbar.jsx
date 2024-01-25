@@ -9,6 +9,14 @@ import {
   BellFill,
   PersonCircle,
 } from "react-bootstrap-icons";
+import {
+  HouseDoorFill,
+  PeopleFill,
+  BriefcaseFill,
+  ChatDotsFill,
+  BellFill,
+  PersonCircle,
+} from "react-bootstrap-icons";
 import { Grid3x3GapFill } from "react-bootstrap-icons";
 import { FaSearch } from "react-icons/fa";
 import logo from "../assets/img/logo.png";

@@ -14,7 +14,7 @@ const Footer = () => {
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="footer-style">
-                  About
+                  Informazioni
                 </a>
               </li>
               <li>
@@ -38,7 +38,7 @@ const Footer = () => {
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="footer-style">
-                  Accessibility
+                  Accessibilità
                 </a>
               </li>
               <li>
@@ -89,12 +89,14 @@ const Footer = () => {
                 <a href="#" className="footer-style2">
                   Questions?
                 </a>
-                <h6 className="sottoTesto">Visit our Help Center</h6>
+                <h6 className="sottoTesto">
+                  Visita il nostro Centro assistenza
+                </h6>
               </li>
               <li>
                 <IoSettingsSharp />
                 <a href="#" className="footer-style2">
-                  Manage your account and privacy
+                  Gestisci il tuo account e la tua privacy
                 </a>
                 <h6 className="sottoTesto">Go to your Settings</h6>
               </li>

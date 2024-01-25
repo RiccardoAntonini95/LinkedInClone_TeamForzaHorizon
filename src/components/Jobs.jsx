@@ -1,4 +1,4 @@
-import { Row, Col, ListGroup, Button } from "react-bootstrap";
+import { Row, Col, ListGroup, Button, Image } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import JobList from "./JobList";
 import { FaBookmark, FaList, FaArrowRight } from "react-icons/fa6";
@@ -6,6 +6,7 @@ import { TbClipboardCheck } from "react-icons/tb";
 import { BsFillPlayBtnFill, BsPencilSquare } from "react-icons/bs";
 import { RiSettings4Fill } from "react-icons/ri";
 import HomeFooter from "./HomeFooter";
+import { useSelector } from "react-redux";
 
 const Jobs = () => {
   const [defaultJobs, setDefaultJobs] = useState(null);

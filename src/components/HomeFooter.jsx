@@ -12,32 +12,32 @@ const HomeFooter = () => {
           <ul className="list-unstyled d-flex flex-wrap">
             <li>
               <a href="#" className="homeFooter">
-                About
+                About About
               </a>
             </li>
             <li>
               <a href="#" className="homeFooter">
-                Accessibility
+                Accessibility Accessibility
               </a>
             </li>
             <li>
               <a href="#" className="homeFooter">
-                Help Center
+                Help Center Help Center
               </a>
             </li>
             <li>
               <a href="#" className="homeFooter">
-                Privacy & Terms
+                Privacy & Terms Privacy & Terms
               </a>
             </li>
             <li>
               <a href="#" className="homeFooter">
-                Ad Choices
+                Ad Choices Ad Choices
               </a>
             </li>
             <li>
               <a href="#" className="homeFooter">
-                Adversiting
+                Adversiting Adversiting
               </a>
             </li>
             <li>
@@ -47,7 +47,7 @@ const HomeFooter = () => {
             </li>
             <li>
               <a href="#" className="homeFooter">
-                Get the LinkedIn App
+                Get the LinkedIn App Get the LinkedIn App
               </a>
             </li>
             <li>
