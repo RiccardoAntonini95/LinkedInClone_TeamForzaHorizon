@@ -8,6 +8,7 @@ import backgroundImg from "../assets/img/background-profilePage-card.jpeg";
 import { GoShieldCheck } from "react-icons/go";
 import { FaCamera } from "react-icons/fa";
 import { MdOutlineModeEdit } from "react-icons/md";
+import { STRIVE_KEY_GAE } from "../assets/js/auth_keys";
 
 const options = {
   method: "GET",
