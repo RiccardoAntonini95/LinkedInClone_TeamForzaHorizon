@@ -7,16 +7,10 @@ import "../assets/css/ProfilePage.css";
 import backgroundImg from "../assets/img/background-profilePage-card.jpeg";
 import { GoShieldCheck } from "react-icons/go";
 import { FaCamera } from "react-icons/fa";
-import { MdOutlineModeEdit } from "react-icons/md";
-import { STRIVE_KEY_GAE } from "../assets/js/auth_keys";
+import Footer from "./Footer";
+import pencil from "../assets/svg/pencil.svg";
 
-const options = {
-  method: "GET",
-  headers: {
-    Authorization: `Bearer ${STRIVE_KEY_GAE}`,
-    "Content-Type": "application/json",
-  },
-};
+//const userId = '65b02ccc004b880018fef5d1'
 
 const ProfilePage = () => {
   const profileData = useSelector((state) => state.profile.actualProfile);
@@ -162,49 +156,13 @@ const ProfilePage = () => {
           {/*   //const userId = '65b02ccc004b880018fef5d1' */}
           {profileData && <Experience userId={profileData._id} />}
         </Container>
-        <Container className="flex-shrink secondary-info-container">
+
+        {/*   <Container className="flex-shrink secondary-info-container">
           <Container>
-            <Container className="ProfilePageContainer">
-              <Row>
-                <div className="RightBarProfile">
-                  <h4 className="Title3">Profile Language</h4>
-                  <a href="#" className="Pencil">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      fill="currentColor"
-                      className="bi bi-pencil"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
-                    </svg>
-                  </a>
-                </div>
-
-                <p className="ProfilePageContainer2">Italian</p>
-              </Row>
-
-              <hr />
-              <Row>
-                <div className="RightBarProfile">
-                  <h4 className="Title3">Public Profile & URL</h4>
-                  <a href="#" className="Pencil">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      fill="currentColor"
-                      className="bi bi-pencil"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
-                    </svg>
-                  </a>
-                </div>
-                <p className="ProfilePageContainer2">www.linkedin.com</p>
-              </Row>
-            </Container>
+            <Row>
+              <h4>Profile Language</h4>
+              <p>Italian</p>
+            </Row>
 
             <Row className="rounded">
               <img
@@ -215,8 +173,7 @@ const ProfilePage = () => {
             </Row>
             <Row>{fileImg && <p>{fileImg[0]}</p>}</Row>
           </Container>
-        </Container>{" "}
-        */}
+        </Container> */}
         {/* start right section */}
         <Container className="flex-shrink secondary-info-container">
           <Container>

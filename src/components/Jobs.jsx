@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 
 const Jobs = () => {
   const [defaultJobs, setDefaultJobs] = useState(null);
+  const profileData = useSelector((state) => state.profile.actualProfile);
 
   useEffect(() => {
     getJobs();
@@ -80,7 +81,14 @@ const Jobs = () => {
                 Show recruiters that you are available for new job opportunities
               </p>
             </div>
-            <div>Picture profile</div>
+            <div>
+              <Image
+                src={profileData.image}
+                width={45}
+                height={45}
+                className="rounded-circle"
+              />
+            </div>
           </ListGroup.Item>
           <ListGroup.Item>
             <p>
@@ -89,7 +97,7 @@ const Jobs = () => {
             </p>
           </ListGroup.Item>
           <ListGroup.Item>
-            Inizia <FaArrowRight />
+            Start <FaArrowRight />
           </ListGroup.Item>
         </ListGroup>
         <HomeFooter />

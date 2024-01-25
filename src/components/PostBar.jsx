@@ -70,7 +70,11 @@ const PostBar = () => {
     <Container className="my-4 border rounded-3 bg-white">
       <Row className="justify-content-md-center p-3">
         <Col xs={2} className="d-flex align-items-center">
-          <Image src={user} style={{ width: "50px", height: "50px" }} />
+          <Image
+            src={profileData.image}
+            className="rounded-circle"
+            style={{ width: "50px", height: "50px" }}
+          />
         </Col>
         <Col xs={10}>
           <Button
@@ -78,7 +82,7 @@ const PostBar = () => {
             className="w-100 rounded-pill border border-secondary text-secondary bg-body-secondary text-start p-3"
             onClick={handleShow}
           >
-            Start a Post Start a Post
+            Start a Post
           </Button>
         </Col>
       </Row>
@@ -89,7 +93,6 @@ const PostBar = () => {
         >
           <AiFillPicture className="fs-3 text-info" />
           <p className="Post m-0 px-3 text-secondary">Media contents</p>
-          <p className="Post m-0 px-3 text-secondary">Media contents</p>
         </Col>
         <Col
           xs={3}
@@ -97,14 +100,12 @@ const PostBar = () => {
         >
           <MdCalendarMonth className="fs-3 text-warning" />
           <p className="Post m-0 px-3 text-secondary">Event</p>
-          <p className="Post m-0 px-3 text-secondary">Event</p>
         </Col>
         <Col
           xs={4}
           className="d-flex align-items-center justify-content-end p-0"
         >
           <GrTextWrap className="fs-5 text-danger" />
-          <p className="Post m-0 px-3 text-secondary">Write an article</p>
           <p className="Post m-0 px-3 text-secondary">Write an article</p>
         </Col>
       </Row>
@@ -114,10 +115,16 @@ const PostBar = () => {
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header className="border-0" closeButton>
           <Col xs={1}>
-            <Image src={user} style={{ width: "40px", height: "40px" }} />
+            <Image
+              src={profileData.image}
+              style={{ width: "40px", height: "40px" }}
+              className="rounded-circle"
+            />
           </Col>
           <Col xs={6}>
-            <p className="m-0 fw-bold px-2">Username</p>
+            <p className="m-0 fw-bold px-2">
+              {profileData.name} {profileData.surname}
+            </p>
             <p className="Post text-secondary m-0 px-2">Publish: Anyone</p>
           </Col>
           <Modal.Title></Modal.Title>
@@ -127,8 +134,9 @@ const PostBar = () => {
             <Form.Control
               className="border-0"
               as="textarea"
-              placeholder="Di cosa vorresti parlare?"
+              placeholder="What would you like to talk about?"
               rows={8}
+              onChange={(e) => setQuery(e.target.value)}
             />
           </FormGroup>
         </Modal.Body>
@@ -152,8 +160,15 @@ const PostBar = () => {
         </Modal.Body>
         <Modal.Footer>
           <IoMdTime className="dark" />
-          <Button id="Pubblic" className="rounded-pill" onClick={handleClose}>
-            Publish
+          <Button
+            id="Pubblic"
+            className="rounded-pill"
+            onClick={(e) => {
+              handleClose();
+              handleSubmit(e);
+            }}
+          >
+            Post
           </Button>
         </Modal.Footer>
       </Modal>
