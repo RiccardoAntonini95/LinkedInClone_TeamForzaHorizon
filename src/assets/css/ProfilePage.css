@@ -133,6 +133,7 @@
   color: white;
   top: 4rem;
   background-color: #1b1f23 !important;
+  background-color: #1b1f23 !important;
 }
 
 #modal-profile-picture .modal-img {
@@ -204,7 +205,6 @@
   width: 100%;
 }
 
-/* aggiunto da fra */
 .ProfilePageContainer {
   background-color: white;
   border-radius: 20px;
@@ -233,4 +233,68 @@
 .Pencil {
   text-decoration: none;
   color: #616160;
+}
+
+.activities {
+  padding: 20px;
+  margin: 20px;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid #adadad;
+}
+
+.showPost {
+  text-decoration: none;
+  color: #616160;
+  font-size: larger;
+}
+
+.showPost2 {
+  display: flex;
+  justify-content: center;
+}
+
+.profileText {
+  font-size: smaller;
+  font-weight: bolder;
+  color: #616160;
+  padding: 0;
+}
+
+.profileText2 {
+  color: #616160;
+  font-weight: 400;
+  font-size: small;
+  padding: 0;
+  margin: 0;
+  margin-left: 0.5rem;
+}
+
+.cardProfile {
+  border-radius: 20px;
+}
+
+.containerActivity {
+  background-color: white;
+  border-radius: 16px;
+  padding-bottom: 2rem;
+  margin: 20px;
+  padding: 20px;
+}
+
+.borderProfile {
+  max-width: 97%;
+  display: flex;
+  align-items: center;
+  padding: 55px 0;
+}
+
+.icons-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.borderButton {
+  border-radius: 25px;
 }

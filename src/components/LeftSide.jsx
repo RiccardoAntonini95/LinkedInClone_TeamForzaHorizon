@@ -6,16 +6,25 @@ import { FaBookmark } from "react-icons/fa";
 import { HiPlus } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import { setProfileAction } from "../redux/actions/ProfilePage";
-import bannerProfile from "../assets/img/bannerProfile.jpg"
+import bannerProfile from "../assets/img/bannerProfile.jpg";
 
-
-const LeftSide = ({currentProfile}) => {
+const LeftSide = ({ currentProfile }) => {
   return (
     <>
       <Card className="my-4 border border-tertiary rounded-3">
-        <Card.Body className="d-flex flex-column align-items-center banner-profile" style={{backgroundImage : `url('${bannerProfile}')`}}>
-        <Image src={currentProfile.image} width={90} height={90} className="rounded-circle" />
-          <Card.Title>{currentProfile.name} {currentProfile.surname}</Card.Title>
+        <Card.Body
+          className="d-flex flex-column align-items-center banner-profile"
+          style={{ backgroundImage: `url('${bannerProfile}')` }}
+        >
+          <Image
+            src={currentProfile.image}
+            width={90}
+            height={90}
+            className="rounded-circle"
+          />
+          <Card.Title>
+            {currentProfile.name} {currentProfile.surname}
+          </Card.Title>
         </Card.Body>
         <ListGroup className="list-group-flush">
           <ListGroup.Item>
@@ -34,7 +43,8 @@ const LeftSide = ({currentProfile}) => {
               Access exclusive tools and information
             </p>
             <p className="d-flex align-items-center">
-              <IoHardwareChip className="text-warning me-1" /> Try Premium for 0 EUR
+              <IoHardwareChip className="text-warning me-1" /> Try Premium for 0
+              EUR
             </p>
           </ListGroup.Item>
         </ListGroup>
