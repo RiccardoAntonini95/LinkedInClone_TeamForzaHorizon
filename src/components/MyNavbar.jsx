@@ -41,9 +41,15 @@ const MyNavBar = () => {
                 onClick={() => navigate(`/jobs/${query}`)}
               />
               <input
-                placeholder="Search.."
+                placeholder="Search and press Enter"
                 onChange={(e) => {
                   handleInputChange(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    console.log("INVIO CLICCATO");
+                    navigate(`/jobs/${query}`);
+                  }
                 }}
               />
             </div>
@@ -57,9 +63,7 @@ const MyNavBar = () => {
               >
                 <HouseDoorFill size={24} className="m-auto" /> Home
               </Link>
-              <Nav.Link              
-                className="d-flex flex-column text-center px-4"
-              >
+              <Nav.Link className="d-flex flex-column text-center px-4">
                 <PeopleFill size={24} className="m-auto" />
                 Network
               </Nav.Link>
@@ -70,55 +74,41 @@ const MyNavBar = () => {
                 <BriefcaseFill size={24} className="m-auto" />
                 Jobs
               </Link>
-              <Nav.Link
-                className="d-flex flex-column text-center px-4"
-              >
+              <Nav.Link className="d-flex flex-column text-center px-4">
                 <ChatDotsFill size={24} className="m-auto" />
                 Contacts
               </Nav.Link>
-              <Nav.Link           
-                className="d-flex flex-column text-center px-4"
-              >
+              <Nav.Link className="d-flex flex-column text-center px-4">
                 <BellFill size={24} className="m-auto" />
                 Notifications
               </Nav.Link>
-              <Nav.Link              
-                className="d-flex flex-column text-center px-4 not-bb"
-              >
+              <Nav.Link className="d-flex flex-column text-center px-4 not-bb">
                 <PersonCircle size={24} className="m-auto" />
                 <NavDropdown id="basic-nav-dropdown" title="You">
-                  <NavDropdown.Item >
+                  <NavDropdown.Item>
                     <PersonCircle size={50} className="me-2" />
                     Action
                   </NavDropdown.Item>
-                  <NavDropdown.Item >
+                  <NavDropdown.Item>
                     <Link to="/profile">Go to profile</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <h5>Account</h5>
-                  <NavDropdown.Item
-                    className="mb-2 text-muted"
-                  >
+                  <NavDropdown.Item className="mb-2 text-muted">
                     Privacy and Settings
                   </NavDropdown.Item>
-                  <NavDropdown.Item 
-                    className="mb-2 text-muted"
-                  >
+                  <NavDropdown.Item className="mb-2 text-muted">
                     Guide
                   </NavDropdown.Item>
-                  <NavDropdown.Item  className=" text-muted">
+                  <NavDropdown.Item className=" text-muted">
                     Language
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <h5>Manage</h5>
-                  <NavDropdown.Item 
-                    className="mb-2 text-muted"
-                  >
+                  <NavDropdown.Item className="mb-2 text-muted">
                     Post and Activities
                   </NavDropdown.Item>
-                  <NavDropdown.Item 
-                    className="mb-2 text-muted"
-                  >
+                  <NavDropdown.Item className="mb-2 text-muted">
                     Account for posting job offers
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
@@ -129,9 +119,7 @@ const MyNavBar = () => {
               </Nav.Link>
             </Nav>
             <Nav id="right-nav">
-              <Nav.Link
-                className="d-flex flex-column text-center px-4 not-bb"
-              >
+              <Nav.Link className="d-flex flex-column text-center px-4 not-bb">
                 <Grid3x3GapFill size={24} className="m-auto" />
                 <NavDropdown id="basic-nav-dropdown" title="For companies">
                   <Modal.Header closeButton className="mb-4">

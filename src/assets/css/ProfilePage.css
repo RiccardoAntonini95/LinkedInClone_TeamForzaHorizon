@@ -264,6 +264,8 @@
   font-weight: bolder;
   color: #616160;
   padding: 0;
+  display: inline-block;
+  margin-top: 0;
 }
 
 .profileText2 {
@@ -273,6 +275,7 @@
   padding: 0;
   margin: 0;
   margin-left: 0.5rem;
+  display: inline-block;
 }
 
 .cardProfile {
@@ -290,12 +293,14 @@
 .borderProfile {
   max-width: 97%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
   padding: 55px 0;
 }
 
 .icons-flex {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 }
