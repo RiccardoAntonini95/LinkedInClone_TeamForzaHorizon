@@ -68,6 +68,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading/
 
   }, [area, company, description, endDate, startDate, role])
 
+  // Set start and end date in appropriate format when 
   useEffect(() => {
     setStartDate(`${startYear}-${startMonth}-01`)
     setEndDate(`${endYear}-${endMonth}-02`)
