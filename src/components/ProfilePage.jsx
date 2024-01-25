@@ -209,7 +209,7 @@ const ProfilePage = () => {
                     </button> */}
             {/* </div>
             </div> */}
-            <Container className="containerActivity">
+            <div className="containerActivity">
               <div class="card-body">
                 <Row className="p-3">
                   <div className="d-flex icons-flex ">
@@ -285,7 +285,7 @@ const ProfilePage = () => {
                   </a>
                 </div>
               </div>
-            </Container>
+            </div>
           </section>
         </Container>
 
