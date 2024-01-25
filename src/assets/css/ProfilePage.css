@@ -3,7 +3,7 @@
 }
 
 .profile-page-container {
-  max-width: 80%;
+  max-width: 90%;
 }
 
 /* CARD */
@@ -31,6 +31,11 @@
   border-top-right-radius: 20px;
 }
 
+.card-header:first-child {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
 #header-img-loader-btn {
   position: absolute;
   display: flex;
@@ -46,11 +51,11 @@
 .card-profile-img {
   position: absolute;
   object-fit: cover;
-  height: 180px;
-  width: 180px;
+  height: 190px;
+  width: 190px;
   /* width: 19%; */
-  left: 1.5rem;
-  top: 4rem;
+  left: 1.7rem;
+  top: 4.7rem;
   border: 6px solid white;
   cursor: pointer;
 }
@@ -258,6 +263,8 @@
   font-weight: bolder;
   color: #616160;
   padding: 0;
+  display: inline-block;
+  margin-top: 0;
 }
 
 .profileText2 {
@@ -267,6 +274,7 @@
   padding: 0;
   margin: 0;
   margin-left: 0.5rem;
+  display: inline-block;
 }
 
 .cardProfile {
@@ -277,19 +285,21 @@
   background-color: white;
   border-radius: 16px;
   padding-bottom: 2rem;
-  margin: 20px;
+
   padding: 20px;
 }
 
 .borderProfile {
   max-width: 97%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
   padding: 55px 0;
 }
 
 .icons-flex {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 }
