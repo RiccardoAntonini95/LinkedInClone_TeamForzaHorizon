@@ -7,14 +7,14 @@ import "../assets/css/footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <Container>
-        <Row>
-          <Col md={4}>
+    <Container className="w-100 p-0 d-flex justify-content-center">
+      <footer className="footer">
+        <Row className="d-flex justify-content-center">
+          <Col md={3} className="p-0">
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="footer-style">
-                   About
+                  About
                 </a>
               </li>
               <li>
@@ -34,11 +34,11 @@ const Footer = () => {
               </li>
             </ul>
           </Col>
-          <Col md={2}>
+          <Col md={3} className="p-0">
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="footer-style">
-                   Accessibility
+                  Accessibility
                 </a>
               </li>
               <li>
@@ -58,7 +58,7 @@ const Footer = () => {
               </li>
             </ul>
           </Col>
-          <Col md={2}>
+          <Col md={3} className="p-0">
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="footer-style">
@@ -82,21 +82,19 @@ const Footer = () => {
               </li>
             </ul>
           </Col>
-          <Col md={2}>
+          <Col md={3} className="p-0">
             <ul className="list-unstyled">
               <li>
                 <BsFillQuestionSquareFill />
                 <a href="#" className="footer-style2">
                   Questions?
                 </a>
-                <h6 className="sottoTesto">
-                  Visit our Help Center
-                </h6>
+                <h6 className="sottoTesto">Visit our Help Center</h6>
               </li>
               <li>
                 <IoSettingsSharp />
                 <a href="#" className="footer-style2">
-                   Manage your account and privacy
+                  Manage your account and privacy
                 </a>
                 <h6 className="sottoTesto">Go to your Settings</h6>
               </li>
@@ -118,8 +116,8 @@ const Footer = () => {
             <p>LinkedIn Corporation © 2024</p>
           </Col>
         </Row>
-      </Container>
-    </footer>
+      </footer>
+    </Container>
   );
 };
 

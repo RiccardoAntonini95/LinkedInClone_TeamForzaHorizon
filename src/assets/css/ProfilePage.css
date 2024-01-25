@@ -6,6 +6,8 @@
   max-width: 80%;
 }
 
+/* CARD */
+
 .card {
   border: 1px solid lightgrey;
   margin: 20px;
@@ -45,11 +47,11 @@
 .card-profile-img {
   position: absolute;
   object-fit: cover;
-  height: 190px;
-  width: 190px;
+  height: 180px;
+  width: 180px;
   /* width: 19%; */
   left: 1.5rem;
-  top: 3rem;
+  top: 4rem;
   border: 6px solid white;
   cursor: pointer;
 }
@@ -67,6 +69,10 @@
 
 #verification-link:hover {
   background-color: #e2f0fe;
+}
+
+.location-text {
+  color: gray;
 }
 
 #contact-info {
@@ -109,9 +115,13 @@
 }
 
 /* MODAL PROFILE PICTURE */
-
+#modal-profile-picture .modal-img {
+  object-fit: cover;
+}
 #modal-profile-picture .modal-header {
   border-bottom: none;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 #modal-profile-picture .modal-header .btn-close {
@@ -122,6 +132,7 @@
 #modal-profile-picture .modal-content {
   color: white;
   top: 4rem;
+  background-color: #1b1f23 !important;
   background-color: #1b1f23 !important;
 }
 
@@ -176,6 +187,15 @@
 
 /* END MODAL PROFILE PICTURE */
 
+/* ABOUT */
+.about-section {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid lightgrey;
+  background-color: white;
+}
+
 /* right container */
 .secondary-info-container {
   flex-basis: 28%;
@@ -185,7 +205,6 @@
   width: 100%;
 }
 
-/* aggiunto da fra */
 .ProfilePageContainer {
   background-color: white;
   border-radius: 20px;
@@ -214,4 +233,68 @@
 .Pencil {
   text-decoration: none;
   color: #616160;
+}
+
+.activities {
+  padding: 20px;
+  margin: 20px;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid #adadad;
+}
+
+.showPost {
+  text-decoration: none;
+  color: #616160;
+  font-size: larger;
+}
+
+.showPost2 {
+  display: flex;
+  justify-content: center;
+}
+
+.profileText {
+  font-size: smaller;
+  font-weight: bolder;
+  color: #616160;
+  padding: 0;
+}
+
+.profileText2 {
+  color: #616160;
+  font-weight: 400;
+  font-size: small;
+  padding: 0;
+  margin: 0;
+  margin-left: 0.5rem;
+}
+
+.cardProfile {
+  border-radius: 20px;
+}
+
+.containerActivity {
+  background-color: white;
+  border-radius: 16px;
+  padding-bottom: 2rem;
+  margin: 20px;
+  padding: 20px;
+}
+
+.borderProfile {
+  max-width: 97%;
+  display: flex;
+  align-items: center;
+  padding: 55px 0;
+}
+
+.icons-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.borderButton {
+  border-radius: 25px;
 }

@@ -1,21 +1,27 @@
 import { useState } from "react";
-import { Container, Card, Row, Modal } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { Container, Card, Row, Modal, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { Experience } from "./Experience";
+
 import "../assets/css/ProfilePage.css";
 import backgroundImg from "../assets/img/background-profilePage-card.jpeg";
 import { GoShieldCheck } from "react-icons/go";
 import { FaCamera } from "react-icons/fa";
 import Footer from "./Footer";
-import pencil from "../assets/svg/pencil.svg";
+import ProfilePageModifyButton from "./ProfilePageModifyButton";
+import { setProfileAction } from "../redux/actions/ProfilePage";
+import { BsFillPeopleFill } from "react-icons/bs";
+import { FaArrowRight } from "react-icons/fa";
 
 //const userId = '65b02ccc004b880018fef5d1'
 
 const ProfilePage = () => {
   const profileData = useSelector((state) => state.profile.actualProfile);
   const [show, setShow] = useState(false);
+
   const [fileImg, setFileImg] = useState(null);
+  const dispatch = useDispatch();
 
   const setProfileImage = async (e) => {
     e.preventDefault();
@@ -40,6 +46,7 @@ const ProfilePage = () => {
       if (!res.ok) throw new Error("Cannot Upload Image");
 
       const data = await res.json();
+      dispatch(setProfileAction(data));
 
       console.log("data ", data);
     } catch (error) {
@@ -49,115 +56,268 @@ const ProfilePage = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const handleOnChange = (e) => {
     setFileImg(e.target.files[0]);
   };
 
   return (
     <>
+      {/* LEFT SECTION */}
       <Container className="d-flex p-5 profile-page-container justify-content-center">
         <Container className="main-info-container ">
           {profileData && (
-            <Card>
-              <Card.Header>
-                <img
-                  src={backgroundImg}
-                  alt="background"
-                  className="header-card-img"
+            <>
+              {/* CARD */}
+              <Card>
+                <Card.Header>
+                  <img
+                    src={backgroundImg}
+                    alt="background"
+                    className="header-card-img"
+                  />
+                  <button type="button" id="header-img-loader-btn">
+                    <FaCamera color="0a66c2" />
+                  </button>
+                </Card.Header>
+
+                <Card.Img
+                  onClick={handleShow}
+                  src={profileData.image}
+                  alt={`${profileData.name} ${profileData.surname}`}
+                  className="rounded-circle card-profile-img"
                 />
-                <button type="button" id="header-img-loader-btn">
-                  <FaCamera color="0a66c2" />
-                </button>
-              </Card.Header>
-
-              <Card.Img
-                onClick={handleShow}
-                src={profileData.image}
-                alt={`${profileData.name} ${profileData.surname}`}
-                className="rounded-circle card-profile-img"
-              />
-              {/* MODAL */}
-              <Modal
-                aria-labelledby="contained-modal-title-vcenter"
-                show={show}
-                onHide={handleClose}
-                id="modal-profile-picture"
-              >
-                <Modal.Header closeButton>
-                  <Modal.Title id="contained-modal-title-vcenter">
-                    Profile Picture
-                  </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  {profileData && (
-                    <img
-                      className="rounded-circle modal-img"
-                      src={profileData.image}
-                      alt={`${profileData.name} ${profileData.surname}`}
-                    />
-                  )}
-                </Modal.Body>
-                <Modal.Footer>
-                  <form
-                    id="modal-form"
-                    /* encType="multipart/form-data" */
-                    onSubmit={setProfileImage}
-                  >
-                    <input
-                      type="file"
-                      accept="image/*"
-                      name="background-img-input"
-                      id="background-img-input"
-                      onChange={handleOnChange}
-                    />
-                    <button type="submit">Save image</button>
-                  </form>
-                </Modal.Footer>
-              </Modal>
-              {/* END OF MODAL */}
-
-              <Card.Body className="mt-5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-pencil"
-                  id="pencil"
-                  viewBox="0 0 16 16"
+                {/* MODAL */}
+                <Modal
+                  aria-labelledby="contained-modal-title-vcenter"
+                  show={show}
+                  onHide={handleClose}
+                  id="modal-profile-picture"
                 >
-                  <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
-                </svg>
-                <Card.Title className="d-inline-block me-3 fs-3">
-                  {profileData.name} {profileData.surname}
-                </Card.Title>
-                <a id="verification-link" href="#">
-                  <GoShieldCheck strokeWidth={2} fill={"#0a66c2"} /> Start
-                  verification
-                </a>
-                <Card.Text>{profileData.bio}</Card.Text>
-                <Card.Text>
-                  {profileData.area} .{" "}
-                  <a href="#" id="contact-info">
-                    Contact Infos
+                  <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                      Profile Picture
+                    </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    {profileData && (
+                      <img
+                        className="rounded-circle modal-img"
+                        src={profileData.image}
+                        alt={`${profileData.name} ${profileData.surname}`}
+                      />
+                    )}
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <form
+                      id="modal-form"
+                      /* encType="multipart/form-data" */
+                      onSubmit={setProfileImage}
+                    >
+                      <input
+                        type="file"
+                        accept="image/*"
+                        name="background-img-input"
+                        id="background-img-input"
+                        onChange={handleOnChange}
+                      />
+                      <button type="submit">Save image</button>
+                    </form>
+                  </Modal.Footer>
+                </Modal>
+                {/* END OF MODAL */}
+
+                <Card.Body className="">
+                  <div className="d-flex justify-content-end">
+                    {/*  <button
+                    className="edit-experience-btn d-block"
+                    onClick={handleShowEditProfile}
+                  >
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-pencil"
+                        id="pencil"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                      </svg>
+                    </div>
+                  </button> */}
+
+                    <ProfilePageModifyButton profileData={profileData} />
+                  </div>
+                  <Card.Title className="d-inline-block me-3 fs-3">
+                    {profileData.name} {profileData.surname}
+                  </Card.Title>
+                  <a id="verification-link" href="#">
+                    <GoShieldCheck strokeWidth={2} fill={"#0a66c2"} /> Start
+                    verification
                   </a>
-                </Card.Text>
-                <Row className="card-buttons-container px-2">
-                  <button type="button">Avaiable for</button>
-                  <button type="button">Add profile section</button>
-                  <button type="button">Other</button>
-                </Row>
-                {/*      <svg>
-                  <use xlinkHrerf={`${pencil}#pencil`} />
-                </svg> */}
-              </Card.Body>
-            </Card>
+                  <Card.Text>{profileData.title}</Card.Text>
+                  <Card.Text className="location-text">
+                    {profileData.area} .{" "}
+                    <a href="#" id="contact-info">
+                      Contact Infos
+                    </a>
+                  </Card.Text>
+                  <Row className="card-buttons-container px-2">
+                    <button type="button">Avaiable for</button>
+                    <button type="button">Add profile section</button>
+                    <button type="button">Other</button>
+                  </Row>
+                </Card.Body>
+              </Card>
+              {/* END OF CARD */}
+
+              {/* ABOUT */}
+              <div className="about-section">
+                <h2>About</h2>
+                <p>{profileData.bio}</p>
+              </div>
+              {/* END OF ABOUT */}
+            </>
           )}
+
           {/*   //const userId = '65b02ccc004b880018fef5d1' */}
           {profileData && <Experience userId={profileData._id} />}
-        </Container>
+          <section>
+            {/* <div className="activities">
+              <div className="d-flex justify-content-between experience-header">
+                <h2>Activity</h2>
+                <Row className="card-buttons-container px-2">
+                  <button type="button">Create a Post</button>
+                </Row>
+                <div className="d-flex icons-flex">
+                  <button type="button">
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-pencil"
+                        id="pencil"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                      </svg>
+                    </div>
+                  </button>
+                </div>
+                <div>
+                  <h4 className="profileText">Charles Manson</h4>
+                  <p className="profileText2"> posted this 15 h</p>
+                  <BsFillPeopleFill />
+                  <hr />
+                  <h4 className="profileText">Charles Manson</h4>
+                  <p className="profileText2"> posted this 17 h</p>
+                  <BsFillPeopleFill />
+                  <hr />
+                  <h4 className="profileText">Charles Manson</h4>
+                  <p className="profileText2"> posted this 17 h</p>
+                  <BsFillPeopleFill />
+                  <hr />
+                </div>
 
-        {/* start right section */}
+                <a href="#" className="showPost">
+                  Show all posts <FaArrowRight />{" "}
+                </a> */}
+
+            {/*                     <button type="button" onClick={() => console.log('edit experience')}>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil" viewBox="0 0 16 16">
+                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                            </svg>
+                        </div>
+                    </button> */}
+            {/* </div>
+            </div> */}
+            <div className="containerActivity">
+              <div class="card-body">
+                <Row className="p-3">
+                  <div className="d-flex icons-flex ">
+                    <h4>Activity</h4>
+                    <div>
+                      <Button
+                        variant="outline-primary"
+                        className="borderButton border"
+                      >
+                        Create a Post
+                      </Button>
+                      <button type="button">
+                        <div>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-pencil"
+                            id="pencil"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                          </svg>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </Row>
+                <div>
+                  <Button className="btn btn-success border mx-2 borderButton">
+                    Post
+                  </Button>
+                  <Button
+                    variant="outline-secondary"
+                    className="border mx-2 borderButton"
+                  >
+                    Comments
+                  </Button>
+                </div>
+                <Row>
+                  <div className="mx-3 border-bottom borderProfile">
+                    {" "}
+                    <h4 className="profileText">Charles Manson</h4>{" "}
+                    <p className="profileText2">
+                      posted this 15h <BsFillPeopleFill />
+                    </p>
+                  </div>
+                </Row>
+                <Row>
+                  <div className="mx-3 border-bottom borderProfile">
+                    {" "}
+                    <h4 className="profileText">Charles Manson</h4>{" "}
+                    <p className="profileText2">
+                      posted this 15h <BsFillPeopleFill />
+                    </p>
+                  </div>
+                </Row>
+                <Row>
+                  <div className="mx-3 border-bottom borderProfile">
+                    {" "}
+                    <h4 className="profileText ">Charles Manson</h4>{" "}
+                    <p className="profileText2">
+                      posted this 15h <BsFillPeopleFill />
+                    </p>
+                  </div>
+                  <hr />
+                </Row>
+                <div className="showPost2">
+                  {" "}
+                  <a href="#" className="showPost">
+                    Show all posts <FaArrowRight />{" "}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </Container>
+        {/* END OF LEFT SECTION */}
+
+        {/* RIGHT SECTION */}
         <Container className="flex-shrink secondary-info-container">
           <Container>
             <Container className="ProfilePageContainer">
@@ -212,7 +372,7 @@ const ProfilePage = () => {
             <Row>{fileImg && <p>{fileImg[0]}</p>}</Row>
           </Container>
         </Container>
-        {/* end right section */}
+        {/* END OF RIGHT SECTION */}
       </Container>
       <Footer />
     </>
