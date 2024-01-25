@@ -6,6 +6,8 @@
   max-width: 80%;
 }
 
+/* CARD */
+
 .card {
   border: 1px solid lightgrey;
   margin: 20px;
@@ -45,11 +47,11 @@
 .card-profile-img {
   position: absolute;
   object-fit: cover;
-  height: 190px;
-  width: 190px;
+  height: 180px;
+  width: 180px;
   /* width: 19%; */
   left: 1.5rem;
-  top: 3rem;
+  top: 4rem;
   border: 6px solid white;
   cursor: pointer;
 }
@@ -67,6 +69,10 @@
 
 #verification-link:hover {
   background-color: #e2f0fe;
+}
+
+.location-text {
+  color: gray;
 }
 
 #contact-info {
@@ -109,9 +115,13 @@
 }
 
 /* MODAL PROFILE PICTURE */
-
+#modal-profile-picture .modal-img {
+  object-fit: cover;
+}
 #modal-profile-picture .modal-header {
   border-bottom: none;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 #modal-profile-picture .modal-header .btn-close {
@@ -175,6 +185,15 @@
 }
 
 /* END MODAL PROFILE PICTURE */
+
+/* ABOUT */
+.about-section {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid lightgrey;
+  background-color: white;
+}
 
 /* right container */
 .secondary-info-container {

@@ -9,12 +9,12 @@ const Footer = () => {
   return (
     <footer className="footer">
       <Container>
-        <Row>
-          <Col md={4}>
+        <Row className="justify-content-between">
+          <Col md={2}>
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="footer-style">
-                   About
+                  About
                 </a>
               </li>
               <li>
@@ -38,7 +38,7 @@ const Footer = () => {
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="footer-style">
-                   Accessibility
+                  Accessibility
                 </a>
               </li>
               <li>
@@ -89,14 +89,12 @@ const Footer = () => {
                 <a href="#" className="footer-style2">
                   Questions?
                 </a>
-                <h6 className="sottoTesto">
-                  Visit our Help Center
-                </h6>
+                <h6 className="sottoTesto">Visit our Help Center</h6>
               </li>
               <li>
                 <IoSettingsSharp />
                 <a href="#" className="footer-style2">
-                   Manage your account and privacy
+                  Manage your account and privacy
                 </a>
                 <h6 className="sottoTesto">Go to your Settings</h6>
               </li>
