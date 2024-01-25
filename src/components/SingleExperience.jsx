@@ -20,7 +20,6 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
 
     // State that says wether modal is open. By default it is closed
     const [isEdit, setIsEdit] = useState(false);
-    const [endDateProp, setEndDateProp] = useState('');
 
     // State to pass as prop
     const setIsEditProp = () => {
@@ -36,13 +35,6 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
         }
     }, [isEdit])
 
-    const setEndDateToDisplay = (inputDate) => {
-        setEndDateProp(inputDate)
-    }
-
-    useEffect(() => {
-        console.log(new Date(endDateProp))
-    }, [endDateProp])
 
     return (
         <div className="d-flex single-experience">
@@ -78,7 +70,6 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
                         experience={experience}
                         getExperience={getExperience}
                         setLoading={setLoading}
-                        setEndDateProp={setEndDateProp}
                     />
                 </>
             )}
