@@ -55,7 +55,7 @@ const ProfilePage = () => {
 
   return (
     <>
-      <Container className="d-flex mt-5 p-5">
+      <Container className="d-flex p-5 profile-page-container justify-content-center">
         <Container className="main-info-container ">
           {profileData && (
             <Card>
@@ -157,23 +157,6 @@ const ProfilePage = () => {
           {profileData && <Experience userId={profileData._id} />}
         </Container>
 
-        {/*   <Container className="flex-shrink secondary-info-container">
-          <Container>
-            <Row>
-              <h4>Profile Language</h4>
-              <p>Italian</p>
-            </Row>
-
-            <Row className="rounded">
-              <img
-                src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
-                alt="See who's hiring on Linkedin"
-                className="ad-image"
-              />
-            </Row>
-            <Row>{fileImg && <p>{fileImg[0]}</p>}</Row>
-          </Container>
-        </Container> */}
         {/* start right section */}
         <Container className="flex-shrink secondary-info-container">
           <Container>
