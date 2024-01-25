@@ -97,22 +97,22 @@
   background-color: #ebebeb;
 }
 
-/* MODAL PROFILE PICTURE */
 
-#modal-profile-picture .modal-header {
+
+
 /* MODAL PROFILE PICTURE */
 
 #modal-profile-picture .modal-header {
   border-bottom: none;
 }
 
-#modal-profile-picture .modal-header .btn-close {
+
 #modal-profile-picture .modal-header .btn-close {
   background-color: white;
   border-radius: 50%;
 }
 
-#modal-profile-picture .modal-content {
+
 #modal-profile-picture .modal-content {
   color: white;
   top: 4rem;
@@ -120,13 +120,12 @@
   background-color: #1b1f23 !important;
 }
 
-#modal-profile-picture .modal-img {
+
 #modal-profile-picture .modal-img {
   height: 300px;
   width: 300px;
 }
 
-#modal-profile-picture .modal-body {
 #modal-profile-picture .modal-body {
   padding: 1.5rem 10rem;
   display: flex;
@@ -134,13 +133,13 @@
   justify-content: center;
 }
 
-#modal-profile-picture .modal-footer {
+
 #modal-profile-picture .modal-footer {
   border-top: 1px solid rgb(60, 60, 60);
   display: block;
 }
 
-#modal-profile-picture .modal-footer form {
+
 #modal-profile-picture .modal-footer form {
   display: flex;
   margin: 0.8rem auto;
@@ -150,14 +149,13 @@
   gap: 10px;
 }
 
-#modal-profile-picture .modal-footer input[type="file"] {
-  background-color: #1b1f23;
+
+
 #modal-profile-picture .modal-footer input[type="file"] {
   background-color: #1b1f23;
   border-radius: 10px;
 }
 
-#modal-profile-picture .modal-footer input[type="file"]::file-selector-button {
 #modal-profile-picture .modal-footer input[type="file"]::file-selector-button {
   border: none;
   background-color: var(--blueLinkedin);
@@ -166,7 +164,6 @@
   padding: 3px 20px;
 }
 
-#modal-profile-picture .modal-footer button {
 #modal-profile-picture .modal-footer button {
   border: none;
   font-size: 1.3rem;
