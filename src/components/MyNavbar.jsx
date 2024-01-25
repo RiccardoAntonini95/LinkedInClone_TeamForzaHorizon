@@ -39,11 +39,17 @@ const MyNavBar = () => {
                 id="search-icon"
                 size={15}
                 onClick={() => navigate(`/jobs/${query}`)}
+                style={{cursor: "pointer"}}
               />
               <input
-                placeholder="Search.."
+                placeholder="Search and press Enter.."
                 onChange={(e) => {
                   handleInputChange(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    navigate(`/jobs/${query}`);
+                  }
                 }}
               />
             </div>
