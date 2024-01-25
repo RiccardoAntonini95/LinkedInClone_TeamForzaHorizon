@@ -22,21 +22,6 @@ import { FaRegFaceSmile } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 
-/*- GET https://striveschool-api.herokuapp.com/api/posts/  Ritorna una lista di post esistenti
-- POST https://striveschool-api.herokuapp.com/api/posts/  Crea un nuovo post. NOTA: ogni utente ha il permesso di modificare solo i propri post
-- GET https://striveschool-api.herokuapp.com/api/posts/{postId}  Ritorna uno specifico post
-- PUT https://striveschool-api.herokuapp.com/api/posts/{postId}  Modifica uno specifico post
-- DELETE https://striveschool-api.herokuapp.com/api/posts/{postId}  Cancella uno specifico postModello del POST: */
-
-/* MODELLO DEL POST {
-  "text": "Questo è un nuovo post", // L'unica proprietà richiesta!
-  "username": "mario88", // SERVER GENERATED
-  "createdAt": "2023-10-01T19:44:04.496Z", // SERVER GENERATED
-  "updatedAt": "2023-10-01T19:44:04.496Z", // SERVER GENERATED
-  "__v": 0, // SERVER GENERATED
-  "_id": "5d93ac84b86e220017e76ae1", // SERVER GENERATED
-} */
-
 const PostBar = () => {
   const [show, setShow] = useState(false);
   const [query, setQuery] = useState();
@@ -61,6 +46,7 @@ const PostBar = () => {
       console.log("response", res);
 
       if (!res.ok) throw new Error("Error posting");
+      alert("Your comment was succesfully posted");
     } catch (error) {
       console.log(error);
     }
@@ -72,7 +58,7 @@ const PostBar = () => {
         <Col xs={2} className="d-flex align-items-center">
           <Image
             src={profileData.image}
-            className="rounded-circle"
+            className="rounded-circle object-fit-cover"
             style={{ width: "50px", height: "50px" }}
           />
         </Col>
@@ -118,7 +104,7 @@ const PostBar = () => {
             <Image
               src={profileData.image}
               style={{ width: "40px", height: "40px" }}
-              className="rounded-circle"
+              className="rounded-circle object-fit-cover"
             />
           </Col>
           <Col xs={6}>

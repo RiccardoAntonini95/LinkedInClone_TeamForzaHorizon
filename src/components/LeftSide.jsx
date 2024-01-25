@@ -7,6 +7,7 @@ import { HiPlus } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import { setProfileAction } from "../redux/actions/ProfilePage";
 import bannerProfile from "../assets/img/bannerProfile.jpg";
+import { Link } from "react-router-dom";
 
 const LeftSide = ({ currentProfile }) => {
   return (
@@ -20,11 +21,13 @@ const LeftSide = ({ currentProfile }) => {
             src={currentProfile.image}
             width={90}
             height={90}
-            className="rounded-circle"
+            className="rounded-circle object-fit-cover"
           />
-          <Card.Title>
-            {currentProfile.name} {currentProfile.surname}
-          </Card.Title>
+          <Link to="/profile" className="text-black text-decoration-none">
+            <Card.Title>
+              {currentProfile.name} {currentProfile.surname}
+            </Card.Title>
+          </Link>
         </Card.Body>
         <ListGroup className="list-group-flush">
           <ListGroup.Item>

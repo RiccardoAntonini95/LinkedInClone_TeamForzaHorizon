@@ -1,6 +1,23 @@
 import "../assets/css/ProfilePage.css";
 import { useEffect, useState } from "react";
-import { Row, Button } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Container,
+  Button,
+  Image,
+  Modal,
+  FormGroup,
+  Form,
+  ModalBody,
+} from "react-bootstrap";
+import { AiFillPicture } from "react-icons/ai";
+import { MdCalendarMonth } from "react-icons/md";
+import { GrTextWrap } from "react-icons/gr";
+import { IoMdTime } from "react-icons/io";
+import { BsThreeDots } from "react-icons/bs";
+import { TiStarburst } from "react-icons/ti";
+import { FaRegFaceSmile } from "react-icons/fa6";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
@@ -13,8 +30,22 @@ const options = {
   },
 };
 
+const optionsPut = {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
+    "Content-Type": "application/json",
+  },
+  body: "",
+};
+
 const ProfilePageActivity = ({ profileData }) => {
   const [posts, setPosts] = useState();
+  const [query, setQuery] = useState();
+  const [show, setShow] = useState();
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     getPosts();
@@ -37,6 +68,28 @@ const ProfilePageActivity = ({ profileData }) => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    postComment();
+  };
+
+  const postComment = async () => {
+    optionsPut.body = JSON.stringify({ text: query });
+    try {
+      const res = await fetch(
+        "https://striveschool-api.herokuapp.com/api/posts/",
+        optionsPut
+      );
+      if (!res.ok) throw new Error("Cannot fetch data");
+
+      const data = await res.json();
+      console.log(data);
+      alert("Your message was send successfully");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="containerActivity">
       <div class="card-body">
@@ -44,9 +97,77 @@ const ProfilePageActivity = ({ profileData }) => {
           <div className="d-flex icons-flex ">
             <h4>Activity</h4>
             <div>
-              <Button variant="outline-primary" className="borderButton border">
-                Create a Post
+              <Button
+                variant="outline-primary"
+                className="borderButton border"
+                onClick={handleShow}
+              >
+                Create Post
               </Button>
+              {/* MODAL */}
+              <Modal show={show} onHide={handleClose} animation={false}>
+                <Modal.Header className="border-0" closeButton>
+                  <Col xs={1}>
+                    <Image
+                      src={profileData.image}
+                      style={{ width: "40px", height: "40px" }}
+                      className="rounded-circle"
+                    />
+                  </Col>
+                  <Col xs={6}>
+                    <p className="m-0 fw-bold px-2">
+                      {profileData.name} {profileData.surname}
+                    </p>
+                    <p className="Post text-secondary m-0 px-2">
+                      Publish: Anyone
+                    </p>
+                  </Col>
+                  <Modal.Title></Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="p-0">
+                  <FormGroup>
+                    <Form.Control
+                      className="border-0"
+                      as="textarea"
+                      placeholder="What would you like to talk about?"
+                      rows={8}
+                      onChange={(e) => setQuery(e.target.value)}
+                    />
+                  </FormGroup>
+                </Modal.Body>
+                <ModalBody className="py-0">
+                  <FaRegFaceSmile className="mx-3" />
+                </ModalBody>
+                <Modal.Body className="d-flex">
+                  <div className="m-2 p-2 rounded-circle bg-body-secondary d-flex justify-content-center align-items-center">
+                    <AiFillPicture className="text-secondary fs-5" />
+                  </div>
+                  <div className="m-2 p-2 rounded-circle bg-body-secondary d-flex justify-content-center align-items-center">
+                    <MdCalendarMonth className="text-secondary fs-5" />
+                  </div>
+                  <div className="m-2 p-2 rounded-circle bg-body-secondary d-flex justify-content-center align-items-center">
+                    <TiStarburst className="text-secondary fs-5" />
+                  </div>
+                  <div></div>
+                  <div className="m-2 p-2 rounded-circle bg-body-secondary d-flex justify-content-center align-items-center">
+                    <BsThreeDots className="text-secondary fs-5" />
+                  </div>
+                </Modal.Body>
+                <Modal.Footer>
+                  <IoMdTime className="dark" />
+                  <Button
+                    id="Pubblic"
+                    className="rounded-pill"
+                    onClick={(e) => {
+                      handleSubmit(e);
+                      handleClose();
+                    }}
+                  >
+                    Post
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+              {/* END OF MODAL */}
               <button type="button">
                 <div>
                   <svg
@@ -100,38 +221,10 @@ const ProfilePageActivity = ({ profileData }) => {
                 </Row>
               );
             })}
-        {/*  <Row>
-          <div className="mx-3 border-bottom borderProfile">
-            {" "}
-            <h4 className="profileText">Charles Manson</h4>{" "}
-            <p className="profileText2">
-              posted this 15h <BsFillPeopleFill />
-            </p>
-          </div>
-        </Row>
-        <Row>
-          <div className="mx-3 border-bottom borderProfile">
-            {" "}
-            <h4 className="profileText">Charles Manson</h4>{" "}
-            <p className="profileText2">
-              posted this 15h <BsFillPeopleFill />
-            </p>
-          </div>
-        </Row>
-        <Row>
-          <div className="mx-3 border-bottom borderProfile">
-            {" "}
-            <h4 className="profileText ">Charles Manson</h4>{" "}
-            <p className="profileText2">
-              posted this 15h <BsFillPeopleFill />
-            </p>
-          </div>
-          <hr />
-        </Row> */}
+
         <div className="showPost2">
-          {" "}
           <a href="#" className="showPost">
-            Show all posts <FaArrowRight />{" "}
+            Show all posts <FaArrowRight />
           </a>
         </div>
       </div>

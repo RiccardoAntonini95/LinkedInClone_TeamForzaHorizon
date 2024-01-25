@@ -1,4 +1,4 @@
-import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Container, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import {
@@ -15,10 +15,13 @@ import logo from "../assets/img/logo.png";
 import "../assets/css/MyNavbar.css";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 const MyNavBar = () => {
   const [query, setQuery] = useState();
   const navigate = useNavigate();
+
+  const profileData = useSelector((state) => state.profile.actualProfile);
 
   const handleInputChange = (query) => {
     setQuery(query);
@@ -39,7 +42,7 @@ const MyNavBar = () => {
                 id="search-icon"
                 size={15}
                 onClick={() => navigate(`/jobs/${query}`)}
-                style={{cursor: "pointer"}}
+                style={{ cursor: "pointer" }}
               />
               <input
                 placeholder="Search and press Enter.."
@@ -83,14 +86,28 @@ const MyNavBar = () => {
                 Notifications
               </Nav.Link>
               <Nav.Link className="d-flex flex-column text-center px-4 not-bb">
-                <PersonCircle size={24} className="m-auto" />
+                <Image
+                  width={24}
+                  height={24}
+                  size
+                  className="m-auto rounded-circle object-fit-cover"
+                  src={profileData.image}
+                />
+
                 <NavDropdown id="basic-nav-dropdown" title="You">
                   <NavDropdown.Item>
-                    <PersonCircle size={50} className="me-2" />
-                    Action
+                    <Image
+                      width={50}
+                      height={50}
+                      className="me-2 rounded-circle object-fit-cover border-bottom-none"
+                      src={profileData.image}
+                    />
+                    {profileData.name} {profileData.surname}
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/profile">Go to profile</Link>
+                    <Link to="/profile" className="btn btn-primary">
+                      Go to profile
+                    </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <h5>Account</h5>
