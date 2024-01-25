@@ -19,8 +19,8 @@ const CommentList = ({comments}) => {
               <Badge className="bg-secondary p-1">Autore</Badge>
             </Col>
             <Col className="col-6 d-flex align-items-center justify-content-end text-secondary">
-              <BsThreeDots />
-              <p className="m-0 pe-1">✖️</p>
+              <BsThreeDots /> {/* FETCH MODIFICA */}
+              <p className="m-0 pe-1">✖️</p> {/* FETCH ELIMINA */}
             </Col>
             <Col className="col-12 mt-1 ms-2">{comments.comment}</Col>
           </Row>
