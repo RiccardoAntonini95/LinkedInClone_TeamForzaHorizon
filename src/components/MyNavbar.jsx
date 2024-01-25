@@ -26,6 +26,9 @@ const MyNavBar = () => {
     }
 
     return (
+        <Container
+        fluid
+        className="d-flex align-items-center justify-content-center bg-white"> 
         <Navbar bg="white" variant="white" expand="lg">
             <Navbar.Brand href="#home" className="d-flex align-items-center">
                 <img src={logo} width={40} alt="logo" className="me-2" />
@@ -241,6 +244,7 @@ const MyNavBar = () => {
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
+    </Container>
     )
 }
 
