@@ -68,13 +68,13 @@ const MyNavBar = () => {
                         <Grid3x3GapFill size={24} className="m-auto" />
                         <NavDropdown id="basic-nav-dropdown" title="For companies">
                             <Modal.Header closeButton className="mb-4">
-                                <Modal.Title>For companies</Modal.Title>
+                                <Modal.Title className="fw-medium">For companies</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                                 <Container className="border rounded px-0">
                                     <div className="p-3 fw-medium">Discover other LinkedIn products</div>
-                                    <div className="d-flex flex-wrap border-top py-3">
-                                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                                    <div className="d-flex flex-wrap border-top py-3 linkedin-products">
+                                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                                             <li-icon aria-hidden="true" type="app-learning" class="" size="large">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" data-supported-dps="40x40" width="40" height="40" focusable="false" class="border">
                                                     <defs>
@@ -96,7 +96,7 @@ const MyNavBar = () => {
                                             </li-icon>
                                             <span className="text-muted">Learning</span>
                                         </div>
-                                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                                             <li-icon aria-hidden="true" type="app-talent-insights" class=" " size="large">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" data-supported-dps="40x40" width="40" height="40" focusable="false" class="border">
                                                     <defs>
@@ -110,9 +110,9 @@ const MyNavBar = () => {
                                                     <path d="M20 19a4 4 0 114-4 4 4 0 01-4 4zm3 2h-6v12h6zm8 11v-8h-5v9h4a1 1 0 001-1zm-17-5H9v5a1 1 0 001 1h4z" fill="url(#app-talent-insights-medium-a)"></path>
                                                 </svg>
                                             </li-icon>
-                                            <span className="text-muted">Learning</span>
+                                            <span className="text-muted">Talent Insights</span>
                                         </div>
-                                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                                             <li-icon aria-hidden="true" type="app-jobs-posting" class=" " size="large">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" data-supported-dps="40x40" width="40" height="40" focusable="false" class="border">
                                                     <defs>
@@ -128,9 +128,9 @@ const MyNavBar = () => {
                                                     <circle cx="20" cy="9" r="2" fill="#65c3e8"></circle>
                                                 </svg>
                                             </li-icon>
-                                            <span className="text-muted">Learning</span>
+                                            <span className="text-muted">Post a job</span>
                                         </div>
-                                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                                             <li-icon aria-hidden="true" type="app-ads" class=" " size="large">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" data-supported-dps="40x40" width="40" height="40" focusable="false" class="border">
                                                     <defs>
@@ -148,9 +148,9 @@ const MyNavBar = () => {
                                                     <path fill="#33aada" d="M29.19 16.46l-4.95-.7-.7-4.95 4.94-4.95L29 11l5.14.52-4.95 4.94z"></path>
                                                 </svg>
                                             </li-icon>
-                                            <span className="text-muted">Learning</span>
+                                            <span className="text-muted">Advertise</span>
                                         </div>
-                                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                                             <li-icon aria-hidden="true" type="app-sales-navigator" class=" " size="large">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" data-supported-dps="40x40" width="40" height="40" focusable="false" class="border">
                                                     <defs>
@@ -166,9 +166,9 @@ const MyNavBar = () => {
                                                     <circle cx="20" cy="20" r="2" fill="#0073b1"></circle>
                                                 </svg>
                                             </li-icon>
-                                            <span className="text-muted">Learning</span>
+                                            <span className="text-muted">Sell</span>
                                         </div>
-                                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                                             <li-icon aria-hidden="true" type="app-groups" class=" " size="large">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" data-supported-dps="40x40" width="40" height="40" focusable="false" class="border">
                                                     <defs>
@@ -189,9 +189,9 @@ const MyNavBar = () => {
                                                     </g>
                                                 </svg>
                                             </li-icon>
-                                            <span className="text-muted">Learning</span>
+                                            <span className="text-muted">Groups</span>
                                         </div>
-                                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                                             <li-icon aria-hidden="true" type="app-profinder" class=" " size="large">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" data-supported-dps="40x40" width="40" height="40" focusable="false" class="border">
                                                     <circle cx="20" cy="12" r="4" fill="#0073b1"></circle>
@@ -200,14 +200,40 @@ const MyNavBar = () => {
                                                     <path fill="#0073b1" d="M19 26.34l4-4V18h-6v6.34l2 2z"></path>
                                                 </svg>
                                             </li-icon>
-                                            <span className="text-muted">Learning</span>
+                                            <span className="text-muted">Services Marketplace</span>
                                         </div>
                                     </div>
                                 </Container>
-                                <Container>
-                                    <div>Find out more for business</div>
-                                    <div></div>
-                                    <div>Create a company page</div>
+
+                                <Container className="border rounded px-0 ex-business">
+                                    <div className="p-3 fw-medium">Explore more for business</div>
+                                    <div className="li-business d-flex flex-column border-top border-bottom py-3">
+                                        <a href="#" className="mb-2 px-3">
+                                            <h6 className="mb-0">Hire on LinkedIn</h6>
+                                            <span className="text-muted">Find, attract and recruit talent</span>
+                                        </a>
+                                        <a href="#" className="mb-2 px-3">
+                                            <h6 className="mb-0">Sell with LinkedIn</h6>
+                                            <span className="text-muted">Unlock sales opportunities</span>
+                                        </a>
+                                        <a href="#" className="mb-2 px-3">
+                                            <h6 className="mb-0">Post a job for free</h6>
+                                            <span className="text-muted">Get qualified applicants quickly</span>
+                                        </a>
+                                        <a href="#" className="mb-2 px-3">
+                                            <h6 className="mb-0">Advertise on LinkedIn</h6>
+                                            <span className="text-muted">Acquire customers and grow your business</span>
+                                        </a>
+                                        <a href="#" className="mb-2 px-3">
+                                            <h6 className="mb-0">Learn with LinkedIn</h6>
+                                            <span className="text-muted">Courses to develop your employees</span>
+                                        </a>
+                                        <a href="#" className="mb-2 px-3">
+                                            <h6 className="mb-0">Admin Center</h6>
+                                            <span className="text-muted">Manage billing and account details</span>
+                                        </a>
+                                    </div>
+                                    <div className="p-3 fw-medium"><a href="#">Create a company page</a></div>
                                 </Container>
                             </Modal.Body>
                         </NavDropdown>
