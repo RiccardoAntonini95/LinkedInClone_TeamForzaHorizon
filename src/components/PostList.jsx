@@ -5,14 +5,14 @@ import { AiTwotoneLike, AiFillPicture } from "react-icons/ai";
 import { FaRegCommentDots, FaRegFaceSmile } from "react-icons/fa6";
 import { FaRegSmile } from "react-icons/fa";
 import { FaRegImage } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { useSelector } from "react-redux";
-import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
-import { Row, Col, Container, Button, Image, Modal, FormGroup, Form, ModalBody } from "react-bootstrap";
+import { STRIVE_KEY_MERLINO, STRIVE_KEY_COMMENTS } from "../assets/js/auth_keys";
+import { Row, Col, Container, Button, Image, Modal, FormGroup, Form, ModalBody, Badge } from "react-bootstrap";
 import { MdCalendarMonth } from "react-icons/md";
 import { IoMdTime } from "react-icons/io";
 import { TiStarburst } from "react-icons/ti";
-/* DELETE https://striveschool-api.herokuapp.com/api/posts/{postId}  Cancella uno specifico postModello del POST: */
+import CommentList from "./CommentList";
 
 const optionsDelete = {
     method: "DELETE",
@@ -21,7 +21,7 @@ const optionsDelete = {
     },
   };
 
-  const PostList = ({posts}) => {
+  const PostList = (props) => {
     const [isClicked, setIsClicked] = useState(false)//per il like 
     const profileData = useSelector((state) => state.profile.actualProfile)
     const handleClose = () => setShow(false);
@@ -33,7 +33,7 @@ const optionsDelete = {
         e.preventDefault();
         try {
           const res = await fetch(
-            `https://striveschool-api.herokuapp.com/api/posts/${posts._id}`,
+            `https://striveschool-api.herokuapp.com/api/posts/${props.posts._id}`,
             {
               method: "PUT",
               headers: {
@@ -54,7 +54,7 @@ const optionsDelete = {
 
     const handleDeletePost = async () => {
         try{
-            const res = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${posts._id}`, 
+            const res = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${props.posts._id}`, 
             optionsDelete
             );
             if (!res.ok) throw new Error("Cannot fetch data")
@@ -72,7 +72,7 @@ const optionsDelete = {
             setIsClicked(true)
         }
     }
-    const date = new Date(`${posts.createdAt}`)
+    const date = new Date(`${props.posts.createdAt}`)
 
     const day = date.getDate()
     const month = date.getMonth() + 1
@@ -82,10 +82,10 @@ const optionsDelete = {
         <Container className="my-2 border rounded-3 bg-white">
             <Row className="d-flex bg-white justify-content-between p-3 my-3">
                 <Col className="col-1 me-2">
-                    <Image className="rounded-circle" width={45} height={45} src={posts.user.image? posts.user.image : user}/>
+                    <Image className="rounded-circle" width={45} height={45} src={props.posts.user.image? props.posts.user.image : user}/>
                 </Col>
                 <Col className="col-8 me-auto ps-2">
-                    <p className="fs-5 fw-bold">{posts.username}</p>
+                    <p className="fs-5 fw-bold">{props.posts.username}</p>
                     <p className="text-secondary">{day}/{month}/{year} . <IoPeople /></p>
                 </Col>
                 <Col className="col-2 text-end p-0">
@@ -93,7 +93,7 @@ const optionsDelete = {
                     <button className="border-0 bg-white" onClick={() => handleDeletePost()}>✖️</button>                
                 </Col>
                 <Row>
-                    <p>{posts.text}</p>
+                    <p>{props.posts.text}</p>
                 </Row>
                 <Row className="text-center text-secondary p-0">
                     <Col className="fs-5 py-4 px-5" onClick={() => handleLike()} style={{color: isClicked? "blue" : ""}}>
@@ -108,19 +108,45 @@ const optionsDelete = {
                       <Image className="rounded-circle" width={40} height={40} src={profileData.image}/>
                     </Col>
                     <Col className="col-11 p-0 position-relative">
-                        <input type="text" className="border border-secondary rounded-pill w-100 p-2" placeholder="Write a comment.."></input>
-                        <FaRegSmile className="position-absolute text-secondary" style={{right: "70px", bottom: "13px"}} />
-                        <FaRegImage className="position-absolute text-secondary" style={{right: "20px", bottom: "13px"}} />
+                        <input type="text" className="border border-secondary rounded-pill w-100 p-2" placeholder="Write a comment.."></input>{/* RACCOGLIERE VALORE */}
+                        <FaRegSmile className="position-absolute text-secondary" style={{right: "70px", bottom: "15px"}} />
+                        <FaRegImage className="position-absolute text-secondary" style={{right: "20px", bottom: "15px"}} />
                     </Col>
                 </Row>
                 <Row className="mt-2">
                     <Col className="col-1"></Col>
-                    <Col className="col-11 p-0">
-                        <Button variant="primary" className="rounded-pill px-3">
+                    <Col className="col-11 p-0 mb-3">
+                        <Button variant="primary" className="rounded-pill px-4 py-1"> {/* FETCH CHE PUBBLICA COMMENTO  */}
                             Post
                         </Button>
                     </Col>
                 </Row>
+                {/* COMMENTI */}
+                {props.comments && (
+                      props.comments.map((singoloCommento, i) => (
+                      <CommentList key={i} comments={singoloCommento}/>
+                    ))
+                )}
+            {/* <Row className="mb-2">
+                 <Col className="col-1 p-0">
+                      <Image className="rounded-circle" width={40} height={40} src={user}/>
+                 </Col>
+                 <Col className="col-11 p-0 bg-light">
+                  <Row className="d-flex justify-content-between">
+                    <Col className="d-flex col-6">
+                     <p className="m-0 mx-2 fw-bold">{props.comments[0].author}</p>
+                     <Badge className="bg-secondary p-1">Autore</Badge>
+                    </Col>
+                    <Col className="col-6 d-flex align-items-center justify-content-end text-secondary">
+                      <BsThreeDots />       
+                      <p className="m-0 pe-1">✖️</p> 
+                    </Col>
+                    <Col className="col-12 mt-1 ms-2">
+                      {props.comments[0].comment}
+                    </Col>   
+                  </Row>
+                 </Col>                  
+                </Row>  */}
             </Row>
 
             <Modal show={show} onHide={handleClose} animation={false}>

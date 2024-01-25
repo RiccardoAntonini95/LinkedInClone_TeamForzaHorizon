@@ -7,18 +7,21 @@ import MyNavbar from "./components/MyNavbar";
 import Jobs from "./components/Jobs";
 import JobSearch from "./components/JobSearch";
 import Home from "./components/Home";
+import { Container } from "react-bootstrap";
 
 function App() {
   return (
     <>
       <BrowserRouter>
       <MyNavbar />
-      <Routes>
-       <Route path="/" element = {<Home />} />
-       <Route path="/profile" element = {<ProfilePage />} />
-       <Route path="/jobs" element = {<Jobs />} />
-       <Route path="/jobs/:query" element = {<JobSearch />} />
-      </Routes>
+     <Container>
+        <Routes>
+         <Route path="/" element = {<Home />} />
+         <Route path="/profile" element = {<ProfilePage />} />
+         <Route path="/jobs" element = {<Jobs />} />
+         <Route path="/jobs/:query" element = {<JobSearch />} />
+        </Routes>
+     </Container>
       </BrowserRouter>
     </>
   );

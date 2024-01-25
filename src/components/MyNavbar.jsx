@@ -32,7 +32,7 @@ const MyNavBar = () => {
         className="d-flex justify-content-center bg-white"
       >
         <Navbar bg="white" variant="white" expand="lg" id="navbar">
-          <Navbar.Brand href="#home" className="d-flex align-items-center">
+          <Navbar.Brand className="d-flex align-items-center">
             <img src={logo} width={40} alt="logo" className="me-2" />
             <div className="input-wrapper">
               <FaSearch
@@ -57,8 +57,7 @@ const MyNavBar = () => {
               >
                 <HouseDoorFill size={24} className="m-auto" /> Home
               </Link>
-              <Nav.Link
-                href="#rete"
+              <Nav.Link              
                 className="d-flex flex-column text-center px-4"
               >
                 <PeopleFill size={24} className="m-auto" />
@@ -72,65 +71,58 @@ const MyNavBar = () => {
                 Jobs
               </Link>
               <Nav.Link
-                href="#contatti"
                 className="d-flex flex-column text-center px-4"
               >
                 <ChatDotsFill size={24} className="m-auto" />
                 Contacts
               </Nav.Link>
-              <Nav.Link
-                href="#notifiche"
+              <Nav.Link           
                 className="d-flex flex-column text-center px-4"
               >
                 <BellFill size={24} className="m-auto" />
                 Notifications
               </Nav.Link>
-              <Nav.Link
-                href="#tu"
+              <Nav.Link              
                 className="d-flex flex-column text-center px-4 not-bb"
               >
                 <PersonCircle size={24} className="m-auto" />
                 <NavDropdown id="basic-nav-dropdown" title="You">
-                  <NavDropdown.Item href="#action/1.1">
+                  <NavDropdown.Item >
                     <PersonCircle size={50} className="me-2" />
                     Action
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/1.2">
+                  <NavDropdown.Item >
                     <Link to="/profile">Go to profile</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <h5>Account</h5>
                   <NavDropdown.Item
-                    href="#action/2.2"
                     className="mb-2 text-muted"
                   >
                     Privacy and Settings
                   </NavDropdown.Item>
-                  <NavDropdown.Item
-                    href="#action/2.3"
+                  <NavDropdown.Item 
                     className="mb-2 text-muted"
                   >
                     Guide
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/2.3" className=" text-muted">
+                  <NavDropdown.Item  className=" text-muted">
                     Language
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <h5>Manage</h5>
-                  <NavDropdown.Item
-                    href="#action/3.2"
+                  <NavDropdown.Item 
                     className="mb-2 text-muted"
                   >
                     Post and Activities
                   </NavDropdown.Item>
-                  <NavDropdown.Item
-                    href="#action/3.3"
+                  <NavDropdown.Item 
                     className="mb-2 text-muted"
                   >
                     Account for posting job offers
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/4.1" className=" text-muted">
+                  <NavDropdown.Item className=" text-muted">
                     Exit
                   </NavDropdown.Item>
                 </NavDropdown>
@@ -138,7 +130,6 @@ const MyNavBar = () => {
             </Nav>
             <Nav id="right-nav">
               <Nav.Link
-                href="#perleaziende"
                 className="d-flex flex-column text-center px-4 not-bb"
               >
                 <Grid3x3GapFill size={24} className="m-auto" />

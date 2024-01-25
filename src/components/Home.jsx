@@ -5,7 +5,7 @@ import PostList from "./PostList";
 import { setProfileAction } from "../redux/actions/ProfilePage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
+import { STRIVE_KEY_MERLINO, STRIVE_KEY_COMMENTS} from "../assets/js/auth_keys";
 
 
 // IN CASO DI API MALFUNZIONANTE
@@ -33,14 +33,41 @@ const options = {
   },
 };
 
+
 const Home = () => {
  const profileData = useSelector((state) => state.profile.actualProfile)
   const dispatch = useDispatch();
   const [posts, setPosts] = useState(null)
+  const [comments, setComments] = useState(null)
+/*   const [arrayComb, setArrayComb] = useState(null) */
+
+  /* const combinaArray = (newestData) => {
+    const arrayCombinato = []
+    for (let i = 0; i < posts.length; i++) {
+      let post = newestData[i];
+      let commentArr = [];
+      for (let j = i; j < comments.length; j++) {
+        if (posts._id === comments._id) {
+          commentArr.push(comments[j]);
+        }
+      }
+      arrayCombinato.push({
+        ...post,
+        comments: commentArr,
+      });
+    }
+  
+    setArrayComb(arrayCombinato)
+    console.log(arrayCombinato, "array risultato")
+  
+  }
+ */
 
   useEffect(() => {
     getProfileData();
+    handleGetComments();
     getPosts();
+    
   }, []);
 
   const getProfileData = async () => {
@@ -49,9 +76,7 @@ const Home = () => {
         "https://striveschool-api.herokuapp.com/api/profile/me",
         options
       );
-
       if (!res.ok) throw new Error("Cannot fetch data");
-
       const data = await res.json();
       dispatch(setProfileAction(data));
       console.log("getProfileData data: ", data);
@@ -68,11 +93,33 @@ const Home = () => {
       if (!res.ok) throw new Error("Cannot fetch data")
       const data = await res.json()
       const newestData = data.reverse().slice(0,15)
+      /* combinaArray(newestData) */
+      console.log(newestData, "risultato fetch post")
       setPosts(newestData)
     } catch (err) {
       console.log(err, "error")
     }
   }
+
+  const handleGetComments = async () => {
+    try {
+      const res = await fetch(
+        "https://striveschool-api.herokuapp.com/api/comments/",
+        {
+          headers: {
+            Authorization: `Bearer ${STRIVE_KEY_COMMENTS}`,
+          },
+        }
+      );
+      if (!res.ok) throw new Error("Error fetching comments");
+      const data = await res.json();
+      const newestData = data.reverse().slice(0, 3);
+      console.log(newestData, "risultato fetch commenti");
+      setComments(newestData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Row>
@@ -83,9 +130,9 @@ const Home = () => {
       </Col>
       <Col xs={6}>
         <PostBar />
-        {posts && (
+        {posts && comments && (
           posts.map((post, i) => (
-          <PostList key={i} posts={post} />
+          <PostList key={i} posts={post} comments={comments}/>
         ))
         )}
       </Col>
