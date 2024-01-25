@@ -45,10 +45,14 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading/
   // On submit, trigger a few events
   const handleSubmit = (e) => {
     e.preventDefault();
-    postExperience();
-    setIsActiveProp();
-    setLoading();
-    setTimeout(getExperience, LOADING_TIME);
+    if(new Date(startDate).getTime() < new Date(endDate).getTime()){
+      postExperience();
+      setIsActiveProp();
+      setLoading();
+      setTimeout(getExperience, LOADING_TIME);
+    } else {
+      alert('Please pick a end date after the start date');
+    }
   }
 
   // The browser listens for keys down

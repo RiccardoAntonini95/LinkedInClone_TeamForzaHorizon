@@ -101,7 +101,7 @@ export const Experience = ({ /* userId */ }) => {
             </div>
             {isLoading && (
                 <Container >
-                    <Row className="justify-content-center">
+                    <Row className="justify-content-center big-spinner-container">
                         <Spinner
                             variant="danger"
                             className="big-spinner"

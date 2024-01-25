@@ -59,12 +59,16 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
 
     const handlePut = (e) => {
         e.preventDefault();
-        putExperience(userId, experienceId)
-        setIsEditProp();
-        setLoading();
-        setTimeout(() => {
-            getExperience();
-        }, LOADING_TIME);
+        if(new Date(startDate).getTime() < new Date(endDate).getTime()){
+            putExperience(userId, experienceId)
+            setIsEditProp();
+            setLoading();
+            setTimeout(() => {
+                getExperience();
+            }, LOADING_TIME);
+        } else {
+            alert('Please pick a end date after the start date');
+        }
     }
 
     useEffect(() => {
@@ -95,7 +99,7 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
         try {
             const res = await fetch(`${url}/${_userId}/experiences/${_experienceId}`, optionsDelete)
             if (!res.ok) {
-                throw new Error('Delete was not successful');
+                throw new Error('Delete request was not successful');
             }
             console.log('Delete request successful for: ', experienceId);
         } catch (err) {
@@ -108,7 +112,7 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
         try {
             const res = await fetch(`${url}/${_userId}/experiences/${_experienceId}`, optionsPut);
             if (!res.ok) {
-                throw new Error('Post was not successful');
+                throw new Error('Put request was not successful');
             }
             const responseData = await res.json();
             console.log('Put request successful for: ', responseData)

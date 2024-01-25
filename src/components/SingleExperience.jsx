@@ -4,6 +4,7 @@ import { convertTime } from "../assets/js";
 import { EditExperienceModal } from "./EditExperienceModal"
 import '../assets/css/experienceStyle.css'
 import { MONTHS } from "../assets/js/matteoVariables";
+import { MONTHS_DIVIDER } from "../assets/js/matteoVariables";
 
 export const SingleExperience = ({ experience, getExperience, setLoading }) => {
 
@@ -65,13 +66,8 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
                 <p>
                     {MONTHS[month]} {year}{" "}
                     {(new Date().getTime() > new Date(experience.endDate).getTime()) ?
-                        (
-                            `- ${MONTHS[endMonth]} ${endYear}`
-                        )
-                        :
-                        (
-                            '- Present'
-                        )}
+                        (`- ${MONTHS[endMonth]} ${endYear}`):('- Present')
+                    }
                 </p>
                 <p>{experience.description}</p>
             </div>
