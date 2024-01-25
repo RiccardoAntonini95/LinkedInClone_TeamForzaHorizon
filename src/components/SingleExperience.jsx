@@ -19,6 +19,7 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
 
     // State that says wether modal is open. By default it is closed
     const [isEdit, setIsEdit] = useState(false);
+    const [endDateProp, setEndDateProp] = useState('');
 
     // State to pass as prop
     const setIsEditProp = () => {
@@ -34,12 +35,20 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
         }
     }, [isEdit])
 
-  return (
-    <div className="d-flex single-experience">
-      <img src={JobExeperienceIcon} alt="Icona" />
-      <div className="experience-details">
+    const setEndDateToDisplay = (inputDate) => {
+        setEndDateProp(inputDate)
+    }
+
+    useEffect(() => {
+        console.log(new Date(endDateProp))
+    }, [endDateProp])
+
+    return (
+        <div className="d-flex single-experience">
+            <img src={JobExeperienceIcon} alt="Icona" />
+            <div className="experience-details">
                 <div className="d-flex justify-content-between align-items-center">
-            <h3>{experience.role}</h3>
+                    <h3>{experience.role}</h3>
                     <button className="edit-experience-btn" type="button" onClick={() => {
                         setIsEdit(true);
                     }}>
@@ -55,9 +64,14 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
                 <p>{experience.company}</p>
                 <p>
                     {MONTHS[month]} {year}{" "}
-                    {experience.endDate && (
-                        `- ${MONTHS[endMonth]} ${endYear}`
-                    )}
+                    {(new Date().getTime() > new Date(experience.endDate).getTime()) ?
+                        (
+                            `- ${MONTHS[endMonth]} ${endYear}`
+                        )
+                        :
+                        (
+                            '- Present'
+                        )}
                 </p>
                 <p>{experience.description}</p>
             </div>
@@ -68,11 +82,12 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
                         experience={experience}
                         getExperience={getExperience}
                         setLoading={setLoading}
+                        setEndDateProp={setEndDateProp}
                     />
                 </>
             )}
-    </div>
-  );
+        </div>
+    );
 };
 
 //posts.filter(post => post.user.id == profile.id).map(post => <Componente/>)

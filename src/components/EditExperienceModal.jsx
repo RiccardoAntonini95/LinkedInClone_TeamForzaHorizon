@@ -5,7 +5,7 @@ import { MATTEO_AUTH_TOKEN } from '../assets/js/matteoVariables';
 import { url } from '../assets/js/matteoVariables';
 
 
-export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, setLoading }) => {
+export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, setLoading, setEndDateProp }) => {
 
     const [area, setArea] = useState(experience.area);
     const [company, setCompany] = useState(experience.company);
@@ -167,8 +167,8 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
                         }} />
                     </div>
                     <div className="input-field">
-                        <h6>Location</h6>
-                        <input type="text" name="area" placeholder="Ex. London, United Kingdom" value={area} onChange={(e) => {
+                        <h6>Location*</h6>
+                        <input required type="text" name="area" placeholder="Ex. London, United Kingdom" value={area} onChange={(e) => {
                             setArea(e.target.value)
                         }} />
                     </div>
@@ -200,16 +200,24 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
                             <div className="d-flex employment-dates">
                                 <input type="date" name="endDate" id="endDate" value={endDate} onChange={(e) => {
                                     setEndDate(e.target.value);
+                                    setEndDateProp(e.target.value);
                                 }} />
                             </div>
                         </div>
                     </div>
                     <div className="input-field">
-                        <h6>Description</h6>
-                        <textarea name="description" id="description" cols="100" rows="5" value={description}
+                        <h6>Description*</h6>
+                        <textarea required
+                            name="description"
+                            id="description"
+                            cols="100"
+                            rows="5"
+                            value={description}
                             onChange={(e) => {
                                 setDescription(e.target.value);
-                            }}></textarea>
+                            }}>
+
+                        </textarea>
                     </div>
                     <div className="d-flex justify-content-between sub-btn-container">
                         <button

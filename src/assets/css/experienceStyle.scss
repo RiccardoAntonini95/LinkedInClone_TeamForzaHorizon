@@ -13,6 +13,7 @@ $formElementsPadding: 20px;
 $deleteText: #5E5E5E;
 $deleteBg: #EBEBEB;
 $spinnerSize: 100px;
+$mdWidth: 576px;
 $lgWidth: 768px;
 $xlWidth: 1200px;
 $xxlWidth: 1440px;
@@ -165,11 +166,13 @@ body {
     width: 99.5vw;
     height: 100vh;
     left: 2px;
+    @media screen and (min-width: $mdWidth){
+        top: 10vh;
+        height: 80vh;
+    }
     @media screen and (min-width: $lgWidth){
         width: calc($lgWidth/1.3);
         left: 20vw;
-        top: 10vh;
-        height: 80vh;
     }
     @media screen and (min-width: $xlWidth){
         width: calc($xlWidth/2);
