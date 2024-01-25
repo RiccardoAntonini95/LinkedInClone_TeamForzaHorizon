@@ -13,6 +13,10 @@ $formElementsPadding: 20px;
 $deleteText: #5E5E5E;
 $deleteBg: #EBEBEB;
 $spinnerSize: 100px;
+$lgWidth: 768px;
+$xlWidth: 1200px;
+$xxlWidth: 1440px;
+$xxxlWidth: 2560px;
 
 
 body {
@@ -24,10 +28,10 @@ body {
 }
 
 .experience {
-    padding: 20px;
-    margin: 20px;
+    padding: 16px;
+    margin: 20px 0;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 5px;
     border: 1px solid $borderColor;
 }
 
@@ -92,6 +96,7 @@ body {
 
     .experience-details {
         flex: 1;
+
         h3 {
             font-size: 1.3rem;
             margin-bottom: 5px;
@@ -152,14 +157,32 @@ body {
 .add-experience-modal {
     position: fixed;
     background-color: white;
-    width: 800px;
-    height: 800px;
-    left: 30vw;
-    top: 50px;
     border-radius: 10px;
     z-index: 1;
     border: 1px solid $borderColor;
     overflow-y: auto;
+    top: 0;
+    width: 99.5vw;
+    height: 100vh;
+    left: 2px;
+    @media screen and (min-width: $lgWidth){
+        width: calc($lgWidth/1.3);
+        left: 20vw;
+        top: 10vh;
+        height: 80vh;
+    }
+    @media screen and (min-width: $xlWidth){
+        width: calc($xlWidth/2);
+        left: 25vw;
+    }
+    @media screen and (min-width: $xxlWidth){
+        width: calc($xxlWidth/2);
+        left: 35vw;
+    }
+    @media screen and (min-width: $xxxlWidth){
+        width: calc($xxxlWidth/3);
+        left: 39vw;
+    }
 }
 
 .close-modal-btn {
@@ -227,6 +250,10 @@ body {
 
 textarea {
     width: 100%;
+    &:focus {
+        outline: 1px solid $btnSubBgHover;
+        border-radius: 2px;
+    }
 }
 
 .sub-btn-container {
@@ -266,13 +293,16 @@ textarea {
     padding: 0 10px;
     margin-left: $formElementsPadding;
     margin-bottom: $formElementsPadding;
+
     &:hover {
         background-color: $deleteBg;
     }
+
     span {
         color: $deleteText;
         font-weight: 600;
     }
+
     transition: background-color 100ms ease-in-out;
 }
 
@@ -303,13 +333,31 @@ input {
 
 .input-field {
     padding: 0 $formElementsPadding;
-    h6, p {
+
+    h6,
+    p {
         margin-bottom: 8px;
     }
+
+    &:nth-child(2) {
+        p {
+            margin-bottom: 20px;
+        }
+    }
+    &:nth-child(5) {
+        p {
+            margin-bottom: 20px;
+        }
+    }
+
 }
 
 .notes {
     padding: 0 $formElementsPadding;
+
+    &:nth-child(3) {
+        margin-bottom: 20px;
+    }
 }
 
 .add-experience-header {
