@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { LOADING_TIME } from "../assets/js/matteoVariables";
 import { MATTEO_AUTH_TOKEN } from "../assets/js/matteoVariables";
+import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { url } from "../assets/js/matteoVariables";
 
-const userId = '65b02ccc004b880018fef5d1'   //  Temporary userId for testing
+// const userId = '65b02ccc004b880018fef5d1'   //  Temporary userId for testing
 
 
-export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading/* , userId */ }) => {
+export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading, userId }) => {
 
   const validEndDate = new Date();
   const [area, setArea] = useState('');
@@ -61,7 +62,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading/
         area: area
       }),
       headers: {
-        Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
+        Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
         'Content-Type': 'application/json'
       },
     })
