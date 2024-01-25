@@ -64,7 +64,7 @@ const ProfilePage = () => {
   return (
     <>
       {/* LEFT SECTION */}
-      <Container className="d-flex p-5 profile-page-container justify-content-center">
+      <Container className="d-flex pt-4 mb-5 profile-page-container justify-content-center">
         <Container className="main-info-container ">
           {profileData && (
             <>
@@ -318,7 +318,7 @@ const ProfilePage = () => {
         {/* END OF LEFT SECTION */}
 
         {/* RIGHT SECTION */}
-        <Container className="flex-shrink secondary-info-container">
+        <Container className="secondary-info-container">
           <Container>
             <Container className="ProfilePageContainer">
               <Row>
