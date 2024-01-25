@@ -1,3 +1,6 @@
+.footer {
+  width: 75%;
+}
 .footer-style {
   text-decoration: none;
   color: #616160;
@@ -28,16 +31,4 @@
   color: #616160;
   font-weight: 400;
   font-size: small;
-}
-
-/* aggiunto da gae */
-
-footer {
-  max-width: 80%;
-  display: flex;
-  justify-content: center;
-}
-
-footer .container {
-  max-width: 80% !important;
 }

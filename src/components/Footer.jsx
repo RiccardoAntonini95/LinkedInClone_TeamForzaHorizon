@@ -7,10 +7,10 @@ import "../assets/css/footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <Container>
-        <Row className="justify-content-between">
-          <Col md={2}>
+    <Container className="w-100 p-0 d-flex justify-content-center">
+      <footer className="footer">
+        <Row className="d-flex justify-content-center">
+          <Col md={3} className="p-0">
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="footer-style">
@@ -34,7 +34,7 @@ const Footer = () => {
               </li>
             </ul>
           </Col>
-          <Col md={2}>
+          <Col md={3} className="p-0">
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="footer-style">
@@ -58,7 +58,7 @@ const Footer = () => {
               </li>
             </ul>
           </Col>
-          <Col md={2}>
+          <Col md={3} className="p-0">
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="footer-style">
@@ -82,7 +82,7 @@ const Footer = () => {
               </li>
             </ul>
           </Col>
-          <Col md={2}>
+          <Col md={3} className="p-0">
             <ul className="list-unstyled">
               <li>
                 <BsFillQuestionSquareFill />
@@ -116,8 +116,8 @@ const Footer = () => {
             <p>LinkedIn Corporation © 2024</p>
           </Col>
         </Row>
-      </Container>
-    </footer>
+      </footer>
+    </Container>
   );
 };
 
