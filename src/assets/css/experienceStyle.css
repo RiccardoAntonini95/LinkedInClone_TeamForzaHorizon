@@ -120,7 +120,7 @@ body {
   height: 100vh;
   left: 2px;
 }
-@media screen and (min-width: 576px) {
+/* @media screen and (min-width: 576px) {
   .add-experience-modal {
     top: 10vh;
     height: 80vh;
@@ -149,7 +149,7 @@ body {
     width: 853.3333333333px;
     left: 39vw;
   }
-}
+} */
 
 .close-modal-btn {
   background: none;

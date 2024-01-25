@@ -10,7 +10,6 @@
 
 .card {
   border: 1px solid lightgrey;
-  margin: 20px;
   margin-top: 0;
   border-radius: 20px;
 }
@@ -189,7 +188,7 @@
 
 /* ABOUT */
 .about-section {
-  margin: 20px;
+  margin-top: 20px;
   padding: 20px;
   border-radius: 20px;
   border: 1px solid lightgrey;
