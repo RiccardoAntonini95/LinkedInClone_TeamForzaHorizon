@@ -32,6 +32,11 @@
   border-top-right-radius: 20px;
 }
 
+.card-header:first-child {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
 #header-img-loader-btn {
   position: absolute;
   display: flex;
@@ -47,11 +52,11 @@
 .card-profile-img {
   position: absolute;
   object-fit: cover;
-  height: 180px;
-  width: 180px;
+  height: 190px;
+  width: 190px;
   /* width: 19%; */
-  left: 1.5rem;
-  top: 4rem;
+  left: 1.7rem;
+  top: 4.7rem;
   border: 6px solid white;
   cursor: pointer;
 }
