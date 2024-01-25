@@ -79,7 +79,7 @@ const ProfilePageModifyButton = ({ profileData }) => {
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-pencil"
+            className="bi bi-pencil"
             id="pencil"
             viewBox="0 0 16 16"
           >
