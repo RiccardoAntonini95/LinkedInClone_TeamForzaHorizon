@@ -5,7 +5,7 @@ import { MATTEO_AUTH_TOKEN } from '../assets/js/matteoVariables';
 import { url } from '../assets/js/matteoVariables';
 
 
-export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, setLoading }) => {
+export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, setLoading, setEndDateProp }) => {
 
     const [area, setArea] = useState(experience.area);
     const [company, setCompany] = useState(experience.company);
@@ -59,12 +59,16 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
 
     const handlePut = (e) => {
         e.preventDefault();
-        putExperience(userId, experienceId)
-        setIsEditProp();
-        setLoading();
-        setTimeout(() => {
-            getExperience();
-        }, LOADING_TIME);
+        if(new Date(startDate).getTime() < new Date(endDate).getTime()){
+            putExperience(userId, experienceId)
+            setIsEditProp();
+            setLoading();
+            setTimeout(() => {
+                getExperience();
+            }, LOADING_TIME);
+        } else {
+            alert('Please pick a end date after the start date');
+        }
     }
 
     useEffect(() => {
@@ -95,7 +99,7 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
         try {
             const res = await fetch(`${url}/${_userId}/experiences/${_experienceId}`, optionsDelete)
             if (!res.ok) {
-                throw new Error('Delete was not successful');
+                throw new Error('Delete request was not successful');
             }
             console.log('Delete request successful for: ', experienceId);
         } catch (err) {
@@ -108,7 +112,7 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
         try {
             const res = await fetch(`${url}/${_userId}/experiences/${_experienceId}`, optionsPut);
             if (!res.ok) {
-                throw new Error('Post was not successful');
+                throw new Error('Put request was not successful');
             }
             const responseData = await res.json();
             console.log('Put request successful for: ', responseData)
@@ -167,8 +171,8 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
                         }} />
                     </div>
                     <div className="input-field">
-                        <h6>Location</h6>
-                        <input type="text" name="area" placeholder="Ex. London, United Kingdom" value={area} onChange={(e) => {
+                        <h6>Location*</h6>
+                        <input required type="text" name="area" placeholder="Ex. London, United Kingdom" value={area} onChange={(e) => {
                             setArea(e.target.value)
                         }} />
                     </div>
@@ -200,16 +204,24 @@ export const EditExperienceModal = ({ setIsEditProp, experience, getExperience, 
                             <div className="d-flex employment-dates">
                                 <input type="date" name="endDate" id="endDate" value={endDate} onChange={(e) => {
                                     setEndDate(e.target.value);
+                                    setEndDateProp(e.target.value);
                                 }} />
                             </div>
                         </div>
                     </div>
                     <div className="input-field">
-                        <h6>Description</h6>
-                        <textarea name="description" id="description" cols="100" rows="5" value={description}
+                        <h6>Description*</h6>
+                        <textarea required
+                            name="description"
+                            id="description"
+                            cols="100"
+                            rows="5"
+                            value={description}
                             onChange={(e) => {
                                 setDescription(e.target.value);
-                            }}></textarea>
+                            }}>
+
+                        </textarea>
                     </div>
                     <div className="d-flex justify-content-between sub-btn-container">
                         <button
