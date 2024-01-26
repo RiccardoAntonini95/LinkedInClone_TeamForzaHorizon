@@ -60,31 +60,41 @@ const MyNavBar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto border-end">
-              <Link
-                to={"/"}
-                className="d-flex flex-column text-center px-4 nav-link"
-              >
-                <HouseDoorFill size={24} className="m-auto" /> Home
-              </Link>
-              <Nav.Link className="d-flex flex-column text-center px-4">
-                <PeopleFill size={24} className="m-auto" />
-                Network
-              </Nav.Link>
-              <Link
-                to={"/jobs"}
-                className="nav-link d-flex flex-column text-center px-4"
-              >
-                <BriefcaseFill size={24} className="m-auto" />
-                Jobs
-              </Link>
-              <Nav.Link className="d-flex flex-column text-center px-4">
-                <ChatDotsFill size={24} className="m-auto" />
-                Contacts
-              </Nav.Link>
-              <Nav.Link className="d-flex flex-column text-center px-4">
-                <BellFill size={24} className="m-auto" />
-                Notifications
-              </Nav.Link>
+              <div className="nav-link-animated">
+                  <Link
+                    to={"/"}
+                    className="d-flex flex-column text-center px-4 nav-link"
+                  >
+                    <HouseDoorFill size={24} className="m-auto" /> Home
+                  </Link>
+              </div>
+              <div className="nav-link-animated">
+                  <Nav.Link className="d-flex flex-column text-center px-4">
+                    <PeopleFill size={24} className="m-auto" />
+                    Network
+                  </Nav.Link>
+              </div>
+              <div className="nav-link-animated">
+                  <Link
+                    to={"/jobs"}
+                    className="nav-link d-flex flex-column text-center px-4"
+                  >
+                    <BriefcaseFill size={24} className="m-auto" />
+                    Jobs
+                  </Link>
+              </div>
+              <div className="nav-link-animated">
+                  <Nav.Link className="d-flex flex-column text-center px-4">
+                    <ChatDotsFill size={24} className="m-auto" />
+                    Contacts
+                  </Nav.Link>
+              </div>
+              <div className="nav-link-animated">
+                  <Nav.Link className="d-flex flex-column text-center px-4">
+                    <BellFill size={24} className="m-auto" />
+                    Notifications
+                  </Nav.Link>
+              </div>
               <Nav.Link className="d-flex flex-column text-center px-4 not-bb">
                 <Image
                   width={24}

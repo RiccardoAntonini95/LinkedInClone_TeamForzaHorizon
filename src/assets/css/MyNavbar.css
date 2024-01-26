@@ -146,11 +146,25 @@ input:focus {
   padding-bottom: 0px;
 }
 
-.navbar-nav:not(:last-child) .nav-link:focus,
-.navbar-nav:not(:last-child) .nav-link:focus-within {
-  border-bottom: 3px solid black;
+.nav-link-animated{
+    width: max-content;
+    position: relative;
 }
 
+.nav-link-animated::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    height: 4px;
+    width: 100%;
+    background-color: #000;
+    transition: 0.2s ease-in-out;
+    transform: scaleX(0);
+}
+
+.nav-link-animated:focus-within::after {
+    transform: scaleX(1);
+}
 
 .dropdown a {
   padding: 0;
