@@ -86,7 +86,9 @@ const ProfilePageSearch = () => {
           )}
 
           {/*   //const userId = '65b02ccc004b880018fef5d1' */}
-          {specificProfile && <Experience userId={specificProfile._id} />}
+          {specificProfile && (
+            <Experience userId={specificProfile._id} isSpecificProfile />
+          )}
           <section>
             {/* <div className="activities">
               <div className="d-flex justify-content-between experience-header">

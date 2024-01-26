@@ -3,26 +3,29 @@ import { LOADING_TIME } from "../assets/js/matteoVariables";
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { url } from "../assets/js/matteoVariables";
 
-export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading, userId }) => {
-
+export const AddExperienceModal = ({
+  setIsActiveProp,
+  getExperience,
+  setLoading,
+  userId,
+}) => {
   const validEndDate = new Date();
-  const [area, setArea] = useState('');
-  const [company, setCompany] = useState('');
-  const [description, setDescription] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [startMonth, setStartMonth] = useState('');
-  const [startYear, setStartYear] = useState('');
-  const [endMonth, setEndMonth] = useState('');
-  const [endYear, setEndYear] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [role, setRole] = useState('');
-
+  const [area, setArea] = useState("");
+  const [company, setCompany] = useState("");
+  const [description, setDescription] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [startMonth, setStartMonth] = useState("");
+  const [startYear, setStartYear] = useState("");
+  const [endMonth, setEndMonth] = useState("");
+  const [endYear, setEndYear] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [role, setRole] = useState("");
 
   const [options, setOptions] = useState({});
 
   // If esc is pressed with modal open, the modal unmounts
   const handleKeyPress = (event) => {
-    if (event.key === 'Escape') {
+    if (event.key === "Escape") {
       setIsActiveProp();
     }
   };
@@ -36,53 +39,51 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading,
       setLoading();
       setTimeout(getExperience, LOADING_TIME);
     } else {
-      alert('Please pick a end date after the start date');
+      alert("Please pick a end date after the start date");
     }
-  }
+  };
 
   // The browser listens for keys down
   useEffect(() => {
-    document.addEventListener('keydown', handleKeyPress)
-  }, [])
+    document.addEventListener("keydown", handleKeyPress);
+  }, []);
 
   // Options for POST fetch
   useEffect(() => {
     setOptions({
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({
         role: role,
         company: company,
         startDate: startDate,
         endDate: endDate,
         description: description,
-        area: area
+        area: area,
       }),
       headers: {
         Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-    })
+    });
+  }, [area, company, description, endDate, startDate, role]);
 
-  }, [area, company, description, endDate, startDate, role])
-
-  // Set start and end date in appropriate format when 
+  // Set start and end date in appropriate format when
   useEffect(() => {
-    setStartDate(`${startYear}-${startMonth}-01`)
-    setEndDate(`${endYear}-${endMonth}-02`)
-  }, [startMonth, startYear, endMonth, endYear])
-
+    setStartDate(`${startYear}-${startMonth}-01`);
+    setEndDate(`${endYear}-${endMonth}-02`);
+  }, [startMonth, startYear, endMonth, endYear]);
 
   // Function for adding job experience through a POST
   const postExperience = async () => {
     try {
       const res = await fetch(`${url}/${userId}/experiences`, options);
       if (!res.ok) {
-        throw new Error('Post was not successful');
+        throw new Error("Post was not successful");
       }
       const responseData = await res.json();
-      console.log('Post request successful for: ', responseData)
+      console.log("Post request successful for: ", responseData);
     } catch (err) {
-      console.error('Error', err);
+      console.error("Error", err);
     }
   };
 
@@ -91,9 +92,20 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading,
       <div className="add-experience-modal">
         <div className="d-flex top-modal justify-content-between align-items-center mb-0 pb-0">
           <h4 className="notes add-experience-header">Add experience</h4>
-          <button className="close-modal-btn" type="button" onClick={setIsActiveProp}>
+          <button
+            className="close-modal-btn"
+            type="button"
+            onClick={setIsActiveProp}
+          >
             <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-x-lg"
+                viewBox="0 0 16 16"
+              >
                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
               </svg>
             </div>
@@ -101,58 +113,86 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading,
         </div>
         <div className="notify-network">
           <h5 className="notes">Notify network</h5>
-          <p className="notes">Turn on to notify your network of key profile changes (such as new job) and work anniversaries. Updates can take up to 2 hours. Learn more about <strong>sharing profile changes.</strong></p>
+          <p className="notes">
+            Turn on to notify your network of key profile changes (such as new
+            job) and work anniversaries. Updates can take up to 2 hours. Learn
+            more about <strong>sharing profile changes.</strong>
+          </p>
         </div>
         <p className="notes">* Indicates required</p>
         <form className="post-experience-form" onSubmit={handleSubmit}>
           <div className="input-field">
             <h6>Title*</h6>
-            <input type="text" name="role" required placeholder="Ex. Retail Sales Manager" onChange={(e) => {
-              setRole(e.target.value);
-            }} />
+            <input
+              type="text"
+              name="role"
+              required
+              placeholder="Ex. Retail Sales Manager"
+              onChange={(e) => {
+                setRole(e.target.value);
+              }}
+            />
           </div>
-          {<div className="input-field">
-            <h6>Employment type</h6>
-            <select>
-              <option value="default">Please select</option>
-              <option value="Full-time">Full-time</option>
-              <option value="Part-time">Part-time</option>
-              <option value="Self-employed">Self-employed</option>
-              <option value="Freelance">Freelance</option>
-              <option value="Contract">Contract</option>
-              <option value="Internship">Internship</option>
-              <option value="Apprenticeship">Apprenticeship</option>
-              <option value="Temporary">Temporary</option>
-            </select>
-            <p>Learn more about <strong>employment types.</strong></p>
-          </div>}
+          {
+            <div className="input-field">
+              <h6>Employment type</h6>
+              <select>
+                <option value="default">Please select</option>
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Self-employed">Self-employed</option>
+                <option value="Freelance">Freelance</option>
+                <option value="Contract">Contract</option>
+                <option value="Internship">Internship</option>
+                <option value="Apprenticeship">Apprenticeship</option>
+                <option value="Temporary">Temporary</option>
+              </select>
+              <p>
+                Learn more about <strong>employment types.</strong>
+              </p>
+            </div>
+          }
           <div className="input-field">
             <h6>Company name*</h6>
-            <input type="text" name="company" required placeholder="Ex. Microsoft" onChange={(e) => {
-              setCompany(e.target.value);
-            }} />
+            <input
+              type="text"
+              name="company"
+              required
+              placeholder="Ex. Microsoft"
+              onChange={(e) => {
+                setCompany(e.target.value);
+              }}
+            />
           </div>
           <div className="input-field">
             <h6>Location*</h6>
-            <input required type="text" name="area" placeholder="Ex. London, United Kingdom" onChange={(e) => {
-              setArea(e.target.value)
-            }} />
+            <input
+              required
+              type="text"
+              name="area"
+              placeholder="Ex. London, United Kingdom"
+              onChange={(e) => {
+                setArea(e.target.value);
+              }}
+            />
           </div>
-          {<div className="input-field">
-            <h6>Location type</h6>
-            <select>
-              <option value="default">Please select</option>
-              <option value="On-site">On-site</option>
-              <option value="Hybrid">Hybrid</option>
-              <option value="Remote">Remote</option>
-            </select>
-            <p>Pick a location type (ex: remote)</p>
-          </div>}
+          {
+            <div className="input-field">
+              <h6>Location type</h6>
+              <select>
+                <option value="default">Please select</option>
+                <option value="On-site">On-site</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="Remote">Remote</option>
+              </select>
+              <p>Pick a location type (ex: remote)</p>
+            </div>
+          }
           <div className="date-input-field">
             <div className="input-field">
               <div className="date-dates">
-                <div className='d-flex justify-content-between experience-date-field'>
-                  <div className='start-month'>
+                <div className="d-flex justify-content-between experience-date-field">
+                  <div className="start-month">
                     <p>Start month*</p>
                     <select
                       required
@@ -160,7 +200,8 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading,
                       id="startDateMonth"
                       onChange={(e) => {
                         setStartMonth(e.target.value);
-                      }}>
+                      }}
+                    >
                       <option value="default">Please select</option>
                       <option value="01">January</option>
                       <option value="02">February</option>
@@ -176,7 +217,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading,
                       <option value="12">December</option>
                     </select>
                   </div>
-                  <div className='start-year'>
+                  <div className="start-year">
                     <p>Start year*</p>
                     <select
                       required
@@ -184,7 +225,8 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading,
                       id="startDateYear"
                       onChange={(e) => {
                         setStartYear(e.target.value);
-                      }}>
+                      }}
+                    >
                       <option value="default">Please select</option>
                       <option value="2024">2024</option>
                       <option value="2023">2023</option>
@@ -267,15 +309,17 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading,
               </div>
             </div>
             <div className="input-field experience-dates">
-              <div className='d-flex justify-content-between experience-date-field'>
-                <div className='end-month'>
-                  <p className='mb-1'>End month*</p>
-                  <select required
+              <div className="d-flex justify-content-between experience-date-field">
+                <div className="end-month">
+                  <p className="mb-1">End month*</p>
+                  <select
+                    required
                     name="endDateMonth"
                     id="endDateMonth"
                     onChange={(e) => {
                       setEndMonth(e.target.value);
-                    }}>
+                    }}
+                  >
                     <option value="default">Please select</option>
                     <option value="01">January</option>
                     <option value="02">February</option>
@@ -291,14 +335,16 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading,
                     <option value="12">December</option>
                   </select>
                 </div>
-                <div className='end-year'>
-                  <p className='mb-1'>End year*</p>
-                  <select required
+                <div className="end-year">
+                  <p className="mb-1">End year*</p>
+                  <select
+                    required
                     name="endDateYear"
                     id="endDateYear"
                     onChange={(e) => {
                       setEndYear(e.target.value);
-                    }}>
+                    }}
+                  >
                     <option value="default">Please select</option>
                     <option value="2024">2024</option>
                     <option value="2023">2023</option>

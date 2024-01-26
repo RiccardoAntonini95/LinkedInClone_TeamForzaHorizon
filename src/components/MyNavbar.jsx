@@ -33,6 +33,10 @@ const MyNavBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    console.log("isProfilePage ", isProfilePage);
+  }, [isProfilePage]);
+
   const profileData = useSelector((state) => state.profile.actualProfile);
 
   const handleInputChange = (query) => {
@@ -112,13 +116,16 @@ const MyNavBar = () => {
                   if (e.key === "Enter") {
                     if (!isProfilePage) {
                       navigate(`/jobs/${query}`);
-                      setQuery("");
+
                       setIsProfilePage(false);
                     } else {
                       navigate(`/profile/search/${query}`);
-                      setQuery("");
+
                       setIsProfilePage(true);
                     }
+
+                    setQuery("");
+                    e.target.value = "";
                   }
                 }}
               />
@@ -195,7 +202,6 @@ const MyNavBar = () => {
                 <Image
                   width={24}
                   height={24}
-                  size
                   className="m-auto rounded-circle object-fit-cover"
                   src={profileData.image}
                 />

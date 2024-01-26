@@ -9,13 +9,13 @@ const JobSearch = () => {
   const [detailJobs, setDetailJobs] = useState(null);
   const date = new Date("2021-08-29T17:53:08.000Z");
 
- const day = date.getDate();
- const month = date.getMonth() + 1;
- const year = date.getFullYear();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
 
   useEffect(() => {
     getJobs();
-  }, []);
+  }, [params.query]);
 
   const getJobs = async () => {
     try {
@@ -34,8 +34,8 @@ const JobSearch = () => {
   };
 
   const handleDetailJobs = (job) => {
-    setDetailJobs(job)
-  }
+    setDetailJobs(job);
+  };
 
   return (
     <>
@@ -50,27 +50,27 @@ const JobSearch = () => {
             >
               {/* JOBS LIST */}
               {queryJobs.data.map((job, i) => (
-                <JobList key={i} list={job} cambiaStato={handleDetailJobs}/>
+                <JobList key={i} list={job} showDetails={handleDetailJobs} />
               ))}
             </Col>
             <Col className="col-5 overflow-auto" style={{ height: "90vh" }}>
               {/* JOBS DETAIL */}
               {detailJobs && (
                 <>
-                <p className="fs-4 fw-bold">{detailJobs.title}</p>
-              <p>
-                {detailJobs.company_name} .{" "}
-                <span className="text-secondary">
-                  Published: {day}-{month}-{year} .{" "}
-                </span>
-              </p>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: detailJobs.description,
-                }}
-              ></div>
+                  <p className="fs-4 fw-bold">{detailJobs.title}</p>
+                  <p>
+                    {detailJobs.company_name} .{" "}
+                    <span className="text-secondary">
+                      Published: {day}-{month}-{year} .{" "}
+                    </span>
+                  </p>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: detailJobs.description,
+                    }}
+                  ></div>
                 </>
-              )}  
+              )}
             </Col>
           </>
         )}
