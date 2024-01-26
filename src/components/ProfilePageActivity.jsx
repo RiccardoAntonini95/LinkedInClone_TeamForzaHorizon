@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import {
   Row,
   Col,
-  Container,
   Button,
   Image,
   Modal,
@@ -50,7 +49,7 @@ const ProfilePageActivity = ({ profileData }) => {
     getPosts();
   }, []);
 
-   /* FETCH FUNCTIONS */
+  /* FETCH FUNCTIONS */
   const getPosts = async () => {
     try {
       const res = await fetch(

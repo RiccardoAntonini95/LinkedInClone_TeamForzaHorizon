@@ -34,7 +34,7 @@ const MyNavBar = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("isProfilePage ", isProfilePage);
+    //console.log("isProfilePage ", isProfilePage);
   }, [isProfilePage]);
 
   const profileData = useSelector((state) => state.profile.actualProfile);

@@ -30,9 +30,6 @@ const ProfilePageSearch = () => {
                     alt="background"
                     className="header-card-img"
                   />
-                  <button type="button" id="header-img-loader-btn">
-                    <FaCamera color="0a66c2" />
-                  </button>
                 </Card.Header>
 
                 <Card.Img

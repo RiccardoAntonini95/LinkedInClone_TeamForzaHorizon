@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import JobList from "./JobList";
+import Error from "./Error";
+import Loader from "./Loader";
 import { Row, Col } from "react-bootstrap";
 
 const JobSearch = () => {
   const params = useParams();
   const [queryJobs, setQueryJobs] = useState(null);
   const [detailJobs, setDetailJobs] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const date = new Date("2021-08-29T17:53:08.000Z");
 
   const day = date.getDate();
@@ -18,6 +22,8 @@ const JobSearch = () => {
   }, [params.query]);
 
   const getJobs = async () => {
+    setIsError(false);
+    setIsLoading(true);
     try {
       const response = await fetch(
         `https://strive-benchmark.herokuapp.com/api/jobs?search=${params.query}&limit=10`
@@ -27,9 +33,13 @@ const JobSearch = () => {
         setQueryJobs(data);
       } else {
         console.log("Errore del fetch");
+        throw new Error("Cannot fetch data");
       }
     } catch (err) {
       console.log("Errore:", err);
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -42,6 +52,8 @@ const JobSearch = () => {
       <Row className="d-flex justify-content-center bg-white mx-3">
         {" "}
         {/* CONTAINER */}
+        {isLoading && <Loader />}
+        {isError && <Error message={"Cannot get jobs data..."} />}
         {queryJobs && (
           <>
             <Col

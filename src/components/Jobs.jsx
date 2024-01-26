@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import HomeFooter from "./HomeFooter";
 import JobList from "./JobList";
+import Error from "./Error";
+import Loader from "./Loader";
 import { Row, Col, ListGroup, Button, Image } from "react-bootstrap";
 import { FaBookmark, FaList, FaArrowRight } from "react-icons/fa6";
 import { TbClipboardCheck } from "react-icons/tb";
@@ -11,12 +13,16 @@ import { useSelector } from "react-redux";
 const Jobs = () => {
   const [defaultJobs, setDefaultJobs] = useState(null);
   const profileData = useSelector((state) => state.profile.actualProfile);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     getJobs();
   }, []);
 
   const getJobs = async () => {
+    setIsError(false);
+    setIsLoading(true);
     try {
       const response = await fetch(
         "https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10"
@@ -27,9 +33,13 @@ const Jobs = () => {
         setDefaultJobs(data);
       } else {
         console.log("Errore del fetch");
+        throw new Error("Cannot fetch data");
       }
     } catch (err) {
       console.log("Errore:", err);
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -62,6 +72,8 @@ const Jobs = () => {
       <Col className="col-5 border rounded bg-white">
         {" "}
         {/* JOBS LIST */}
+        {isLoading && <Loader />}
+        {isError && <Error message={"Cannot get jobs data..."} />}
         {defaultJobs &&
           defaultJobs.data.map((job, i) => <JobList key={i} list={job} />)}
       </Col>

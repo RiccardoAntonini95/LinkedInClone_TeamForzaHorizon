@@ -37,7 +37,9 @@ export const Experience = ({ userId, isSpecificProfile }) => {
   }, [isActive]);
 
   useEffect(() => {
-    getExperience();
+    setTimeout(() => {
+      getExperience();
+    }, 300);
   }, []);
 
   useEffect(() => {
@@ -49,6 +51,7 @@ export const Experience = ({ userId, isSpecificProfile }) => {
   }, [isLoading]);
 
   const getExperience = async () => {
+    console.log("experience fetch started");
     try {
       const res = await fetch(`${url}/${userId}/experiences`, options);
       if (!res.ok) {

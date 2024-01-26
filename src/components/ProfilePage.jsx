@@ -11,6 +11,7 @@ import { FaCamera } from "react-icons/fa";
 import { setProfileAction } from "../redux/actions/ProfilePage";
 import { useDispatch, useSelector } from "react-redux";
 import "../assets/css/ProfilePage.css";
+import Loader from "./Loader";
 
 const ProfilePage = () => {
   const profileData = useSelector((state) => state.profile.actualProfile);
@@ -61,6 +62,7 @@ const ProfilePage = () => {
       {/* LEFT SECTION */}
       <Container className="d-flex pt-4 mb-5 profile-page-container justify-content-center">
         <Container className="main-info-container ">
+          {!profileData && <Loader />}
           {profileData && (
             <>
               {/* CARD */}
@@ -104,10 +106,7 @@ const ProfilePage = () => {
                     )}
                   </Modal.Body>
                   <Modal.Footer>
-                    <form
-                      id="modal-form"
-                      onSubmit={setProfileImage}
-                    >
+                    <form id="modal-form" onSubmit={setProfileImage}>
                       <input
                         type="file"
                         accept="image/*"

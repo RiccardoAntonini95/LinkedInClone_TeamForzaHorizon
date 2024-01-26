@@ -70,7 +70,6 @@ const Home = () => {
       if (!res.ok) throw new Error("Cannot fetch data");
       const data = await res.json();
       const newestData = data.reverse().slice(0, 15);
-
       setPosts(newestData);
     } catch (err) {
       console.log(err, "error");
@@ -81,6 +80,8 @@ const Home = () => {
   };
 
   const handleGetComments = async () => {
+    setIsError(false);
+    setIsLoading(true);
     try {
       const res = await fetch(
         "https://striveschool-api.herokuapp.com/api/comments/",
@@ -96,6 +97,9 @@ const Home = () => {
       setComments(newestData);
     } catch (error) {
       console.log(error);
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -103,6 +107,8 @@ const Home = () => {
     <Row>
       {/* LEFT CONTAINER */}
       <Col xs={3}>
+        {isLoading && <Loader />}
+        {isError && <Error message={"Cannot get profile data..."} />}
         {profileData && <LeftSide currentProfile={profileData} />}
       </Col>
       <Col xs={6}>
