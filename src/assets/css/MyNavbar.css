@@ -142,7 +142,8 @@ input:focus {
   z-index: 1000;
   top: 30px;
   max-height: 400px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   background-color: white;
 }
