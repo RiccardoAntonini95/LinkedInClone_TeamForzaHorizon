@@ -7,7 +7,6 @@ import {
   BriefcaseFill,
   ChatDotsFill,
   BellFill,
-  PersonCircle,
 } from "react-bootstrap-icons";
 import { Grid3x3GapFill } from "react-bootstrap-icons";
 import { FaSearch } from "react-icons/fa";
@@ -30,14 +29,12 @@ const MyNavBar = () => {
   const [query, setQuery] = useState("");
   const [isProfilePage, setIsProfilePage] = useState(false);
   const [allProfiles, setAllProfiles] = useState([]);
-
-  const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const profileData = useSelector((state) => state.profile.actualProfile);
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const handleInputChange = (query) => {
     setQuery(query);
   };
@@ -51,15 +48,8 @@ const MyNavBar = () => {
   };
 
   useEffect(() => {
-    if (isProfilePage) {
-      getAllProfiles();
-    }
+    getAllProfiles();
   }, []);
-
-  /*   useEffect(() => {
-setData(allProfiles)
-setFilteredData(allProfiles)
-  }, []) */
 
   const getAllProfiles = async () => {
     try {
@@ -71,7 +61,7 @@ setFilteredData(allProfiles)
       if (!res.ok) throw new Error("Cannot fetch data");
 
       const data = await res.json();
-      console.log("All profiles ", data);
+      // console.log("All profiles ", data);
       setAllProfiles(data);
       dispatch(setAllProfilesAction(data));
     } catch (err) {
@@ -96,8 +86,12 @@ setFilteredData(allProfiles)
                 onClick={() => {
                   if (!isProfilePage) {
                     navigate(`/jobs/${query}`);
+                    setQuery("");
+                    setIsProfilePage(false);
                   } else {
                     navigate(`/profile/search/${query}`);
+                    setQuery("");
+                    setIsProfilePage(true);
                   }
                 }}
                 style={{ cursor: "pointer" }}
@@ -110,14 +104,20 @@ setFilteredData(allProfiles)
                 }
                 onChange={(e) => {
                   handleInputChange(e.target.value);
-                  handleInputFilter(e.target.value);
+                  if (isProfilePage) {
+                    handleInputFilter(e.target.value);
+                  }
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     if (!isProfilePage) {
                       navigate(`/jobs/${query}`);
+                      setQuery("");
+                      setIsProfilePage(false);
                     } else {
                       navigate(`/profile/search/${query}`);
+                      setQuery("");
+                      setIsProfilePage(true);
                     }
                   }
                 }}
@@ -130,7 +130,11 @@ setFilteredData(allProfiles)
                         return (
                           <div
                             key={i}
-                            onClick={() => navigate(`/profile/${profile._id}`)}
+                            onClick={() => {
+                              navigate(`/profile/${profile._id}`);
+                              setQuery("");
+                              setIsProfilePage(true);
+                            }}
                           >
                             {profile.name}
                           </div>
@@ -148,6 +152,10 @@ setFilteredData(allProfiles)
                 <Link
                   to={"/"}
                   className="d-flex flex-column text-center px-4 nav-link"
+                  onClick={() => {
+                    setQuery("");
+                    setIsProfilePage(false);
+                  }}
                 >
                   <HouseDoorFill size={24} className="m-auto" /> Home
                 </Link>
@@ -162,7 +170,10 @@ setFilteredData(allProfiles)
                 <Link
                   to={"/jobs"}
                   className="nav-link d-flex flex-column text-center px-4"
-                  onClick={() => setIsProfilePage(false)}
+                  onClick={() => {
+                    setIsProfilePage(false);
+                    setQuery("");
+                  }}
                 >
                   <BriefcaseFill size={24} className="m-auto" />
                   Jobs
@@ -203,7 +214,10 @@ setFilteredData(allProfiles)
                     <Link
                       to="/profile"
                       className="btn btn-primary"
-                      onClick={() => setIsProfilePage(true)}
+                      onClick={() => {
+                        setIsProfilePage(true);
+                        setQuery("");
+                      }}
                     >
                       Go to profile
                     </Link>

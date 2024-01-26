@@ -9,6 +9,7 @@ import JobSearch from "./components/JobSearch";
 import { Container } from "react-bootstrap";
 import ProfilePageSearch from "./components/ProfilePageSearch";
 import ProfilePageGeneralSearch from "./components/ProfilePageGeneralSearch";
+import Home from "./components/Home";
 
 function App() {
   return (
