@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import JobExeperienceIcon from "../assets/img/JobExperienceIcon.png";
 import { convertTime } from "../assets/js";
 import { EditExperienceModal } from "./EditExperienceModal"
-import '../assets/css/experienceStyle.css'
 import { MONTHS } from "../assets/js/matteoVariables";
-import { MONTHS_DIVIDER } from "../assets/js/matteoVariables";
+import '../assets/css/experienceStyle.css'
 
 export const SingleExperience = ({ experience, getExperience, setLoading }) => {
 
@@ -34,7 +33,6 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
             document.body.classList.remove('overflow-disabled')
         }
     }, [isEdit])
-
 
     return (
         <div className="d-flex single-experience">
@@ -77,4 +75,3 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
     );
 };
 
-//posts.filter(post => post.user.id == profile.id).map(post => <Componente/>)

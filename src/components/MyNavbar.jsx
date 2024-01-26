@@ -677,12 +677,12 @@ setFilteredData(allProfiles)
                       </div>
                     </Container>
 
-                    {/* <Container className="border rounded px-0">
+                    <Container className="border rounded px-0">
                       <div className="p-3 fw-medium">
                         Discover other LinkedIn products
                       </div>
-                      <div className="d-flex flex-wrap border-top py-3">
-                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                      <div className="d-flex flex-wrap border-top py-3 linkedin-products">
+                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                           <li-icon
                             aria-hidden="true"
                             type="app-learning"
@@ -746,7 +746,7 @@ setFilteredData(allProfiles)
                           </li-icon>
                           <span className="text-muted">Learning</span>
                         </div>
-                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                           <li-icon
                             aria-hidden="true"
                             type="app-talent-insights"
@@ -786,9 +786,9 @@ setFilteredData(allProfiles)
                               ></path>
                             </svg>
                           </li-icon>
-                          <span className="text-muted">Learning</span>
+                          <span className="text-muted">Talent Insights</span>
                         </div>
-                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                           <li-icon
                             aria-hidden="true"
                             type="app-jobs-posting"
@@ -843,9 +843,9 @@ setFilteredData(allProfiles)
                               ></circle>
                             </svg>
                           </li-icon>
-                          <span className="text-muted">Learning</span>
+                          <span className="text-muted">Post a job</span>
                         </div>
-                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                           <li-icon
                             aria-hidden="true"
                             type="app-ads"
@@ -895,9 +895,9 @@ setFilteredData(allProfiles)
                               ></path>
                             </svg>
                           </li-icon>
-                          <span className="text-muted">Learning</span>
+                          <span className="text-muted">Advertise</span>
                         </div>
-                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                           <li-icon
                             aria-hidden="true"
                             type="app-sales-navigator"
@@ -954,9 +954,9 @@ setFilteredData(allProfiles)
                               ></circle>
                             </svg>
                           </li-icon>
-                          <span className="text-muted">Learning</span>
+                          <span className="text-muted">Sell</span>
                         </div>
-                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                           <li-icon
                             aria-hidden="true"
                             type="app-groups"
@@ -1019,9 +1019,9 @@ setFilteredData(allProfiles)
                               </g>
                             </svg>
                           </li-icon>
-                          <span className="text-muted">Learning</span>
+                          <span className="text-muted">Groups</span>
                         </div>
-                        <div className="li-product d-flex flex-column text-center mb-5 mx-2">
+                        <div className="li-product d-flex flex-column text-center mb-3 mx-2">
                           <li-icon
                             aria-hidden="true"
                             type="app-profinder"
@@ -1058,10 +1058,58 @@ setFilteredData(allProfiles)
                               ></path>
                             </svg>
                           </li-icon>
-                          <span className="text-muted">Learning</span>
+                          <span className="text-muted">
+                            Services Marketplace
+                          </span>
                         </div>
                       </div>
-                    </Container> */}
+                    </Container>
+                    <Container className="border rounded px-0 ex-business">
+                      <div className="p-3 fw-medium">
+                        Explore more for business
+                      </div>
+                      <div className="li-business d-flex flex-column border-top border-bottom py-3">
+                        <a href="#" className="mb-2 px-3">
+                          <h6 className="mb-0">Hire on LinkedIn</h6>
+                          <span className="text-muted">
+                            Find, attract and recruit talent
+                          </span>
+                        </a>
+                        <a href="#" className="mb-2 px-3">
+                          <h6 className="mb-0">Sell with LinkedIn</h6>
+                          <span className="text-muted">
+                            Unlock sales opportunities
+                          </span>
+                        </a>
+                        <a href="#" className="mb-2 px-3">
+                          <h6 className="mb-0">Post a job for free</h6>
+                          <span className="text-muted">
+                            Get qualified applicants quickly
+                          </span>
+                        </a>
+                        <a href="#" className="mb-2 px-3">
+                          <h6 className="mb-0">Advertise on LinkedIn</h6>
+                          <span className="text-muted">
+                            Acquire customers and grow your business
+                          </span>
+                        </a>
+                        <a href="#" className="mb-2 px-3">
+                          <h6 className="mb-0">Learn with LinkedIn</h6>
+                          <span className="text-muted">
+                            Courses to develop your employees
+                          </span>
+                        </a>
+                        <a href="#" className="mb-2 px-3">
+                          <h6 className="mb-0">Admin Center</h6>
+                          <span className="text-muted">
+                            Manage billing and account details
+                          </span>
+                        </a>
+                      </div>
+                      <div className="p-3 fw-medium">
+                        <a href="#">Create a company page</a>
+                      </div>
+                    </Container>
                   </Modal.Body>
                 </NavDropdown>
               </Nav.Link>

@@ -1,5 +1,4 @@
-import React from "react";
-import user from "../assets/img/user.png";
+import { React, useState } from "react";
 import {
   Row,
   Col,
@@ -14,13 +13,12 @@ import {
 import { AiFillPicture } from "react-icons/ai";
 import { MdCalendarMonth } from "react-icons/md";
 import { GrTextWrap } from "react-icons/gr";
-import { useState } from "react";
 import { IoMdTime } from "react-icons/io";
 import { BsThreeDots } from "react-icons/bs";
 import { TiStarburst } from "react-icons/ti";
 import { FaRegFaceSmile } from "react-icons/fa6";
-import { useSelector } from "react-redux";
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
+import { useSelector } from "react-redux";
 
 const PostBar = () => {
   const [show, setShow] = useState(false);
@@ -96,7 +94,7 @@ const PostBar = () => {
         </Col>
       </Row>
 
-      {/* MODALE */}
+      {/* MODAL */}
 
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header className="border-0" closeButton>

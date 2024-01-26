@@ -1,6 +1,6 @@
 import { Row, Col, Image } from "react-bootstrap"
-import logo from "../assets/img/logo.png"
 import { GiRadarSweep } from "react-icons/gi";
+import logo from "../assets/img/logo.png"
 import "../assets/css/jobList.css"
 
 const JobList = ({list, cambiaStato}) => {

@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 import { LOADING_TIME } from "../assets/js/matteoVariables";
-import { MATTEO_AUTH_TOKEN } from "../assets/js/matteoVariables";
+import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { url } from "../assets/js/matteoVariables";
 
-const userId = '65b02ccc004b880018fef5d1'   //  Temporary userId for testing
-
-
-export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading/* , userId */ }) => {
+export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading, userId }) => {
 
   const validEndDate = new Date();
   const [area, setArea] = useState('');
@@ -61,7 +58,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading/
         area: area
       }),
       headers: {
-        Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
+        Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
         'Content-Type': 'application/json'
       },
     })
@@ -96,7 +93,7 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading/
           <h4 className="notes add-experience-header">Add experience</h4>
           <button className="close-modal-btn" type="button" onClick={setIsActiveProp}>
             <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" classname="bi bi-x-lg" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
               </svg>
             </div>
@@ -152,11 +149,6 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading/
             <p>Pick a location type (ex: remote)</p>
           </div>}
           <div className="date-input-field">
-            {/* <div className="d-flex checkbox-field">
-                            <input type="checkbox" />
-                            <p>I am currently working in this role</p>
-                        </div> */}
-
             <div className="input-field">
               <div className="date-dates">
                 <div className='d-flex justify-content-between experience-date-field'>
@@ -387,20 +379,6 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading/
                 </div>
               </div>
             </div>
-            {/* <div className="input-field">
-              <h6>End date*</h6>
-              <div className="d-flex employment-dates">
-                <input
-                  required
-                  type="date"
-                  name="endDate"
-                  id="endDate"
-                  onChange={(e) => {
-                    setEndDate(e.target.value);
-                  }}
-                />
-              </div>
-            </div> */}
           </div>
           <div className="input-field">
             <h6>Description*</h6>

@@ -1,4 +1,3 @@
-import "../assets/css/ProfilePage.css";
 import { useEffect, useState } from "react";
 import {
   Row,
@@ -13,7 +12,6 @@ import {
 } from "react-bootstrap";
 import { AiFillPicture } from "react-icons/ai";
 import { MdCalendarMonth } from "react-icons/md";
-import { GrTextWrap } from "react-icons/gr";
 import { IoMdTime } from "react-icons/io";
 import { BsThreeDots } from "react-icons/bs";
 import { TiStarburst } from "react-icons/ti";
@@ -22,6 +20,7 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { convertTime } from "../assets/js";
+import "../assets/css/ProfilePage.css";
 
 const options = {
   method: "GET",
@@ -51,6 +50,7 @@ const ProfilePageActivity = ({ profileData }) => {
     getPosts();
   }, []);
 
+   /* FETCH FUNCTIONS */
   const getPosts = async () => {
     try {
       const res = await fetch(

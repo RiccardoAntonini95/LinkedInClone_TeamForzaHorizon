@@ -1,7 +1,6 @@
 import { Row, Col, Image, Badge } from "react-bootstrap";
 import { BsThreeDots } from "react-icons/bs";
 import { STRIVE_KEY_COMMENTS } from "../assets/js/auth_keys";
-import { useSelector } from "react-redux";
 import user from "../assets/img/user.png"
 
 const CommentList = ({comments}) => {
@@ -19,8 +18,8 @@ const CommentList = ({comments}) => {
               <Badge className="bg-secondary p-1">Autore</Badge>
             </Col>
             <Col className="col-6 d-flex align-items-center justify-content-end text-secondary">
-              <BsThreeDots /> {/* FETCH MODIFICA */}
-              <p className="m-0 pe-1">✖️</p> {/* FETCH ELIMINA */}
+              <BsThreeDots /> {/* FETCH MODIFY */}
+              <p className="m-0 pe-1">✖️</p> {/* FETCH DELETE */}
             </Col>
             <Col className="col-12 mt-1 ms-2">{comments.comment}</Col>
           </Row>

@@ -1,20 +1,16 @@
 import { useState } from "react";
-import { Container, Card, Row, Modal, Button } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { Experience } from "./Experience";
-
-import "../assets/css/ProfilePage.css";
+import Footer from "./Footer";
+import ProfilePageActivity from "./ProfilePageActivity";
+import ProfilePageModifyButton from "./ProfilePageModifyButton";
 import backgroundImg from "../assets/img/background-profilePage-card.jpeg";
+import { Container, Card, Row, Modal } from "react-bootstrap";
+import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { GoShieldCheck } from "react-icons/go";
 import { FaCamera } from "react-icons/fa";
-import Footer from "./Footer";
-import ProfilePageModifyButton from "./ProfilePageModifyButton";
 import { setProfileAction } from "../redux/actions/ProfilePage";
-
-import ProfilePageActivity from "./ProfilePageActivity";
-
-//const userId = '65b02ccc004b880018fef5d1'
+import { useDispatch, useSelector } from "react-redux";
+import "../assets/css/ProfilePage.css";
 
 const ProfilePage = () => {
   const profileData = useSelector((state) => state.profile.actualProfile);
@@ -36,7 +32,6 @@ const ProfilePage = () => {
           method: "POST",
           headers: {
             Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
-            // "Content-Type": "multipart/form-data",
           },
           body: formData,
         }
@@ -111,7 +106,6 @@ const ProfilePage = () => {
                   <Modal.Footer>
                     <form
                       id="modal-form"
-                      /* encType="multipart/form-data" */
                       onSubmit={setProfileImage}
                     >
                       <input
@@ -129,25 +123,6 @@ const ProfilePage = () => {
 
                 <Card.Body className="">
                   <div className="d-flex justify-content-end">
-                    {/*  <button
-                    className="edit-experience-btn d-block"
-                    onClick={handleShowEditProfile}
-                  >
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        class="bi bi-pencil"
-                        id="pencil"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
-                      </svg>
-                    </div>
-                  </button> */}
-
                     <ProfilePageModifyButton profileData={profileData} />
                   </div>
                   <Card.Title className="d-inline-block me-3 fs-3">
@@ -181,61 +156,8 @@ const ProfilePage = () => {
               {/* END OF ABOUT */}
             </>
           )}
-
-          {/*   //const userId = '65b02ccc004b880018fef5d1' */}
           {profileData && <Experience userId={profileData._id} />}
           <section>
-            {/* <div className="activities">
-              <div className="d-flex justify-content-between experience-header">
-                <h2>Activity</h2>
-                <Row className="card-buttons-container px-2">
-                  <button type="button">Create a Post</button>
-                </Row>
-                <div className="d-flex icons-flex">
-                  <button type="button">
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        class="bi bi-pencil"
-                        id="pencil"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
-                      </svg>
-                    </div>
-                  </button>
-                </div>
-                <div>
-                  <h4 className="profileText">Charles Manson</h4>
-                  <p className="profileText2"> posted this 15 h</p>
-                  <BsFillPeopleFill />
-                  <hr />
-                  <h4 className="profileText">Charles Manson</h4>
-                  <p className="profileText2"> posted this 17 h</p>
-                  <BsFillPeopleFill />
-                  <hr />
-                  <h4 className="profileText">Charles Manson</h4>
-                  <p className="profileText2"> posted this 17 h</p>
-                  <BsFillPeopleFill />
-                  <hr />
-                </div>
-
-                <a href="#" className="showPost">
-                  Show all posts <FaArrowRight />{" "}
-                </a> */}
-
-            {/*                     <button type="button" onClick={() => console.log('edit experience')}>
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil" viewBox="0 0 16 16">
-                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
-                            </svg>
-                        </div>
-                    </button> */}
-            {/* </div>
-            </div> */}
             <ProfilePageActivity profileData={profileData} />
           </section>
         </Container>
@@ -261,7 +183,6 @@ const ProfilePage = () => {
                     </svg>
                   </a>
                 </div>
-
                 <p className="ProfilePageContainer2">Italian</p>
               </Row>
 

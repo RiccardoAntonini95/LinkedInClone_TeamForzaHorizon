@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
-import { Card, ListGroup, Row, Col, Container, Image } from "react-bootstrap";
+import React from "react";
+import { Card, ListGroup, Row, Col, Image } from "react-bootstrap";
 import { TiUserAdd } from "react-icons/ti";
 import { IoHardwareChip } from "react-icons/io5";
 import { FaBookmark } from "react-icons/fa";
 import { HiPlus } from "react-icons/hi";
-import { useDispatch } from "react-redux";
-import { setProfileAction } from "../redux/actions/ProfilePage";
-import bannerProfile from "../assets/img/bannerProfile.jpg";
 import { Link } from "react-router-dom";
+import bannerProfile from "../assets/img/bannerProfile.jpg";
 
 const LeftSide = ({ currentProfile }) => {
   return (

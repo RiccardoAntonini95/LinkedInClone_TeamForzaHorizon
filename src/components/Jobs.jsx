@@ -1,11 +1,11 @@
-import { Row, Col, ListGroup, Button, Image } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import HomeFooter from "./HomeFooter";
 import JobList from "./JobList";
+import { Row, Col, ListGroup, Button, Image } from "react-bootstrap";
 import { FaBookmark, FaList, FaArrowRight } from "react-icons/fa6";
 import { TbClipboardCheck } from "react-icons/tb";
 import { BsFillPlayBtnFill, BsPencilSquare } from "react-icons/bs";
 import { RiSettings4Fill } from "react-icons/ri";
-import HomeFooter from "./HomeFooter";
 import { useSelector } from "react-redux";
 
 const Jobs = () => {
@@ -37,7 +37,7 @@ const Jobs = () => {
     <Row className="d-flex justify-content-evenly mt-3 mx-3">
       <Col className="col-3 border rounded text-center fw-bold">
         {" "}
-        {/* MENU A SINISTRA POSITION FIXED*/}
+        {/*LEFT MENU'*/}
         <ListGroup>
           <ListGroup.Item>
             <FaBookmark /> My job offers
@@ -61,13 +61,13 @@ const Jobs = () => {
       </Col>
       <Col className="col-5 border rounded bg-white">
         {" "}
-        {/* LISTA LAVORI FETCH */}
+        {/* JOBS LIST */}
         {defaultJobs &&
           defaultJobs.data.map((job, i) => <JobList key={i} list={job} />)}
       </Col>
       <Col className="col-4 border rounded">
         {" "}
-        {/* DISPONIBILE A LAVORARE + FOOTER */}
+        {/* RIGHT DIV + FOOTER */}
         <ListGroup>
           <ListGroup.Item>
             <p className="fw-bold m-0">Open to work</p>

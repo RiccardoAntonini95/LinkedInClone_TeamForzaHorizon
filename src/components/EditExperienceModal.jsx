@@ -1,8 +1,8 @@
-import '../assets/css/experienceStyle.css'
 import { useState, useEffect } from "react";
+import { STRIVE_KEY_MERLINO } from '../assets/js/auth_keys';
 import { LOADING_TIME } from '../assets/js/matteoVariables';
-import { MATTEO_AUTH_TOKEN } from '../assets/js/matteoVariables';
 import { url } from '../assets/js/matteoVariables';
+import '../assets/css/experienceStyle.css'
 
 
 export const EditExperienceModal = ({
@@ -40,7 +40,7 @@ export const EditExperienceModal = ({
         }),
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
+            Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
         }
     });
 
@@ -49,7 +49,7 @@ export const EditExperienceModal = ({
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
+            Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
         },
     }
 
@@ -104,7 +104,7 @@ export const EditExperienceModal = ({
                 area: area
             }),
             headers: {
-                Authorization: `Bearer ${MATTEO_AUTH_TOKEN}`,
+                Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
                 'Content-Type': 'application/json'
             },
         })

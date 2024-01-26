@@ -10,8 +10,8 @@ body {
   padding: 16px;
   margin: 20px 0;
   background-color: white;
-  border-radius: 5px;
-  border: 1px solid #adadad;
+  border-radius: 20px;
+  border: 1px solid #E7E2DC;
 }
 
 .experience-header {
@@ -124,7 +124,7 @@ body {
   height: 100vh;
   left: 2px;
 }
-/* @media screen and (min-width: 576px) {
+@media screen and (min-width: 576px) {
   .add-experience-modal {
     top: 10vh;
     height: 80vh;
@@ -145,7 +145,7 @@ body {
 @media screen and (min-width: 1440px) {
   .add-experience-modal {
     width: 720px;
-    left: 35vw;
+    left: 32vw;
   }
 }
 @media screen and (min-width: 2560px) {
@@ -153,7 +153,7 @@ body {
     width: 853.3333333333px;
     left: 39vw;
   }
-} */
+}
 
 .close-modal-btn {
   background: none;
