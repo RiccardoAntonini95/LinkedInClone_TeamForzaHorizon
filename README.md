@@ -1,3 +1,38 @@
+# Version: 
+
+React version 18.2.0, Bootstrap version 5.3.2 and React Bootstrap 2.10.0
+
+
+# About: 
+
+Built using React JS, Redux added some features like: 
+- Post like functionality
+- Jobs search 
+- Profile search
+- Comments
+
+To run locally your file you must install all the dependencies. So, before starting the program write in the terminal : 
+
+                          npm i 
+
+# Dependencies: 
+
+- “bootstrap”
+- “react-bootstrap”,
+- “react-bootstrap-icons”,
+- “react-dom”,
+- “react-icons”,
+- “react-redux”,
+- “react-router-dom”,
+- "@reduxjs/toolkit”
+
+# After you have installed all the dependencies you can proceed in your terminal: 	
+
+			npm start 
+
+
+Our clone is up and running, share it now.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

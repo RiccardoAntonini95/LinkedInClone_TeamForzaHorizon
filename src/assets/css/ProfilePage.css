@@ -240,11 +240,11 @@
 }
 
 .activities {
-  padding: 20px;
-  margin: 20px;
+  padding: 16px;
+  margin: 20px 0;
   background-color: white;
   border-radius: 20px;
-  border: 1px solid #adadad;
+  border: 1px solid #E7E2DC;
 }
 
 .showPost {
@@ -256,6 +256,7 @@
 .showPost2 {
   display: flex;
   justify-content: center;
+  padding: 1.5rem;
 }
 
 .profileText {
@@ -294,7 +295,7 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  padding: 55px 0;
+
 }
 
 .icons-flex {
@@ -306,4 +307,6 @@
 
 .borderButton {
   border-radius: 25px;
+  margin-right: 1.5rem;
+  
 }
