@@ -1,0 +1,312 @@
+:root {
+  --blueLinkedin: #0a66c2;
+}
+
+.profile-page-container {
+  max-width: 90%;
+}
+
+/* CARD */
+
+.card {
+  border: 1px solid lightgrey;
+  margin-top: 0;
+  border-radius: 20px;
+}
+
+.main-info-container {
+  flex-basis: 80%;
+}
+
+.header-card-img {
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.card-header {
+  position: relative;
+  padding: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.card-header:first-child {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+#header-img-loader-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  top: 1.2rem;
+  right: 1.3rem;
+  border: none;
+  border-radius: 50%;
+}
+
+.card-profile-img {
+  position: absolute;
+  object-fit: cover;
+  height: 190px;
+  width: 190px;
+  /* width: 19%; */
+  left: 1.7rem;
+  top: 4.7rem;
+  border: 6px solid white;
+  cursor: pointer;
+}
+
+#verification-link {
+  color: var(--blueLinkedin);
+  text-decoration: none;
+  display: inline-flex;
+  padding: 0 10px;
+  align-items: center;
+  gap: 5px;
+  border: 2px solid var(--blueLinkedin);
+  border-radius: 15px;
+}
+
+#verification-link:hover {
+  background-color: #e2f0fe;
+}
+
+.location-text {
+  color: gray;
+}
+
+#contact-info {
+  color: var(--blueLinkedin);
+  text-decoration: none;
+}
+
+#contact-info:hover {
+  text-decoration: underline;
+}
+
+.card-buttons-container button {
+  color: white;
+  width: auto;
+  background-color: var(--blueLinkedin);
+  border: none;
+  border-radius: 20px;
+  margin-right: 0.4rem;
+  padding: 0.25rem 1rem;
+}
+
+.card-buttons-container button:nth-child(2) {
+  color: var(--blueLinkedin);
+  border: 2px solid var(--blueLinkedin);
+  background-color: transparent;
+}
+
+.card-buttons-container button:nth-child(2):hover {
+  background-color: #e2f0fe;
+}
+
+.card-buttons-container button:nth-child(3) {
+  color: gray;
+  border: 2px solid gray;
+  background-color: transparent;
+}
+
+.card-buttons-container button:nth-child(3):hover {
+  background-color: #ebebeb;
+}
+
+/* MODAL PROFILE PICTURE */
+#modal-profile-picture .modal-img {
+  object-fit: cover;
+}
+#modal-profile-picture .modal-header {
+  border-bottom: none;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+#modal-profile-picture .modal-header .btn-close {
+  background-color: white;
+  border-radius: 50%;
+}
+
+#modal-profile-picture .modal-content {
+  color: white;
+  top: 4rem;
+  background-color: #1b1f23 !important;
+  background-color: #1b1f23 !important;
+}
+
+#modal-profile-picture .modal-img {
+  height: 300px;
+  width: 300px;
+}
+
+#modal-profile-picture .modal-body {
+  padding: 1.5rem 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#modal-profile-picture .modal-footer {
+  border-top: 1px solid rgb(60, 60, 60);
+  display: block;
+}
+
+#modal-profile-picture .modal-footer form {
+  display: flex;
+  margin: 0.8rem auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#modal-profile-picture .modal-footer input[type="file"] {
+  background-color: #1b1f23;
+  border-radius: 10px;
+}
+
+#modal-profile-picture .modal-footer input[type="file"]::file-selector-button {
+  border: none;
+  background-color: var(--blueLinkedin);
+  color: white;
+  border-radius: 15px;
+  padding: 3px 20px;
+}
+
+#modal-profile-picture .modal-footer button {
+  border: none;
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+  background-color: var(--blueLinkedin);
+  color: white;
+  border-radius: 20px;
+  padding: 3px 20px;
+}
+
+/* END MODAL PROFILE PICTURE */
+
+/* ABOUT */
+.about-section {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid lightgrey;
+  background-color: white;
+}
+
+/* right container */
+.secondary-info-container {
+  flex-basis: 28%;
+}
+
+.ad-image {
+  width: 100%;
+}
+
+.ProfilePageContainer {
+  background-color: white;
+  border-radius: 20px;
+  margin-bottom: 0.7rem;
+}
+.ad-image {
+  border-radius: 20px;
+}
+.ProfilePageContainer2 {
+  color: gray;
+  font-weight: 400;
+  font-style: inherit;
+}
+
+.Title3 {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.RightBarProfile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Pencil {
+  text-decoration: none;
+  color: #616160;
+}
+
+.activities {
+  padding: 16px;
+  margin: 20px 0;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid #E7E2DC;
+}
+
+.showPost {
+  text-decoration: none;
+  color: #616160;
+  font-size: larger;
+}
+
+.showPost2 {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.profileText {
+  font-size: smaller;
+  font-weight: bolder;
+  color: #616160;
+  padding: 0;
+  display: inline-block;
+  margin-top: 0;
+}
+
+.profileText2 {
+  color: #616160;
+  font-weight: 400;
+  font-size: small;
+  padding: 0;
+  margin: 0;
+  margin-left: 0.5rem;
+  display: inline-block;
+}
+
+.cardProfile {
+  border-radius: 20px;
+}
+
+.containerActivity {
+  background-color: white;
+  border-radius: 16px;
+  padding-bottom: 2rem;
+
+  padding: 20px;
+}
+
+.borderProfile {
+  max-width: 97%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+}
+
+.icons-flex {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.borderButton {
+  border-radius: 25px;
+  margin-right: 1.5rem;
+  
+}

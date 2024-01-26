@@ -1,0 +1,18 @@
+body {
+  background-color: #f4f2ee;
+}
+.Post {
+  font-size: 14px;
+}
+#Pubblic{
+  font-size: 12px;
+  font-weight: bold;
+  color: rgb(177, 177, 177);
+  background-color: rgb(237, 237, 237);
+  padding: 0.4em 1.2em;
+  border: none;
+}
+#Pubblic:hover{
+color: white;
+background-color: #004182;
+}
