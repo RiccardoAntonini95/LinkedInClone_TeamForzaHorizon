@@ -153,6 +153,9 @@ const PostList = (props) => {
         </Col>
         <Row>
           <p>{props.posts.text}</p>
+          {props.posts.image && (
+            <Image src={props.posts.image} />
+          )}
         </Row>
         <Row className="text-center text-secondary p-0">
           <Col
