@@ -387,3 +387,15 @@ h4 {
     padding-bottom: calc($formElementsPadding *1.5) !important;
 }
 
+.submit-image-btn {
+    background-color: $btnSubBg;
+    font-weight: 600;
+    border-radius: 20px;
+    &:hover {
+        background-color: $btnSubBgHover;
+    }
+}
+
+.job-image {
+    border-radius: 20%;
+}

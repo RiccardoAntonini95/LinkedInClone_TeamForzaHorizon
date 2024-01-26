@@ -317,4 +317,17 @@ h4 {
   margin-bottom: 0;
   padding-top: 30px !important;
   padding-bottom: 30px !important;
+}
+
+.submit-image-btn {
+  background-color: #0967C2;
+  font-weight: 600;
+  border-radius: 20px;
+}
+.submit-image-btn:hover {
+  background-color: #397cbe;
+}
+
+.job-image {
+  border-radius: 20%;
 }/*# sourceMappingURL=experienceStyle.css.map */

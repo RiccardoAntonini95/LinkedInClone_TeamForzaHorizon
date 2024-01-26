@@ -3,6 +3,7 @@ import { STRIVE_KEY_MERLINO } from '../assets/js/auth_keys';
 import { LOADING_TIME } from '../assets/js/matteoVariables';
 import { url } from '../assets/js/matteoVariables';
 import '../assets/css/experienceStyle.css'
+import { AddImage } from "./AddImage";
 
 
 export const EditExperienceModal = ({
@@ -24,7 +25,6 @@ export const EditExperienceModal = ({
     const [role, setRole] = useState(experience.role);
     const [userId, setUserId] = useState(experience.user);
     const [experienceId, setExperienceId] = useState(experience._id);
-    const [datePassCheck, setDatePassCheck] = useState(true);
 
 
 
@@ -158,6 +158,10 @@ export const EditExperienceModal = ({
                     <p className="notes">Turn on to notify your network of key profile changes (such as new job) and work anniversaries. Updates can take up to 2 hours. Learn more about <strong>sharing profile changes.</strong></p>
                 </div>
                 <p className="notes">* Indicates required</p>
+                <AddImage
+                    experience={experience}
+                    userId={userId}
+                />
                 <form className="post-experience-form" onSubmit={handlePut}>
                     <div className="input-field">
                         <h6>Title*</h6>
