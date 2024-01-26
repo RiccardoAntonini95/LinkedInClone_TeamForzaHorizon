@@ -159,15 +159,6 @@ input:focus {
   cursor: pointer;
 }
 
-/* .search-result div:first-child {
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-}
-.search-result div:last-child {
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-} */
-
 .search-result-wrapper::-webkit-scrollbar {
   width: 15px;
 }
