@@ -4,7 +4,6 @@ import { convertTime } from "../assets/js";
 import { EditExperienceModal } from "./EditExperienceModal"
 import '../assets/css/experienceStyle.css'
 import { MONTHS } from "../assets/js/matteoVariables";
-import { MONTHS_DIVIDER } from "../assets/js/matteoVariables";
 
 export const SingleExperience = ({ experience, getExperience, setLoading }) => {
 
@@ -77,4 +76,3 @@ export const SingleExperience = ({ experience, getExperience, setLoading }) => {
     );
 };
 
-//posts.filter(post => post.user.id == profile.id).map(post => <Componente/>)
