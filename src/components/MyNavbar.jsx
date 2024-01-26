@@ -143,7 +143,7 @@ const MyNavBar = () => {
                               setIsProfilePage(true);
                             }}
                           >
-                            {profile.name}
+                            {profile.name} {profile.surname}
                           </div>
                         );
                       })}
