@@ -1,8 +1,8 @@
+import { useNavigate, useParams } from "react-router-dom";
+import Footer from "./Footer";
+import "../assets/css/ProfilePageGeneralSearch.css";
 import { Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import "../assets/css/ProfilePageGeneralSearch.css";
-import Footer from "./Footer";
 
 const ProfilePageGeneralSearch = () => {
   const params = useParams();
@@ -69,7 +69,6 @@ const ProfilePageGeneralSearch = () => {
                 className="ad-image"
               />
             </Row>
-            {/*    <Row>{fileImg && <p>{fileImg[0]}</p>}</Row> */}
           </Container>
         </Container>
       </Container>

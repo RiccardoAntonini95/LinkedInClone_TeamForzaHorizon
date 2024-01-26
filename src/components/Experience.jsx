@@ -95,16 +95,18 @@ export const Experience = ({ userId, isSpecificProfile }) => {
           </Row>
         </Container>
       )}
-      {!isSpecificProfile && experience.length === 0 && (
+      {experience.length === 0 && (
         <>
-          <p className="no-experience">
-            Click the icon in the corner to add your first experience
-          </p>
+          {isSpecificProfile ? (
+            <p className="no-experience">This user has no experiences...</p>
+          ) : (
+            <p className="no-experience">
+              Click the icon in the corner to add your first experience
+            </p>
+          )}
         </>
       )}
-      {isSpecificProfile && (
-        <p className="no-experience">This has no experiences...</p>
-      )}
+
       {!isLoading && experience.length > 0 && (
         <>
           {isActive && (
