@@ -1,28 +1,37 @@
-import "bootstrap/dist/css/bootstrap.min.css"
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import "./assets/css/home.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProfilePage from "./components/ProfilePage";
+import MyNavbar from "./components/MyNavbar";
+import Jobs from "./components/Jobs";
+import JobSearch from "./components/JobSearch";
+import { Container } from "react-bootstrap";
+import ProfilePageSearch from "./components/ProfilePageSearch";
+import ProfilePageGeneralSearch from "./components/ProfilePageGeneralSearch";
+import Home from "./components/Home";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-      {/* La navbar va qua */}
-      <Routes>
-       {/*  qua dentro i vari route */}
-      </Routes>
+        <MyNavbar />
+        <Container>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/jobs" element={<Jobs />} />
+            <Route path="/jobs/:query" element={<JobSearch />} />
+            <Route path="/profile/:profileId" element={<ProfilePageSearch />} />
+            <Route
+              path="/profile/search/:profileName"
+              element={<ProfilePageGeneralSearch />}
+            />
+          </Routes>
+        </Container>
       </BrowserRouter>
     </>
   );
 }
 
 export default App;
-
-
-/* Bootstrap: SI
-React-Bootstrap: SI
-Typescript: NO
-Classi: Come quelle di Bootstrap // es.(allineamento-bello)
-Id: CamelCase // es.(belloStoIdentificatore)
-Redux: Dati fetch dei profili, value della ricerca
-Componenti: TUTTI functional
-Lingua: INGLESE */

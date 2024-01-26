@@ -1,0 +1,34 @@
+.footer {
+  width: 75%;
+}
+.footer-style {
+  text-decoration: none;
+  color: #616160;
+  font-weight: bold;
+  font-size: smaller;
+}
+
+.footer-style:hover {
+  text-decoration: underline;
+  color: dodgerblue;
+}
+
+.footer-style2 {
+  padding-left: 0.5rem;
+  text-decoration: none;
+  color: #616160;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.footer-style2:hover {
+  text-decoration: underline;
+  color: dodgerblue;
+}
+
+.sottoTesto {
+  text-decoration: none;
+  color: #616160;
+  font-weight: 400;
+  font-size: small;
+}
