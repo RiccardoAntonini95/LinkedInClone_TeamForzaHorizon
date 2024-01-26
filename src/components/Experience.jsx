@@ -1,15 +1,11 @@
-import { Container, Row, Col } from "react-bootstrap"
 import { useState, useEffect } from "react"
-import '../assets/css/experienceStyle.css'
-import { Spinner } from "react-bootstrap"
 import { SingleExperience } from "./SingleExperience"
 import { AddExperienceModal } from "./AddExperienceModal"
+import { Container, Row, Col } from "react-bootstrap"
+import { Spinner } from "react-bootstrap"
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
-import { useSelector } from "react-redux";
-import { MATTEO_AUTH_TOKEN } from "../assets/js/matteoVariables"
 import { url } from "../assets/js/matteoVariables"
-
-// const userId = '65b02ccc004b880018fef5d1' // Temporary userId for testing
+import '../assets/css/experienceStyle.css'
 
 const options = {
   method: "GET",
@@ -22,7 +18,6 @@ const options = {
 
 export const Experience = ({ userId }) => {
 
-    //const userId = useSelector(state => state.profile.actualProfile._id)
     const [experience, setExperience] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [isActive, setIsActive] = useState(false)
@@ -45,11 +40,9 @@ export const Experience = ({ userId }) => {
 
   useEffect(() => {
     getExperience();
-    // console.log(experience)
   }, []);
 
   useEffect(() => {
-    // console.log(experience)
     setIsLoading(false);
   }, [experience]);
   useEffect(() => {

@@ -110,7 +110,6 @@ const Footer = () => {
             </ul>
           </Col>
         </Row>
-
         <Row>
           <Col md={6}>
             <p>LinkedIn Corporation © 2024</p>

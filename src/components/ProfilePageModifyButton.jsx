@@ -1,10 +1,10 @@
-import "../assets/css/experienceStyle.css";
-import "../assets/css/ProfilePageModifyButton.css";
-import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
+import { Modal, Button, Form } from "react-bootstrap";
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { useDispatch } from "react-redux";
 import { setProfileAction } from "../redux/actions/ProfilePage";
+import "../assets/css/experienceStyle.css";
+import "../assets/css/ProfilePageModifyButton.css";
 
 const options = {
   method: "PUT",
@@ -16,6 +16,7 @@ const options = {
 };
 
 const ProfilePageModifyButton = ({ profileData }) => {
+  /* STATES */
   const [show, setShow] = useState(false);
   const [queryName, setQueryName] = useState(null);
   const [querySurname, setQuerySurname] = useState(null);

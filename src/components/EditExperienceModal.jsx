@@ -1,9 +1,8 @@
-import '../assets/css/experienceStyle.css'
-import { STRIVE_KEY_MERLINO } from '../assets/js/auth_keys';
 import { useState, useEffect } from "react";
+import { STRIVE_KEY_MERLINO } from '../assets/js/auth_keys';
 import { LOADING_TIME } from '../assets/js/matteoVariables';
-import { MATTEO_AUTH_TOKEN } from '../assets/js/matteoVariables';
 import { url } from '../assets/js/matteoVariables';
+import '../assets/css/experienceStyle.css'
 
 
 export const EditExperienceModal = ({

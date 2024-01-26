@@ -1,12 +1,11 @@
+import { useState } from "react";
+import CommentList from "./CommentList";
 import user from "../assets/img/user.png";
 import { IoPeople } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import { AiTwotoneLike, AiFillPicture } from "react-icons/ai";
-import { FaRegCommentDots, FaRegFaceSmile } from "react-icons/fa6";
+import { FaRegCommentDots, FaRegFaceSmile, FaRegImage } from "react-icons/fa6";
 import { FaRegSmile } from "react-icons/fa";
-import { FaRegImage } from "react-icons/fa6";
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import {
   STRIVE_KEY_MERLINO,
   STRIVE_KEY_COMMENTS,
@@ -21,12 +20,11 @@ import {
   FormGroup,
   Form,
   ModalBody,
-  Badge,
 } from "react-bootstrap";
 import { MdCalendarMonth } from "react-icons/md";
 import { IoMdTime } from "react-icons/io";
 import { TiStarburst } from "react-icons/ti";
-import CommentList from "./CommentList";
+import { useSelector } from "react-redux";
 
 const optionsDelete = {
   method: "DELETE",
@@ -36,7 +34,7 @@ const optionsDelete = {
 };
 
 const PostList = (props) => {
-  const [isClicked, setIsClicked] = useState(false); //per il like
+  const [isClicked, setIsClicked] = useState(false);
   const profileData = useSelector((state) => state.profile.actualProfile);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -209,7 +207,7 @@ const PostList = (props) => {
             </Button>
           </Col>
         </Row>
-        {/* COMMENTI */}
+        {/* COMMENTS */}
         {props.comments &&
           props.comments.map((singoloCommento, i) => (
             <CommentList key={i} comments={singoloCommento} />

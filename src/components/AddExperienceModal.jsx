@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
 import { LOADING_TIME } from "../assets/js/matteoVariables";
-import { MATTEO_AUTH_TOKEN } from "../assets/js/matteoVariables";
 import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
 import { url } from "../assets/js/matteoVariables";
-
-// const userId = '65b02ccc004b880018fef5d1'   //  Temporary userId for testing
-
 
 export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading, userId }) => {
 
@@ -153,11 +149,6 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading,
             <p>Pick a location type (ex: remote)</p>
           </div>}
           <div className="date-input-field">
-            {/* <div className="d-flex checkbox-field">
-                            <input type="checkbox" />
-                            <p>I am currently working in this role</p>
-                        </div> */}
-
             <div className="input-field">
               <div className="date-dates">
                 <div className='d-flex justify-content-between experience-date-field'>
@@ -388,20 +379,6 @@ export const AddExperienceModal = ({ setIsActiveProp, getExperience, setLoading,
                 </div>
               </div>
             </div>
-            {/* <div className="input-field">
-              <h6>End date*</h6>
-              <div className="d-flex employment-dates">
-                <input
-                  required
-                  type="date"
-                  name="endDate"
-                  id="endDate"
-                  onChange={(e) => {
-                    setEndDate(e.target.value);
-                  }}
-                />
-              </div>
-            </div> */}
           </div>
           <div className="input-field">
             <h6>Description*</h6>
