@@ -13,18 +13,70 @@ import { Grid3x3GapFill } from "react-bootstrap-icons";
 import { FaSearch } from "react-icons/fa";
 import logo from "../assets/img/logo.png";
 import "../assets/css/MyNavbar.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { STRIVE_KEY_MERLINO } from "../assets/js/auth_keys";
+import setAllProfilesAction from "../redux/actions/MyNavbar";
+
+const options = {
+  method: "GET",
+  headers: {
+    Authorization: `Bearer ${STRIVE_KEY_MERLINO}`,
+  },
+};
 
 const MyNavBar = () => {
-  const [query, setQuery] = useState();
-  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+  const [isProfilePage, setIsProfilePage] = useState(false);
+  const [allProfiles, setAllProfiles] = useState([]);
+
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
   const profileData = useSelector((state) => state.profile.actualProfile);
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleInputChange = (query) => {
     setQuery(query);
+  };
+
+  const handleInputFilter = (value) => {
+    const filter = allProfiles.filter((profile) =>
+      profile.name.toLowerCase().includes(value)
+    );
+    console.log("filter ", filter);
+    setFilteredData(filter);
+  };
+
+  useEffect(() => {
+    if (isProfilePage) {
+      getAllProfiles();
+    }
+  }, []);
+
+  /*   useEffect(() => {
+setData(allProfiles)
+setFilteredData(allProfiles)
+  }, []) */
+
+  const getAllProfiles = async () => {
+    try {
+      const res = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/",
+        options
+      );
+
+      if (!res.ok) throw new Error("Cannot fetch data");
+
+      const data = await res.json();
+      console.log("All profiles ", data);
+      setAllProfiles(data);
+      dispatch(setAllProfilesAction(data));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -41,20 +93,52 @@ const MyNavBar = () => {
               <FaSearch
                 id="search-icon"
                 size={15}
-                onClick={() => navigate(`/jobs/${query}`)}
+                onClick={() => {
+                  if (!isProfilePage) {
+                    navigate(`/jobs/${query}`);
+                  } else {
+                    navigate(`/profile/search/${query}`);
+                  }
+                }}
                 style={{ cursor: "pointer" }}
               />
               <input
-                placeholder="Search and press Enter.."
+                placeholder={
+                  isProfilePage
+                    ? "Search Profiles and press Enter"
+                    : "Search jobs and press Enter"
+                }
                 onChange={(e) => {
                   handleInputChange(e.target.value);
+                  handleInputFilter(e.target.value);
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
-                    navigate(`/jobs/${query}`);
+                    if (!isProfilePage) {
+                      navigate(`/jobs/${query}`);
+                    } else {
+                      navigate(`/profile/search/${query}`);
+                    }
                   }
                 }}
               />
+              {isProfilePage && query != "" && filteredData.length > 0 && (
+                <div className="search-result-wrapper">
+                  <div className="search-result">
+                    {filteredData &&
+                      filteredData.map((profile, i) => {
+                        return (
+                          <div
+                            key={i}
+                            onClick={() => navigate(`/profile/${profile._id}`)}
+                          >
+                            {profile.name}
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              )}
             </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -63,6 +147,7 @@ const MyNavBar = () => {
               <Link
                 to={"/"}
                 className="d-flex flex-column text-center px-4 nav-link"
+                onClick={() => setIsProfilePage(false)}
               >
                 <HouseDoorFill size={24} className="m-auto" /> Home
               </Link>
@@ -73,6 +158,7 @@ const MyNavBar = () => {
               <Link
                 to={"/jobs"}
                 className="nav-link d-flex flex-column text-center px-4"
+                onClick={() => setIsProfilePage(false)}
               >
                 <BriefcaseFill size={24} className="m-auto" />
                 Jobs
@@ -105,7 +191,11 @@ const MyNavBar = () => {
                     {profileData.name} {profileData.surname}
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/profile" className="btn btn-primary">
+                    <Link
+                      to="/profile"
+                      className="btn btn-primary"
+                      onClick={() => setIsProfilePage(true)}
+                    >
                       Go to profile
                     </Link>
                   </NavDropdown.Item>

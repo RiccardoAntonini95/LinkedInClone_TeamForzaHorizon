@@ -1,0 +1,47 @@
+.main-container {
+  max-width: 80%;
+}
+
+.left-section {
+  border-radius: 20px;
+}
+
+.left-section p {
+  padding: 10px 20px;
+}
+
+.left-section > p:nth-child(1) {
+  color: gray;
+  padding: 15px 0 0 20px;
+}
+
+.left-section p:not(p:nth-child(1)) {
+  font-size: 1.2rem;
+}
+.left-section p:not(p:nth-child(1)):hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.results-container {
+  background-color: white;
+  padding: 20px 0;
+  border-radius: 20px;
+}
+
+.single-profile {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-bottom: 1px solid lightgray;
+  min-width: 450px;
+}
+.single-profile:hover {
+  background-color: rgb(220, 220, 220);
+}
+
+.single-profile img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+}

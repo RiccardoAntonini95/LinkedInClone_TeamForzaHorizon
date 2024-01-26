@@ -61,7 +61,7 @@ const ProfilePageActivity = ({ profileData }) => {
       if (!res.ok) throw new Error("Cannot fetch data");
 
       const data = await res.json();
-      console.log("ProfilePageActivity ", data);
+      //console.log("ProfilePageActivity ", data);
       setPosts(data);
     } catch (err) {
       console.log(err);
@@ -92,7 +92,7 @@ const ProfilePageActivity = ({ profileData }) => {
 
   return (
     <div className="containerActivity">
-      <div class="card-body">
+      <div className="card-body">
         <Row className="p-3">
           <div className="d-flex icons-flex ">
             <h4>Activity</h4>
@@ -175,7 +175,7 @@ const ProfilePageActivity = ({ profileData }) => {
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-pencil"
+                    className="bi bi-pencil"
                     id="pencil"
                     viewBox="0 0 16 16"
                   >
